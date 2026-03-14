@@ -9,3 +9,8 @@ plugins:
 
 search_enabled: true
 highlighter: vs
+
+include:
+  - _includes/head_custom.html
+
+markdown: kramdown

@@ -1,27 +1,28 @@
-<!-- MathJax Configuration for Just the Docs -->
+<!-- _includes/head_custom.html -->
 <script>
   window.MathJax = {
     tex: {
-      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      inlineMath: [['\\(', '\\)']], 
       displayMath: [['$$', '$$'], ['\\[', '\\]']],
       processEscapes: true,
-      processEnvironments: true
+      processEnvironments: true,
+      packages: {'[+]': ['noerrors']}
     },
     options: {
-      skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+      skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+      ignoreHtmlClass: 'tex2jax_ignore',
+      processHtmlClass: 'tex2jax_process'
     },
     startup: {
       pageReady: () => {
         return MathJax.startup.defaultPageReady().then(() => {
-          // 可选：如果在动态加载内容后需要重新渲染，可以在这里调用
-          // MathJax.typeset();
+          MathJax.typesetPromise();
         });
       }
     }
-  };
-</script>
+  }; // <--- 确保这里有分号和闭合
+</script> <!-- <--- 确保这里有闭合标签 -->
 
-<!-- 引入 MathJax 库 (使用 CDN) -->
-<script type="text/javascript" id="MathJax-script" async
-  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+<!-- 使用国内可访问的 CDN 镜像 (见第二步) -->
+<script type="text/javascript" id="MathJax-script" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js">
 </script>

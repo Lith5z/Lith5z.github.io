@@ -1,0 +1,24 @@
+# --- Ruby & Bundler ---
+# 忽略依赖安装包目录 (这是占用空间最大的文件夹)
+/vendor/bundle/
+/vendor/cache/
+
+# 忽略 gem 锁文件 (可选，但推荐忽略，让 GitHub 决定版本)
+# 注意：有些团队喜欢提交 Gemfile.lock 以锁定版本，但对于简单的 GitHub Pages，忽略它通常没问题
+Gemfile.lock
+
+# 忽略本地生成的站点文件 (jekyll serve 生成的临时文件)
+/_site/
+/.jekyll-cache/
+/.jekyll-metadata
+
+# 忽略 Ruby 临时文件
+*.gem
+*.rbc
+/config.ru
+/.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+gemfile
