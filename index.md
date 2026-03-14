@@ -1,0 +1,45 @@
+---
+layout: default
+title: 主页
+description: 这里是我的极简个人介绍和笔记分享
+---
+
+# 你好，我是锂盐/Lith5z 👋
+
+> To see a world in a grain of sand.
+
+我打算在这里放各种笔记，从基础的编程语法、正在学习的算法到读书笔记、工具教程等等。
+
+---
+
+## 笔记库
+
+~~其实就是为了这点醋包的饺子~~，按主题跳转：
+
+### 编程 Coding
+
+### 和智能科学 AI
+
+### 读书笔记和随笔 Others
+- [存在主义是一种人道主义](notes/Others/existentialism.html)
+
+### 使用方法记录 Instructions
+- [Latex数学公式](notes/Instructions/latex.html)
+
+---
+
+## 技能和兴趣
+
+那我最好是真会了：
+
+- C/C++
+- Git/Latex 正在熟悉
+- Ps/Pr 会一点点平面设计
+
+---
+
+## 联系方式
+南京大学 智能科学与技术 大一在读中
+- Email: yingxuanhuang@smail.nju.edu.cn
+- GitHub: [@Lith5z](https://github.com/Lith5z)
+- Bilibili: [@锂盐Lith](https://space.bilibili.com/643955126)
