@@ -3,6 +3,8 @@ layout: default
 title: "矩阵和线性变换"
 date: 2026-03-14
 tags: [数学, 线性代数, AI]
+parent: "笔记 线性代数"
+nav_order: 3
 ---
 
 ### 线性变换

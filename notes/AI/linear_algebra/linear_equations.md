@@ -3,6 +3,8 @@ layout: default
 title: "线性方程组"
 date: 2026-03-14
 tags: [数学, 线性代数, AI]
+parent: "笔记 线性代数"
+nav_order: 6
 ---
 
 ### 一般线性方程组解的存在性

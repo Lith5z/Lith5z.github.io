@@ -3,6 +3,8 @@ layout: default
 title: "特征向量、特征值和相似矩阵"
 date: 2026-03-14
 tags: [数学, 线性代数, AI]
+parent: "笔记 线性代数"
+nav_order: 7
 ---
 
 > 对于 $$\vec{\alpha} \neq \vec{0}$$， 如果 $$A \vec{\alpha} = \lambda \vec{\alpha}$$，那么 $$\vec{\alpha}$$ 称为矩阵 $$A$$ 的特征向量， $$\lambda$$ 称为矩阵 $$A$$ 的特征值。

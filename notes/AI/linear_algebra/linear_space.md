@@ -3,6 +3,8 @@ layout: default
 title: "线性空间"
 date: 2026-03-14
 tags: [数学, 线性代数, AI]
+parent: "笔记 线性代数"
+nav_order: 2
 ---
 
 > 线性代数紧紧围绕向量加法和数乘。

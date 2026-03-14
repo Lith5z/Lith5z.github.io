@@ -3,6 +3,8 @@ layout: default
 title: "秩"
 date: 2026-03-14
 tags: [数学, 线性代数, AI]
+parent: "笔记 线性代数"
+nav_order: 5
 ---
 
 秩代表着矩阵和线性变换后空间的维数，或者说列空间的维数。
