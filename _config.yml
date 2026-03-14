@@ -1,4 +1,4 @@
-theme: minima
+remote_theme: just-the-docs/just-the-docs
 title: 个人主页
 description: 个人简介和一些笔记
 author: 黄颖轩/Lith5z
@@ -6,3 +6,6 @@ email: yingxuanhuang@smail.nju.edu.cn
 
 plugins:
   - jekyll-feed
+
+search_enabled: true
+highlighter: vs
