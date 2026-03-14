@@ -10,6 +10,8 @@ description: 这里是我的极简个人介绍和笔记分享
 
 我打算在这里放各种笔记，从基础的编程语法、正在学习的算法到读书笔记、工具教程等等。
 
+
+
 ---
 
 ## 笔记库
@@ -17,6 +19,8 @@ description: 这里是我的极简个人介绍和笔记分享
 ~~其实就是为了这点醋包的饺子~~，按主题跳转：
 
 ### 编程 Coding
+- [个人c语言项目仓库](https://github.com/Lith5z/cpl-practice)
+- [未完成 滑动窗口](notes/Code/sliding_window.html)
 
 ### 和智能科学 AI
 
@@ -24,7 +28,12 @@ description: 这里是我的极简个人介绍和笔记分享
 - [存在主义是一种人道主义](notes/Others/existentialism.html)
 
 ### 使用方法记录 Instructions
+
+事实上，这里不是教程，只是我学的时候记录的笔记。
+
 - [Latex数学公式](notes/Instructions/latex.html)
+
+
 
 ---
 
@@ -36,9 +45,15 @@ description: 这里是我的极简个人介绍和笔记分享
 - Git/Latex 正在熟悉
 - Ps/Pr 会一点点平面设计
 
+
+
 ---
 
 ## 联系方式
+Source: [这个网页的仓库](https://github.com/Lith5z/Lith5z.github.io)
+
+
+
 南京大学 智能科学与技术 大一在读中
 - Email: yingxuanhuang@smail.nju.edu.cn
 - GitHub: [@Lith5z](https://github.com/Lith5z)
