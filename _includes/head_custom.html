@@ -1,0 +1,27 @@
+<!-- MathJax Configuration for Just the Docs -->
+<script>
+  window.MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      displayMath: [['$$', '$$'], ['\\[', '\\]']],
+      processEscapes: true,
+      processEnvironments: true
+    },
+    options: {
+      skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+    },
+    startup: {
+      pageReady: () => {
+        return MathJax.startup.defaultPageReady().then(() => {
+          // 可选：如果在动态加载内容后需要重新渲染，可以在这里调用
+          // MathJax.typeset();
+        });
+      }
+    }
+  };
+</script>
+
+<!-- 引入 MathJax 库 (使用 CDN) -->
+<script type="text/javascript" id="MathJax-script" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+</script>
