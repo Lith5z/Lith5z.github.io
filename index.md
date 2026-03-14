@@ -56,3 +56,8 @@ Source: [这个网页的仓库](https://github.com/Lith5z/Lith5z.github.io)
 - Email: yingxuanhuang@smail.nju.edu.cn
 - GitHub: [@Lith5z](https://github.com/Lith5z)
 - Bilibili: [@锂盐Lith](https://space.bilibili.com/643955126)
+
+
+<figure>
+  <img src="/Lith5z.github.io/images/index_pic.jpg" alt="kano" />
+</figure>
