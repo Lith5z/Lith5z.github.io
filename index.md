@@ -25,6 +25,7 @@ description: 这里是我的极简个人介绍和笔记分享
 
 ### 读书笔记和随笔 Others
 - [存在主义是一种人道主义](notes/Others/existentialism.html)
+- [月亮与六便士](notes/Others/moon_and_sixpence.html)
 
 ### 使用方法记录 Instructions
 
