@@ -22,7 +22,7 @@ nav_order: 1
 （注意目标和GPT章节[[3B1B 嵌入和解嵌入]]所用的softmax不同，这里不需要所有值的和为1）
 这里使用sigmoid函数 $$\sigma(x) = \frac{1}{1+e^{-x}}$$
 <figure>
-  <img src="{{ '/assets/images/sigmoid_pic.png' | absolute_url }}" alt="example1" />
+  <img src="{{ '/assets/images/sigmoid_pic.webp' | absolute_url }}" alt="example1" />
 </figure>
 但是实际上，常用线性整流函数 $$\text{ReLU}(x) = \max(0,x)$$，更好训练，效果也不会差。可能是为了模拟生物神经元的激发阈值，不超过某个值就不激发
 
@@ -35,11 +35,11 @@ $$\begin{pmatrix} w_{0,0} & w_{0,1} & \cdots & w_{0,n} \\ w_{1,0} & w_{1,1} & \c
 左边矩阵的每一行都代表右侧输出神经元的所有权重，整个矩阵代表第0层的权重
 第0层有n个神经元，而第1层有k个
 <figure>
-  <img src="{{ '/assets/images/matrixForm_pic.png' | absolute_url }}" alt="example1" />
+  <img src="{{ '/assets/images/matrixForm_pic.webp' | absolute_url }}" alt="example1" />
 </figure>
 
 <figure>
-  <img src="{{ '/assets/images/total_pic.png' | absolute_url }}" alt="example1" />
+  <img src="{{ '/assets/images/total_pic.webp' | absolute_url }}" alt="example1" />
 </figure>
 
 整个网络就是一个函数，自变量是图像的784个像素灰度值，输出10个数字的概率值，参数为极大量的权重和偏差

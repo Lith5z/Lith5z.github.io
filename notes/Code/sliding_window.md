@@ -125,7 +125,7 @@ public:
 将 [2, 4] 的会议安排到 [1, 3] ，得到空余时间 [3, 9] 。
 ```
 <figure>
-  <img src="{{ '/assets/images/slidingWindow_pic.png' | absolute_url }}" alt="example1" />
+  <img src="{{ '/assets/images/slidingWindow_pic.webp' | absolute_url }}" alt="example1" />
 </figure>
 能移动k次，每次移动都可以合并两处**相邻（隔着一个会议）**的空闲时间，也就是可以把k+1个空闲时间段**计入总数**
 这题要先把给的会议时间数据加工成一个所有空闲时间的数组，这个例子里，就是[1,5]，k=1，故纳入计算的长度为2，返回1+5

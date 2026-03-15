@@ -62,5 +62,5 @@ Source: [这个网页的仓库](https://github.com/Lith5z/Lith5z.github.io)
 
 
 <figure>
-  <img src="/assets/images/index_pic.jpg" alt="kano" />
+  <img src="/assets/images/index_pic.webp" alt="kano" />
 </figure>
