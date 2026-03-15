@@ -21,6 +21,7 @@ description: 这里是我的极简个人介绍和笔记分享
 
 ### 和智能科学 AI
 - [3B1B 线性代数](notes/AI/linear_algebra/main.html)
+- [3B1B 深度学习](notes/AI/deep_learning/3b1b_main.html)
 
 ### 读书笔记和随笔 Others
 - [存在主义是一种人道主义](notes/Others/existentialism.html)
