@@ -1,8 +1,9 @@
 ---
 layout: default
-title: "使用记录 Latex"
+title: "Latex使用笔记"
 date: 2026-03-14
 tags: [教程]
+parent: "使用笔记"
 ---
 
 

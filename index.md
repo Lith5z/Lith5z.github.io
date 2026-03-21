@@ -2,6 +2,7 @@
 layout: default
 title: 主页
 description: 这里是我的极简个人介绍和笔记分享
+nav_order: 1
 ---
 
 # 你好，我是锂盐/Lith5z 👋
@@ -10,6 +11,19 @@ description: 这里是我的极简个人介绍和笔记分享
 
 我打算在这里放各种笔记，从基础的编程语法、正在学习的算法到读书笔记、工具教程等等。 <br>
 ---
+
+<h2>🚀 最近更新</h2>
+<ul>
+  {% assign sorted_pages = site.pages | sort: 'date' | reverse %}
+  {% for page in sorted_pages limit: 5 %}
+    {% if page.date %}
+      <li>
+        <a href="{{ page.url | relative_url }}">{{ page.title }}</a>
+        <small style="color: #666;">({{ page.date | date: "%Y-%m-%d" }})</small>
+      </li>
+    {% endif %}
+  {% endfor %}
+</ul>
 
 ## 笔记库
 
@@ -46,6 +60,7 @@ description: 这里是我的极简个人介绍和笔记分享
 - C/C++ 正在学习算法
 - Git/Latex 正在熟悉
 - Ps/Pr 会一点点平面设计
+- [其他..](notes/about_me.html)
 
 
 

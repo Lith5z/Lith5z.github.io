@@ -3,6 +3,7 @@ layout: default
 title: "PS使用笔记"
 date: 2026-03-19
 tags: [笔记, 平面设计]
+parent: "使用笔记"
 ---
 
 # 说在前面
