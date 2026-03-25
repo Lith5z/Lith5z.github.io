@@ -35,6 +35,7 @@ nav_order: 1
 
 ### 和智能科学 AI
 - [3B1B 线性代数](notes/AI/linear_algebra/main.html)
+- [CS188 人工智能导论](notes/AI/search_and_planning/CS188_main.html)
 - [3B1B 深度学习](notes/AI/deep_learning/3b1b_main.html)
 
 ### 读书笔记和随笔 Others
