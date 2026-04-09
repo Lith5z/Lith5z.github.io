@@ -2,7 +2,7 @@
 layout: default
 title: "搜索算法"
 date: 2026-03-25
-tags: [AI, GraphSearch, SymbolicAI]
+tags: [AI, GraphSearch]
 parent: "笔记 CS188"
 nav_order: 1
 ---

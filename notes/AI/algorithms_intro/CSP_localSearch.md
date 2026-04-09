@@ -2,7 +2,7 @@
 layout: default
 title: "CSP问题 局部搜索"
 date: 2026-03-29
-tags: [AI, CSP, SymbolicAI]
+tags: [AI, CSP]
 parent: "笔记 CS188"
 nav_order: 3
 ---

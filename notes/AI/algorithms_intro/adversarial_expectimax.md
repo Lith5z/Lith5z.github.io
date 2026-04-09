@@ -2,7 +2,7 @@
 layout: default
 title: "对抗搜索 Expectimax"
 date: 2026-04-07
-tags: [AI, GraphSearch, SymbolicAI, Expectimax]
+tags: [AI, GraphSearch, Expectimax]
 parent: "笔记 CS188"
 nav_order: 5
 ---

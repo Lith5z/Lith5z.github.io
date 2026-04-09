@@ -2,7 +2,7 @@
 layout: default
 title: "对抗搜索 Minimax"
 date: 2026-03-31
-tags: [AI, GraphSearch, SymbolicAI, Minimax]
+tags: [AI, GraphSearch, Minimax]
 parent: "笔记 CS188"
 nav_order: 4
 ---
