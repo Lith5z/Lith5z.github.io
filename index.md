@@ -30,8 +30,9 @@ nav_order: 1
 ~~其实就是为了这点醋包的饺子~~，按主题跳转：
 
 ### 编程 Coding
-- [个人c语言项目仓库](https://github.com/Lith5z/cpl-practice)
+- [一个简单的个人c语言项目](https://github.com/Lith5z/cpl-practice)
 - [未完成 滑动窗口](notes/Code/sliding_window.html)
+- [从C到C++ 语法学习](notes/Code/C2CPP.html)
 
 ### 和智能科学 AI
 - [3B1B 线性代数](notes/AI/linear_algebra/main.html)
