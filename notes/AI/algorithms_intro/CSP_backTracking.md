@@ -7,6 +7,9 @@ parent: "笔记 CS188"
 nav_order: 2
 ---
 
+1. 目录
+{:toc}
+
 # 约束满足问题/CSP
 csp constraint satisfaction problem（比如地图上色、N-Queen问题）
 

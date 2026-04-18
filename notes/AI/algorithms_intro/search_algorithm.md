@@ -7,6 +7,9 @@ parent: "笔记 CS188"
 nav_order: 1
 ---
 
+1. 目录
+{:toc}
+
 # 搜索算法
 无信息搜索
 - DFS/BFS
