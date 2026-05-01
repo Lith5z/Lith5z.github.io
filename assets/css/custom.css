@@ -26,7 +26,8 @@
   }
 }
 
-/* 使主内容区域左对齐，与侧边栏开始位置对齐 */
+/* 使正文充分利用右侧空间 */
 .main {
-  max-width: 50rem;
+  max-width: none;
+  padding-right: 4rem;
 }
