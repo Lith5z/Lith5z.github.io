@@ -1,0 +1,32 @@
+/* 自定义样式：缩小左侧边栏宽度 */
+
+/* 小屏和中屏 (>= 50rem / 800px) */
+@media (min-width: 50rem) {
+  .side-bar {
+    width: 12rem;
+  }
+  .side-bar + .main {
+    margin-left: 12rem;
+  }
+}
+
+/* 大屏 (>= 66.5rem / 1064px) */
+@media (min-width: 66.5rem) {
+  .side-bar {
+    width: 16rem;
+    min-width: 16rem;
+  }
+  .site-nav,
+  .site-header,
+  .site-footer {
+    width: 16rem;
+  }
+  .side-bar + .main {
+    margin-left: 16rem;
+  }
+}
+
+/* 使主内容区域左对齐，与侧边栏开始位置对齐 */
+.main {
+  max-width: 50rem;
+}
