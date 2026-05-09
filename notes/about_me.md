@@ -59,3 +59,7 @@ nav_order: 2
 - Malody 之后可能转om
 - 养老单机 目前在打星露谷 喜欢少攻略或者零攻略探索
 - MC 实在是玩了太久了
+
+<figure>
+  <img src="{{ '/assets/images/index_pic.webp' | absolute_url }}" alt="kano" />
+</figure>
