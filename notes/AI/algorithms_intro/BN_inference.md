@@ -33,7 +33,7 @@ nav_order: 9
 3. 除以P(Evidence)归一化，得到条件概率
 
 <figure>
-  <img src="{{ '/assets/images/bayes_nets_pic.webp' | absolute_url }}" alt="bayes_nets_pic" />
+  <img src="{{ '/assets/images/algorithms_intro/bayes_nets_pic.webp' | absolute_url }}" alt="bayes_nets_pic" />
 </figure>
 
 ```
@@ -66,7 +66,7 @@ P(-a|-b) = P(-a,-b) / P(-b)
 在BN中，相当于合并节点，得到一个小的联合分布节点
 
 <figure>
-  <img src="{{ '/assets/images/BN_joinFactor_pic.webp' | absolute_url }}" alt="BN_joinFactor" />
+  <img src="{{ '/assets/images/algorithms_intro/BN_joinFactor_pic.webp' | absolute_url }}" alt="BN_joinFactor" />
 </figure>
 
 2.边缘化/消元 Marginalization/Eliminate <br>
@@ -74,7 +74,7 @@ P(-a|-b) = P(-a,-b) / P(-b)
 比如上图的P(R,T)，如果合并R，只需要进行P(+t) = P(-r,+t) + P(+r,+t)等操作
 
 <figure>
-  <img src="{{ '/assets/images/BN_VE1_pic.webp' | absolute_url }}" alt="BN_VE1" />
+  <img src="{{ '/assets/images/algorithms_intro/BN_VE1_pic.webp' | absolute_url }}" alt="BN_VE1" />
 </figure>
 以上图为例，两种方法的形式化表达就是
 
@@ -113,7 +113,7 @@ E和A是隐藏变量，需要合并
 ### 合并因子的顺序
 
 <figure>
-  <img src="{{ '/assets/images/BN_ordering_pic.webp' | absolute_url }}" alt="BN_ordering" />
+  <img src="{{ '/assets/images/algorithms_intro/BN_ordering_pic.webp' | absolute_url }}" alt="BN_ordering" />
 </figure>
 
 上面这张图里，我们可以先合并 X1 到 X_n-1 每一项都只需要合并它的子节点 Y_i

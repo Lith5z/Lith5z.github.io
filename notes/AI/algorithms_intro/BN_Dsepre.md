@@ -73,7 +73,7 @@ $$P(a | c,b) = P(a|c)$$
 （实际上是没有被任何活跃路径连通，会在后续D-分离部分解释）
 
 <figure>
-  <img src="{{ '/assets/images/bayes_nets_pic.webp' | absolute_url }}" alt="bayes_nets_pic" />
+  <img src="{{ '/assets/images/algorithms_intro/bayes_nets_pic.webp' | absolute_url }}" alt="bayes_nets_pic" />
 </figure>
 
 BN的核心是局部**马尔可夫性**假设，**给定**一个节点的所有父节点，该节点与它的所有非后代节点条件独立。由此可以推导出：
@@ -164,7 +164,7 @@ Rain的发生影响了Concert的概率，不独立
 所有情况都可以被归类成上面的三元组，只要是不独立的，就说明影响可以传递，路径是活跃的active；独立则说明路径被阻断，是不活跃的 <br>
 （下图还多一个情况，可以类比Collider）
 <figure>
-  <img src="{{ '/assets/images/D-seperation_pic.webp' | absolute_url }}" alt="D-seperation_pic" />
+  <img src="{{ '/assets/images/algorithms_intro/D-seperation_pic.webp' | absolute_url }}" alt="D-seperation_pic" />
 </figure>
 
 $$X_i \perp \!\!\! \perp X_j | \{X_a, \dots, X_z\}$$是否成立，只要看从$$X_i$$到$$X_j$$的所有**无向路径**（找路径的时候是无向的，拆分**三元组**分析时要看方向），在给定证据$$X_a, \dots, X_z$$下，有没有活跃的路径。只要有一个活跃的路径，就不确保独立 <br>
@@ -172,7 +172,7 @@ $$X_i \perp \!\!\! \perp X_j | \{X_a, \dots, X_z\}$$是否成立，只要看从$
 
 一个例子如下：
 <figure>
-  <img src="{{ '/assets/images/D-sepreTriple_pic.webp' | absolute_url }}" alt="D-sepreTriple_pic" />
+  <img src="{{ '/assets/images/algorithms_intro/D-sepreTriple_pic.webp' | absolute_url }}" alt="D-sepreTriple_pic" />
 </figure>
 
 ```
@@ -186,7 +186,7 @@ $$X_i \perp \!\!\! \perp X_j | \{X_a, \dots, X_z\}$$是否成立，只要看从$
 
 这个例子都只有一条有向路径，如果有多条就逐一分析，只要有一个路径活跃，就不保证独立；换句话说，只有所有路径都不活跃才条件独立，比如：
 <figure>
-  <img src="{{ '/assets/images/D-sepreMoreWays_pic.webp' | absolute_url }}" alt="D-sepreMoreWays_pic" />
+  <img src="{{ '/assets/images/algorithms_intro/D-sepreMoreWays_pic.webp' | absolute_url }}" alt="D-sepreMoreWays_pic" />
 </figure>
 
 ```
@@ -200,7 +200,7 @@ $$X_i \perp \!\!\! \perp X_j | \{X_a, \dots, X_z\}$$是否成立，只要看从$
 ### 用途
 
 <figure>
-  <img src="{{ '/assets/images/D-sepreUse_pic.webp' | absolute_url }}" alt="D-sepreUse_pic" />
+  <img src="{{ '/assets/images/algorithms_intro/D-sepreUse_pic.webp' | absolute_url }}" alt="D-sepreUse_pic" />
 </figure>
 不同结构的贝叶斯网络暗含不同的条件独立性假设，可以根据D分离来判断 <br>
 一旦两个网络的假设完全一致（同一个马尔可夫等价类），那么就可以用一个替换另一个。但是选择和实际情况最贴合的网络，节点的概率表会更简单，更具备可解释性 <br>

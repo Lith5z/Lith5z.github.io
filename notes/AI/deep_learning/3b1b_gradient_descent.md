@@ -24,7 +24,7 @@ nav_order: 2
 
 梯度是一个向量，向量的每一个元素是原函数分别对每个自变量求偏导的结果
 <figure>
-  <img src="{{ '/assets/images/2Dfunction_pic.webp' | absolute_url }}" alt="example1" />
+  <img src="{{ '/assets/images/deep_learning/2Dfunction_pic.webp' | absolute_url }}" alt="example1" />
 </figure>
 
 代价函数就是一个复杂的多元函数，将模型得到的输出带入到这个多元函数中，求出梯度，具体的求法见3B1B 反向传播算法

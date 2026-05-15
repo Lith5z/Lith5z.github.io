@@ -153,7 +153,7 @@ strong k-consistency同时包含了k,k-1,k-2,...,1一致性，我们可以断言
 
 不过如果节点是**树状的**（没有环，所有子节点只有一个父节点），复杂度可以降到n的线性关系，O(nd^2)
 <figure>
-  <img src="{{ '/assets/images/tree_structure_pic.webp' | absolute_url }}" alt="tree_structure" />
+  <img src="{{ '/assets/images/algorithms_intro/tree_structure_pic.webp' | absolute_url }}" alt="tree_structure" />
 </figure>
 
 先进行反向的弧一致性遍历，从D->F D->E B->D B->C...按着头节点逆序 <br>
@@ -168,7 +168,7 @@ strong k-consistency同时包含了k,k-1,k-2,...,1一致性，我们可以断言
 
 完全的树状结构还是很罕见，但是我们可以通过删掉某些节点，让剩余部分变成树状结构
 <figure>
-  <img src="{{ '/assets/images/cutset_conditioning_pic.webp' | absolute_url }}" alt="cutset_conditioning" />
+  <img src="{{ '/assets/images/algorithms_intro/cutset_conditioning_pic.webp' | absolute_url }}" alt="cutset_conditioning" />
 </figure>
 这个例子里，SA如果确定，剩余的部分就是一个树状结构，可以迅速解决。因为不知道SA怎么赋值，每个可能的值都要试一次，然后处理剩余的树状结构
 

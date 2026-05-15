@@ -25,7 +25,7 @@ nav_order: 10
 沿着BN从上到下进行抽取样本，根据每个节点的概率分布来模拟抽取的概率
 
 <figure>
-  <img src="{{ '/assets/images/BN_priorSampling_pic.webp' | absolute_url }}" alt="BN_priorSampling" />
+  <img src="{{ '/assets/images/algorithms_intro/BN_priorSampling_pic.webp' | absolute_url }}" alt="BN_priorSampling" />
 </figure>
 
 ```
@@ -70,7 +70,7 @@ def RejectionSampling():
 ## 似然加权 Likelihood Weight
 
 <figure>
-  <img src="{{ '/assets/images/BN_priorSampling_pic.webp' | absolute_url }}" alt="BN_priorSampling" />
+  <img src="{{ '/assets/images/algorithms_intro/BN_priorSampling_pic.webp' | absolute_url }}" alt="BN_priorSampling" />
 </figure>
 
 在拒绝采样中，会抛弃很多不符合证据的样本；而似然加权对于包含证据的节点，不按照概率去生成，而是直接固定，概率用来调整样本的权重
@@ -111,16 +111,16 @@ def LikelihoodWeight():
 ## Gibbs Sampling
 
 <figure>
-  <img src="{{ '/assets/images/BN_gibbsSampling_pic.webp' | absolute_url }}" alt="BN_gibbsSampling_pic" />
+  <img src="{{ '/assets/images/algorithms_intro/BN_gibbsSampling_pic.webp' | absolute_url }}" alt="BN_gibbsSampling_pic" />
 </figure>
 
 - 先固定所有证据，其他变量随机赋值
-- 然后进行迭代：每一次选择一个变量，重新赋值，赋值的概率依据是 $$P(X_i | \text{其余全部确定的变量} )$$
+- 然后进行迭代：每一次选择一个变量，重新赋值，赋值的概率依据是 $$P(X_i \mid \text{其余全部确定的变量} )$$
 - 大量重复这个过程，得到一条样本链
 
 最后进行概率推理：丢弃开头的一部分样本（烧入期，让链稳定），然后每隔几步取一个样本（减少相关性），这些样本就近似服从目标概率
 
-**如何得到概率$$P(X_i | \text{其余全部确定的变量} )$$** <br>
+**如何得到概率$$P(X_i \mid \text{其余全部确定的变量} )$$** <br>
 根据BN的特性进行计算，与$$X_i$$无关的项都会抵消掉 <br>
 比如在上图中：
 

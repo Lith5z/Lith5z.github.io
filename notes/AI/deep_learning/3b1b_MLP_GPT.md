@@ -12,7 +12,7 @@ nav_order: 6
 很可能在MLP层中，占了GPT3 1/3的参数
 
 <figure>
-  <img src="{{ '/assets/images/MLPinGPT0_pic.webp' | absolute_url }}" alt="example1" />
+  <img src="{{ '/assets/images/deep_learning/MLPinGPT0_pic.webp' | absolute_url }}" alt="example1" />
 </figure>
 视频的例子里，输入向量先与一个升维矩阵相乘。可以理解成，这个句子的行代表嵌入空间的一系列信息，乘积衡量了信息和输入向量的匹配度（bias决定触发之后ReLU的阈值）相当于对输入向量问各类问题
 
@@ -21,7 +21,7 @@ nav_order: 6
 
 这其实就是之前所说的3B1B 多层感知器
 <figure>
-  <img src="{{ '/assets/images/MLPinGPT_pic.webp' | absolute_url }}" alt="example2" />
+  <img src="{{ '/assets/images/deep_learning/MLPinGPT_pic.webp' | absolute_url }}" alt="example2" />
 </figure>
 是一个三层的MLP，第一层输入，第三层输出，中间层更高阶一些
 

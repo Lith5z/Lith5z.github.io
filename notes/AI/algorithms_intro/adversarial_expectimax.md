@@ -44,6 +44,6 @@ min节点获取到一个+3的后继之后，就可以确定min节点的值肯定
 
 minimax适用optimal博弈的对手，而expectimax适用带有概率性的对手
 <figure>
-  <img src="{{ '/assets/images/expectimaxCompare_pic.webp' | absolute_url }}" alt="compare" />
+  <img src="{{ '/assets/images/algorithms_intro/expectimaxCompare_pic.webp' | absolute_url }}" alt="compare" />
 </figure>
 minimax只看节点效用值的排序顺序，而不关心具体大小；expectimax则相反。这个例子里，minimax的决策不会因为效用函数的变化而改变

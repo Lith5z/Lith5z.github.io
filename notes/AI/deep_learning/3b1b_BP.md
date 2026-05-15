@@ -22,7 +22,7 @@ nav_order: 3
 对于路径1的增大权重，应当优先增加连接的神经元值较大的权重，因为权重和上一层神经元是相乘的；
 同理对于路径2，也应当调整权重较大的神经元。虽然不能直接调整神经元的值，只能以此类推的调整上上层的权重和偏差
 <figure>
-  <img src="{{ '/assets/images/backPropagation_pic.webp' | absolute_url }}" alt="example1" />
+  <img src="{{ '/assets/images/deep_learning/backPropagation_pic.webp' | absolute_url }}" alt="example1" />
 </figure>
 
 此外，数字2的神经元值要增大，其他数字的值就要减小。把所有10个数字神经元需要的变化累加到上一层，又是以此类推
@@ -31,7 +31,7 @@ nav_order: 3
 
 下面是形式化的表述，为了方便起见，以一个链状的神经网络为例：
 <figure>
-  <img src="{{ '/assets/images/chainRuleInBP_pic.webp' | absolute_url }}" alt="example2" />
+  <img src="{{ '/assets/images/deep_learning/chainRuleInBP_pic.webp' | absolute_url }}" alt="example2" />
 </figure>
 
 $$C_0(...) = (a^{(L)}-y)^2$$
@@ -57,9 +57,9 @@ $$\frac{\partial{C}}{\partial{w^{(L)}}} = \sum_{i=0}^{n-1} \frac{\partial{C_i}}{
 
 一个更一般的例子也类似，只不过$$C_0$$包含多个结果和预期的平方差之和，$$z^{(L)}$$来自于多个上层神经元
 <figure>
-  <img src="{{ '/assets/images/chainRuleInBP2_pic.webp' | absolute_url }}" alt="example3" />
+  <img src="{{ '/assets/images/deep_learning/chainRuleInBP2_pic.webp' | absolute_url }}" alt="example3" />
 </figure>
 不过链式法则里，$$C_0$$对于$$a^{(L)}_k$$的偏导发生了变化，因为$$a^{(L)}_k$$可以对多个结果神经元产生影响
 <figure>
-  <img src="{{ '/assets/images/chainRuleInBP3_pic.webp' | absolute_url }}" alt="example4" />
+  <img src="{{ '/assets/images/deep_learning/chainRuleInBP3_pic.webp' | absolute_url }}" alt="example4" />
 </figure>

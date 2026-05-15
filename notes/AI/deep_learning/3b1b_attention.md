@@ -17,10 +17,10 @@ nav_order: 5
 
 视频里的例子是，对于creature这个词向量，产生的query可能是“我之前有没有形容词？”，然后这与fluffy和blue这两个词向量的key相匹配
 <figure>
-  <img src="{{ '/assets/images/attentionMatch_pic.webp' | absolute_url }}" alt="example1" />
+  <img src="{{ '/assets/images/deep_learning/attentionMatch_pic.webp' | absolute_url }}" alt="example1" />
 </figure>
 <figure>
-  <img src="{{ '/assets/images/attendTo_pic.webp' | absolute_url }}" alt="example2" />
+  <img src="{{ '/assets/images/deep_learning/attendTo_pic.webp' | absolute_url }}" alt="example2" />
 </figure>
 
 得到不同词之间的相关性程度，这些计算出的点积之后要作为权重对token向量进行调整，所以要进行softmax以匹配权重的性质
@@ -31,7 +31,7 @@ softmax之后，这个网格矩阵被称作**注意力模式** attention pattern
 
 这些value向量可以理解成“如果我要对别的向量做调整，那么调整的向量是什么”
 <figure>
-  <img src="{{ '/assets/images/attentionValue_pic.webp' | absolute_url }}" alt="example3" />
+  <img src="{{ '/assets/images/deep_learning/attentionValue_pic.webp' | absolute_url }}" alt="example3" />
 </figure>
 理论上，value向量最后要与token向量相加，所以是同维的，比key/query维数大很多，那么$$W_V$$的维数也会很大。实际上，$$W_V$$矩阵的维数会与$$W_k$$和$$W_Q$$维数之和相等，这对并行运行多个注意力头尤其重要
 
@@ -41,7 +41,7 @@ softmax之后，这个网格矩阵被称作**注意力模式** attention pattern
 
 基于多头注意力模式multi-headed attention，同一层注意力模块里，会有多个值-查询操作，当然最后注意力模块依旧会有很多层
 <figure>
-  <img src="{{ '/assets/images/attentionMulti_pic.webp' | absolute_url }}" alt="example4" />
+  <img src="{{ '/assets/images/deep_learning/attentionMulti_pic.webp' | absolute_url }}" alt="example4" />
 </figure>
 
 
@@ -60,7 +60,7 @@ softmax之后，这个网格矩阵被称作**注意力模式** attention pattern
 
 实际上GPT训练之后也运用了**掩码**机制，在上面的value阶段，也看得出来这些点积都为0
 <figure>
-  <img src="{{ '/assets/images/attentionMask_pic.webp' | absolute_url }}" alt="example5" />
+  <img src="{{ '/assets/images/deep_learning/attentionMask_pic.webp' | absolute_url }}" alt="example5" />
 </figure>
 
 
