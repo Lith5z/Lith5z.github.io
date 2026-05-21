@@ -5,12 +5,13 @@ description: 这里是我的极简个人介绍和笔记分享
 nav_order: 1
 ---
 
-# 你好，我是锂盐/Lith5z 👋
+# 你好，这里是锂盐/Lith5z的笔记库 👋
 
 > To see a world in a grain of sand.
 
-我打算在这里放各种笔记，从基础的编程语法、正在学习的算法到读书笔记、工具教程等等。 <br>
 ---
+
+可能哪天会切换到 Material for MkDocs 主题
 
 <h2>🚀 最近更新</h2>
 <ul>
@@ -59,8 +60,8 @@ nav_order: 1
 
 那我最好是真会了：
 
-- C/C++ 正在学习算法
-- Git/Latex 正在熟悉
+- C/C++/Python
+- Git/Latex
 - Ps/Pr 会一点点平面设计
 - [其他..](notes/about_me.html)
 
