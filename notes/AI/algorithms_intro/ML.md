@@ -1,6 +1,6 @@
 ---
 layout: default
-title: "机器学习"
+title: "CS188 机器学习"
 date: 2026-05-31
 tags: [AI, ML]
 parent: "笔记 CS188"

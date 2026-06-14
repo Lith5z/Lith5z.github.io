@@ -35,9 +35,12 @@ nav_order: 1
 - [未完成 滑动窗口](notes/Code/sliding_window.html)
 - [从C到C++ 语法学习](notes/Code/C2CPP.html)
 
-### 和智能科学 AI
+### 数学 Math
 - [3B1B 线性代数](notes/AI/linear_algebra/main.html)
+
+### 和智能科学 AI
 - [伯克利CS188 人工智能导论](notes/AI/algorithms_intro/CS188_main.html)
+- [机器学习](notes/AI/machine_learning/ML_main.html)
 - [3B1B 深度学习](notes/AI/deep_learning/3b1b_main.html)
 
 ### 读书笔记和随笔 Others
