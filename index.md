@@ -54,6 +54,7 @@ nav_order: 1
 
 - [Latex数学公式](notes/Instructions/latex.html)
 - [PS使用记录](notes/Instructions/ps_use.html)
+- [Git常用公式](notes/Instructions/git_command.html)
 
 
 
