@@ -1,10 +1,7 @@
 ---
-layout: default
 title: "行列式"
 date: 2026-03-14
 tags: [数学, 线性代数, AI]
-parent: "笔记 线性代数"
-nav_order: 4
 ---
 
 了解一个线性变换**对空间的缩放程度**是很有用的，这其实就是行列式的几何意义。
@@ -18,17 +15,17 @@ nav_order: 4
 至于具体降低了多少，需要用到秩的概念。
 
 1. 对角矩阵的行列式公式
-> 若 $$A= \begin{pmatrix} a_{11} & & & \\ & a_{22} & & \\ & & \ddots & \\ & & & a_{nn} \end{pmatrix}$$，那么 $$det(A) = a_{11} a_{22} \cdots a_{nn}$$.
+> 若 $A= \begin{pmatrix} a_{11} & & & \\ & a_{22} & & \\ & & \ddots & \\ & & & a_{nn} \end{pmatrix}$，那么 $det(A) = a_{11} a_{22} \cdots a_{nn}$.
 
-因为 $$A$$ 的各个列向量代表线性变换后的基向量，大部分元素为0，这说明线性变换后基向量的方向都不变，只进行了 $$a_{ii}$$ 倍的缩放，故最后空间的缩放也就是这些倍数相乘。
+因为 $A$ 的各个列向量代表线性变换后的基向量，大部分元素为0，这说明线性变换后基向量的方向都不变，只进行了 $a_{ii}$ 倍的缩放，故最后空间的缩放也就是这些倍数相乘。
 
 2. 乘积的行列式公式
-> $$det(AB) = det(A)det(B)$$.
+> $det(AB) = det(A)det(B)$.
 
-$$AB$$ 只是先后应用两个线性变换而已，结果和分别应用是一样的。
+$AB$ 只是先后应用两个线性变换而已，结果和分别应用是一样的。
 
 3. 叉乘的行列式公式
-> 若 $$\vec{\alpha} = \begin{pmatrix} a \\ b \end{pmatrix} , \vec{\beta} = \begin{pmatrix} c \\ d \end{pmatrix}$$，那么它们叉乘的大小是 $$\begin{vmatrix} a & c \\ b & d \end{vmatrix} = ad-bc$$.
+> 若 $\vec{\alpha} = \begin{pmatrix} a \\ b \end{pmatrix} , \vec{\beta} = \begin{pmatrix} c \\ d \end{pmatrix}$，那么它们叉乘的大小是 $\begin{vmatrix} a & c \\ b & d \end{vmatrix} = ad-bc$.
 
 因为二维向量叉乘的几何意义和二阶行列式几何意义是一样的。
 

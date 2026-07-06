@@ -1,20 +1,19 @@
 ---
-layout: default
 title: "感知器"
 date: 2026-06-14
 tags: [ML, 感知器, AI]
-parent: "笔记 机器学习"
-nav_order: 1
 ---
 
 # 感知器 Perceptron
 
 <figure>
-  <img src="{{ '/assets/images/machine_learning/perceptron_pic.webp' | absolute_url }}" alt="perceptron" />
+  <img src="/assets/images/machine_learning/perceptron_pic.webp" alt="perceptron" />
 </figure>
 
 > 感知器由 **Frank Rosenblatt** 于 1957 年在 Cornell 航空实验室提出，并在 1958 年正式发表论文 *"The Perceptron — A Perceiving and Recognizing Automaton"*。这是第一个具有学习能力的人工神经元模型，在当时的 AI 社区引起了巨大轰动。
+> 
 > Rosenblatt 甚至为感知器设计了专门的硬件 **Mark I Perceptron**，能够通过模拟电路实时学习识别简单的视觉模式。它被视为连接主义（Connectionism）的开端，也是现代神经网络的雏形。
+> 
 > ——DeepSeek v4
 
 借鉴了生物神经元的结构，通过多个树突接收特征信息，权重模拟神经元之间连接的强弱，进行加权求和后判断是否激活
@@ -25,17 +24,19 @@ nav_order: 1
 
 感知器最后输出的结果是一个二元变量，用于分类问题
 
-$$ \hat{y} = g(w \cdot x + b) $$
+$\hat{y} = g(w \cdot x + b)$
 
-- $$w$$为权重向量
-- $$x$$为输入的特征向量，做内积
-- $$b$$为偏置，一个标量
-- $$g$$为激活函数，这里一般是阶跃函数（区别神经网络），例如：
+- $w$为权重向量
+- $x$为输入的特征向量，做内积
+- $b$为偏置，一个标量
+- $g$为激活函数，这里一般是阶跃函数（区别神经网络），例如：
 
 $$g(x) = \begin{cases} 1, & x > 0 \\ -1, & x \leq 0 \end{cases}$$
 
 > 如果偏置项为0，激活函数以0为界，那么决定输出的分界点就是w和x点积为0，即正交的时候。所以感知器找到的分类界限，是与权重向量正交的一个分界面。
+> 
 > 偏置项会影响wx=0时的结果，相当于平移这个分界面。
+> 
 > 权重向量其实代表某类典型的输入，做点积的过程就是在衡量两个向量的相似度。
 
 ## 权重更新
@@ -48,16 +49,16 @@ $$ w \leftarrow w + \eta \cdot (y - \hat{y}) \cdot x $$
 
 $$ b \leftarrow b + \eta \cdot (y - \hat{y}) $$
 
-其中$$\eta$$是学习率
+其中$\eta$是学习率
 
 **从公式的角度理解** <br>
-假设$$g(x)$$就是上面的那个阶跃函数，期望的$$y=1$$，而模型预测$$\hat{y}=0$$，$$x \gt 0$$。此时权重会被增大，让$$g(x)$$的输入变大，更可能得到预期的+1
+假设$g(x)$就是上面的那个阶跃函数，期望的$y=1$，而模型预测$\hat{y}=0$，$x \gt 0$。此时权重会被增大，让$g(x)$的输入变大，更可能得到预期的+1
 
 **从线性变换的角度理解** <br>
-如果$$x$$和$$w$$在分界线的两侧且预测错误，这一项会逐渐把特征向量拉到$$w$$的一侧
+如果$x$和$w$在分界线的两侧且预测错误，这一项会逐渐把特征向量拉到$w$的一侧
 
 <figure>
-  <img src="{{ '/assets/images/machine_learning/perceptron_update_pic.webp' | absolute_url }}" alt="perceptron_update" />
+  <img src="/assets/images/machine_learning/perceptron_update_pic.webp" alt="perceptron_update" />
 </figure>
 
 ## 多分类感知器
@@ -65,16 +66,16 @@ $$ b \leftarrow b + \eta \cdot (y - \hat{y}) $$
 如果要进行多个类别的分类，输出的就不能只是简单的二元数值
 
 <figure>
-  <img src="{{ '/assets/images/machine_learning/perceptron_multi_pic.webp' | absolute_url }}" alt="perceptron_multi" />
+  <img src="/assets/images/machine_learning/perceptron_multi_pic.webp" alt="perceptron_multi" />
 </figure>
 
-这时候对于每个类别都要提供一个特征向量$$w_y$$，输出的结果是产生最大点积的那个类别：
+这时候对于每个类别都要提供一个特征向量$w_y$，输出的结果是产生最大点积的那个类别：
 
 $$ y = \arg \max_y w_y \cdot x $$
 
 更新过程也类似，对于分类出错的样本，只更新相关的两个特征向量：对于正确类别的特征向量，点积要增大；目前预测类别的特征向量，点积要减小。其他类别的权重向量保持不变
 
-设真实类别为 $$y^*$$，模型预测类别为 $$\hat{y}$$，当 $$y^* \neq \hat{y}$$ 时：
+设真实类别为 $y^*$，模型预测类别为 $\hat{y}$，当 $y^* \neq \hat{y}$ 时：
 
 $$
 \begin{aligned}
@@ -91,8 +92,11 @@ $$
 但如果不具备可分性，比如XOR（异或）的功能，训练过程不会收敛，也就是说单层感知器无法解决这一问题
 
 > 1969 年，**Marvin Minsky** 和 **Seymour Papert** 在著作 *"Perceptrons"* 中系统分析了感知器的数学局限性，严格证明了单层感知器无法处理线性不可分问题（如 XOR）。
+> 
 > 这一结论对当时的神经网络研究造成了沉重打击，加之计算资源匮乏，政府资助大幅转向符号主义 AI，导致神经网络研究进入了长达十余年的 **"AI 寒冬"**（First AI Winter）。
+> 
 > 直到 1986 年，**Rumelhart、Hinton 和 Williams** 在 *"Learning representations by back-propagating errors"* 中系统阐述了 **反向传播算法（Backpropagation）**，为**多层感知器MLP**的训练提供了可行的梯度下降方案。多层感知器通过引入隐藏层和非线性激活函数（如 Sigmoid），克服了单层感知器无法解决非线性问题的缺陷，开启了神经网络的复兴之路。
+> 
 > ——DeepSeek v4
 
 可见[[3B1B 多层感知器]]

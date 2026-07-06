@@ -1,10 +1,7 @@
 ---
-layout: default
 title: "事实储存在何处"
 date: 2026-03-16
 tags: [深度学习, AI]
-parent: "笔记 3B1B深度学习"
-nav_order: 6
 ---
 
 视频里以“迈克尔乔丹打篮球”为例，当输入“迈克尔乔丹”之后，模型能输出“篮球”等相关的事实性信息，说明模型中某些地方储存了信息
@@ -12,7 +9,7 @@ nav_order: 6
 很可能在MLP层中，占了GPT3 1/3的参数
 
 <figure>
-  <img src="{{ '/assets/images/deep_learning/MLPinGPT0_pic.webp' | absolute_url }}" alt="example1" />
+  <img src="/assets/images/deep_learning/MLPinGPT0_pic.webp" alt="example1" />
 </figure>
 视频的例子里，输入向量先与一个升维矩阵相乘。可以理解成，这个句子的行代表嵌入空间的一系列信息，乘积衡量了信息和输入向量的匹配度（bias决定触发之后ReLU的阈值）相当于对输入向量问各类问题
 
@@ -21,7 +18,7 @@ nav_order: 6
 
 这其实就是之前所说的3B1B 多层感知器
 <figure>
-  <img src="{{ '/assets/images/deep_learning/MLPinGPT_pic.webp' | absolute_url }}" alt="example2" />
+  <img src="/assets/images/deep_learning/MLPinGPT_pic.webp" alt="example2" />
 </figure>
 是一个三层的MLP，第一层输入，第三层输出，中间层更高阶一些
 

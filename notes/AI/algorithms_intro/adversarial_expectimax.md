@@ -1,10 +1,7 @@
 ---
-layout: default
 title: "对抗搜索 Expectimax"
 date: 2026-04-07
 tags: [AI, GraphSearch, Expectimax]
-parent: "笔记 CS188"
-nav_order: 5
 ---
 
 # 期望最大算法 Exceptimax
@@ -23,6 +20,7 @@ nav_order: 5
 ```
 
 为了解决带有随机性的博弈问题，需要对minimax做出这下调整：
+
 - max节点的表现完全相同
 - 对手的chance节点不会选择最小效用值的后继节点，而是按着一定概率选择。因此计算这个节点的值，要用加权平均的方法计算期望
 
@@ -44,6 +42,6 @@ min节点获取到一个+3的后继之后，就可以确定min节点的值肯定
 
 minimax适用optimal博弈的对手，而expectimax适用带有概率性的对手
 <figure>
-  <img src="{{ '/assets/images/algorithms_intro/expectimaxCompare_pic.webp' | absolute_url }}" alt="compare" />
+  <img src="/assets/images/algorithms_intro/expectimaxCompare_pic.webp" alt="compare" />
 </figure>
 minimax只看节点效用值的排序顺序，而不关心具体大小；expectimax则相反。这个例子里，minimax的决策不会因为效用函数的变化而改变

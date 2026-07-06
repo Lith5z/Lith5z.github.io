@@ -1,14 +1,8 @@
 ---
-layout: default
 title: "贝叶斯网络 D分离"
 date: 2026-04-28
 tags: [AI, BN]
-parent: "笔记 CS188"
-nav_order: 8
 ---
-
-1. 目录
-{:toc}
 
 # 贝叶斯网络 Bayes'nets/BN
 
@@ -42,7 +36,7 @@ P(R=.., W=.., T=..)=..或者简写P(.., .., ..)=..
 对联合分布中部分变量求和或积分得到的边缘概率分布，是联合分布的一部分
 
 **条件概率 条件分布** <br>
-链式法则 $$P(a,b,c,...) = P(a) P(b|a) P(c|a,b) ...$$
+链式法则 $P(a,b,c,...) = P(a) P(b|a) P(c|a,b) ...$
 
 **计算条件分布时的归一化**
 
@@ -50,7 +44,7 @@ P(R=.., W=.., T=..)=..或者简写P(.., .., ..)=..
 利用已知概率分布计算查询变量的后验概率或边缘概率
 
 **条件独立** <br>
-A和B在C的条件下相互独立 $$ A \perp \!\!\! \perp B \mid C $$ <br>
+A和B在C的条件下相互独立 $A \perp \!\!\! \perp B \mid C$ <br>
 
 $$P(a,b | c) = P(a|c) P(b|c)$$
 
@@ -58,9 +52,9 @@ $$P(a,b | c) = P(a|c) P(b|c)$$
 
 $$P(a | c,b) = P(a|c)$$
 
-举个例子，$$ P(traffic, umbrella \mid rain) = P(traffic \mid rain) $$，但是traffic和umbrella之间并不独立，只是在rain的条件下独立
+举个例子，$P(traffic, umbrella \mid rain) = P(traffic \mid rain)$，但是traffic和umbrella之间并不独立，只是在rain的条件下独立
 
-如果条件独立成立，链式法则可以被简化为$$P(a,b,c,...) = P(a) P(b|a) P(c|b) ...$$ <br>
+如果条件独立成立，链式法则可以被简化为$P(a,b,c,...) = P(a) P(b|a) P(c|b) ...$ <br>
 这样子就可以把巨大的联合分布化简为多个简单的条件分布
 
 ## 贝叶斯网络
@@ -68,16 +62,18 @@ $$P(a | c,b) = P(a|c)$$
 我们可以先得到整个联合分布，再根据需要进行查找和计算，但是整个联合分布太大了，无法储存和学习
 
 贝叶斯网络是一个有向无环图，包括：
+
 - 节点：表示变量，可能已观测/未观测；每一个变量都有一个条件概率表，和它的所有父节点构成一个条件分布
 - 弧：表示变量间潜在的直接影响或依赖关系。节点之间如果没有弧相连，就隐含了条件独立性假设；无路径连通的节点是绝对独立的
 （实际上是没有被任何活跃路径连通，会在后续D-分离部分解释）
 
 <figure>
-  <img src="{{ '/assets/images/algorithms_intro/bayes_nets_pic.webp' | absolute_url }}" alt="bayes_nets_pic" />
+  <img src="/assets/images/algorithms_intro/bayes_nets_pic.webp" alt="bayes_nets_pic" />
 </figure>
 
 BN的核心是局部**马尔可夫性**假设，**给定**一个节点的所有父节点，该节点与它的所有非后代节点条件独立。由此可以推导出：
-1. 条件概率仅依赖于**直接相连**的父节点
+
+- 条件概率仅依赖于**直接相连**的父节点
 
 $$ P(x_i | x_1,\dots,x_{i-1}) = P(x_i | \text{parents}(X_i)) $$
 
@@ -87,7 +83,7 @@ $$ P(x_1,x_2,x_3,\dots,x_n) =  \prod_{i=1}^n P(x_i | \text{parents}(X_i))$$
 
 这使得原本需要指数级参数的联合分布，可以用少量局部条件概率表来表示
 
-2. 节点在其父节点给定后，便与图中其他特定部分“阻断”。这种局部阻断是判断**任意变量**间条件独立性的基础，可由后续介绍的D-分离算法实现
+- 节点在其父节点给定后，便与图中其他特定部分“阻断”。这种局部阻断是判断**任意变量**间条件独立性的基础，可由后续介绍的D-分离算法实现
 
 
 
@@ -105,7 +101,7 @@ A发生在B和E条件下；
 ```
 
 包含所有变量的概率都可以这样计算，于是原本需要有2^5个条目的联合分布就被拆解成了这些条件分布 <br>
-一般的，一个n个布尔变量的联合分布大小是2^n；如果用n个节点，每个节点最多k个父节点的BN表示，大小是$$O(n 2^{k+1})$$
+一般的，一个n个布尔变量的联合分布大小是2^n；如果用n个节点，每个节点最多k个父节点的BN表示，大小是$O(n 2^{k+1})$
 
 ## D-Sepreration 有向分离/D-分离
 
@@ -164,15 +160,15 @@ Rain的发生影响了Concert的概率，不独立
 所有情况都可以被归类成上面的三元组，只要是不独立的，就说明影响可以传递，路径是活跃的active；独立则说明路径被阻断，是不活跃的 <br>
 （下图还多一个情况，可以类比Collider）
 <figure>
-  <img src="{{ '/assets/images/algorithms_intro/D-seperation_pic.webp' | absolute_url }}" alt="D-seperation_pic" />
+  <img src="/assets/images/algorithms_intro/D-seperation_pic.webp" alt="D-seperation_pic" />
 </figure>
 
-$$X_i \perp \!\!\! \perp X_j | \{X_a, \dots, X_z\}$$是否成立，只要看从$$X_i$$到$$X_j$$的所有**无向路径**（找路径的时候是无向的，拆分**三元组**分析时要看方向），在给定证据$$X_a, \dots, X_z$$下，有没有活跃的路径。只要有一个活跃的路径，就不确保独立 <br>
+$X_i \perp \!\!\! \perp X_j | \{X_a, \dots, X_z\}$是否成立，只要看从$X_i$到$X_j$的所有**无向路径**（找路径的时候是无向的，拆分**三元组**分析时要看方向），在给定证据$X_a, \dots, X_z$下，有没有活跃的路径。只要有一个活跃的路径，就不确保独立 <br>
 对于一个路径，只要路径中有一个三元组是不活跃的，整个路径就被截断，该路径就不活跃；所有三元组都是活跃的，影响可以传递，该路径就活跃
 
 一个例子如下：
 <figure>
-  <img src="{{ '/assets/images/algorithms_intro/D-sepreTriple_pic.webp' | absolute_url }}" alt="D-sepreTriple_pic" />
+  <img src="/assets/images/algorithms_intro/D-sepreTriple_pic.webp" alt="D-sepreTriple_pic" />
 </figure>
 
 ```
@@ -186,7 +182,7 @@ $$X_i \perp \!\!\! \perp X_j | \{X_a, \dots, X_z\}$$是否成立，只要看从$
 
 这个例子都只有一条有向路径，如果有多条就逐一分析，只要有一个路径活跃，就不保证独立；换句话说，只有所有路径都不活跃才条件独立，比如：
 <figure>
-  <img src="{{ '/assets/images/algorithms_intro/D-sepreMoreWays_pic.webp' | absolute_url }}" alt="D-sepreMoreWays_pic" />
+  <img src="/assets/images/algorithms_intro/D-sepreMoreWays_pic.webp" alt="D-sepreMoreWays_pic" />
 </figure>
 
 ```
@@ -200,7 +196,7 @@ $$X_i \perp \!\!\! \perp X_j | \{X_a, \dots, X_z\}$$是否成立，只要看从$
 ### 用途
 
 <figure>
-  <img src="{{ '/assets/images/algorithms_intro/D-sepreUse_pic.webp' | absolute_url }}" alt="D-sepreUse_pic" />
+  <img src="/assets/images/algorithms_intro/D-sepreUse_pic.webp" alt="D-sepreUse_pic" />
 </figure>
 不同结构的贝叶斯网络暗含不同的条件独立性假设，可以根据D分离来判断 <br>
 一旦两个网络的假设完全一致（同一个马尔可夫等价类），那么就可以用一个替换另一个。但是选择和实际情况最贴合的网络，节点的概率表会更简单，更具备可解释性 <br>
@@ -214,7 +210,7 @@ BN完全联通，上面说“没有任何一个独立性假设”，但是马尔
 
 $$ P(X_i | X_1, ..., X_{i-1}) = P(X_i | \text{Parents}(X_i)) $$
 
-但由于此时 $$\text{Parents}(X_i)$$ 正是所有编号小于 $$i$$ 的变量的集合 $$\{X_1, ..., X_{i-1}\}$$，所以这个等式实际上退化为：
+但由于此时 $\text{Parents}(X_i)$ 正是所有编号小于 $i$ 的变量的集合 $\{X_1, ..., X_{i-1}\}$，所以这个等式实际上退化为：
 
 $$P(X_i | X_1, ..., X_{i-1}) = P(X_i | X_1, ..., X_{i-1})$$
 
@@ -222,6 +218,7 @@ $$P(X_i | X_1, ..., X_{i-1}) = P(X_i | X_1, ..., X_{i-1})$$
 
 下面的内容由DeepSeek-V4生成，仅供概念辨析：
 > 贝叶斯网络的独立性声明有三个层次
+> 
 > - 局部马尔可夫性 (Local Markov Property)：这是BN的定义性公理，也是我们介绍的公式。每个节点在给定父节点后，独立于其非后代节点。
 > - 全局马尔可夫性 (Global Markov Property)：这是由D分离算法判定的所有独立性集合。
 > - 相消性 (Faithfulness)：指分布的独立性是否完全且恰好是D分离判定的那些。我们通常假设此性质成立。

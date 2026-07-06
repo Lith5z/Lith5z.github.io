@@ -7,10 +7,11 @@
 # 注意：有些团队喜欢提交 Gemfile.lock 以锁定版本，但对于简单的 GitHub Pages，忽略它通常没问题
 Gemfile.lock
 
-# 忽略本地生成的站点文件 (jekyll serve 生成的临时文件)
-/_site/
+# 忽略本地生成的站点文件
+/_site/          # Jekyll
 /.jekyll-cache/
 /.jekyll-metadata
+/site/           # MkDocs
 
 # 忽略 Ruby 临时文件
 *.gem

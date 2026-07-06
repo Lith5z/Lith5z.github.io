@@ -1,10 +1,7 @@
 ---
-layout: default
 title: "多层感知器MLP"
 date: 2026-03-15
 tags: [深度学习, AI]
-parent: "笔记 3B1B深度学习"
-nav_order: 1
 ---
 
 最基本的神经网络——多层感知器MLP(MultiLayer Perceptron) 概说
@@ -21,19 +18,19 @@ nav_order: 1
 
 神经元可以看作一个函数，自变量为上一层的所有神经元，参数是权重和偏差，因变量是自己的值
 
-为了保证神经元的值还是在0-1之间，结果要带入一个 $$R\to[0,1]$$ 的压缩函数
+为了保证神经元的值还是在0-1之间，结果要带入一个 $R\to[0,1]$ 的压缩函数
 
 （注意目标和GPT章节3B1B 嵌入和解嵌入所用的softmax不同，这里不需要所有值的和为1）
 
-这里使用sigmoid函数 $$\sigma(x) = \frac{1}{1+e^{-x}}$$
+这里使用sigmoid函数 $\sigma(x) = \frac{1}{1+e^{-x}}$
 <figure>
-  <img src="{{ '/assets/images/deep_learning/sigmoid_pic.webp' | absolute_url }}" alt="example1" />
+  <img src="/assets/images/deep_learning/sigmoid_pic.webp" alt="example1" />
 </figure>
-但是实际上，常用线性整流函数 $$\text{ReLU}(x) = \max(0,x)$$，更好训练，效果也不会差。可能是为了模拟生物神经元的激发阈值，不超过某个值就不激发
+但是实际上，常用线性整流函数 $\text{ReLU}(x) = \max(0,x)$，更好训练，效果也不会差。可能是为了模拟生物神经元的激发阈值，不超过某个值就不激发
 
 $$a^{(1)}_{0} = \sigma(w_{0,0}a^{(0)}_{0}+w_{0,1}a^{(0)}_{1}+\cdots+w_{0,n}a^{(0)}_{n}+b_0)$$
 
-这里 $$a^{(1)}_{0}$$ 的上标下标代表第1层的第0个神经元。$$w_{0,0}$$ 的第一个0代表与下层第0个神经元连线，第二个0代表与上一层的第0个神经元连线。
+这里 $a^{(1)}_{0}$ 的上标下标代表第1层的第0个神经元。$w_{0,0}$ 的第一个0代表与下层第0个神经元连线，第二个0代表与上一层的第0个神经元连线。
 
 这是对某一个神经元的写法，对于一整层，写成矩阵乘法的形式
 
@@ -47,11 +44,11 @@ $$\vec{a}^{(1)} = \sigma(\mathbf{W}\vec{a}^{(0)}+\vec{b})$$
 
 第0层有n个神经元，而第1层有k个
 <figure>
-  <img src="{{ '/assets/images/deep_learning/matrixForm_pic.webp' | absolute_url }}" alt="example1" />
+  <img src="/assets/images/deep_learning/matrixForm_pic.webp" alt="example1" />
 </figure>
 
 <figure>
-  <img src="{{ '/assets/images/deep_learning/total_pic.webp' | absolute_url }}" alt="example1" />
+  <img src="/assets/images/deep_learning/total_pic.webp" alt="example1" />
 </figure>
 
 整个网络就是一个函数，自变量是图像的784个像素灰度值，输出10个数字的概率值，参数为极大量的权重和偏差

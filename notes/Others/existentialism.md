@@ -1,5 +1,4 @@
 ---
-layout: default
 title: "读书笔记 存在主义是一种人道主义"
 date: 2026-03-14
 tags: [哲学, 存在主义]

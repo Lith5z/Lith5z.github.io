@@ -1,14 +1,8 @@
 ---
-layout: default
 title: "贝叶斯网络 概率推理"
 date: 2026-05-09
 tags: [AI, BN]
-parent: "笔记 CS188"
-nav_order: 9
 ---
-
-1. 目录
-{:toc}
 
 # 概率推理
 利用已知的概率分布，计算查询变量的条件概率或边缘概率
@@ -18,22 +12,24 @@ nav_order: 9
 - 隐藏变量：该次查询中不给出取值，但与结果有关的变量
 
 更多后续要用的名词：
-- 选定联合分布Selected Joint/$$P(x,Y)$$：从$$P(X,Y)$$这个完整联合分布中，只保留$$X=x$$的部分的部分，和是$$P(X=x)$$，没进行归一化
-- 条件分布/$$P(Y \mid x)$$：和为1
-- 条件分布族/$$P(Y \mid X)$$：遍历X的取值，得到多个$$P(Y \mid x)$$然后拼接起来
-- $$P(y \mid X)$$：遍历条件X的取值，选取所有Y=y的项拼接起来，这不是个条件分布
+
+- 选定联合分布Selected Joint/$P(x,Y)$：从$P(X,Y)$这个完整联合分布中，只保留$X=x$的部分的部分，和是$P(X=x)$，没进行归一化
+- 条件分布/$P(Y \mid x)$：和为1
+- 条件分布族/$P(Y \mid X)$：遍历X的取值，得到多个$P(Y \mid x)$然后拼接起来
+- $P(y \mid X)$：遍历条件X的取值，选取所有Y=y的项拼接起来，这不是个条件分布
 
 虽然复杂，但是其实只要牢记大写字母代表一个变量，有自己的定义域，而小写字母是变量的某个取值即可
 
 ## 枚举推理 Inference by Enumeration
 
 步骤
+
 1. 在联合分布选择出符合证据的部分
 2. 求和，合并消去隐藏变量
 3. 除以P(Evidence)归一化，得到条件概率
 
 <figure>
-  <img src="{{ '/assets/images/algorithms_intro/bayes_nets_pic.webp' | absolute_url }}" alt="bayes_nets_pic" />
+  <img src="/assets/images/algorithms_intro/bayes_nets_pic.webp" alt="bayes_nets_pic" />
 </figure>
 
 ```
@@ -66,7 +62,7 @@ P(-a|-b) = P(-a,-b) / P(-b)
 在BN中，相当于合并节点，得到一个小的联合分布节点
 
 <figure>
-  <img src="{{ '/assets/images/algorithms_intro/BN_joinFactor_pic.webp' | absolute_url }}" alt="BN_joinFactor" />
+  <img src="/assets/images/algorithms_intro/BN_joinFactor_pic.webp" alt="BN_joinFactor" />
 </figure>
 
 2.边缘化/消元 Marginalization/Eliminate <br>
@@ -74,7 +70,7 @@ P(-a|-b) = P(-a,-b) / P(-b)
 比如上图的P(R,T)，如果合并R，只需要进行P(+t) = P(-r,+t) + P(+r,+t)等操作
 
 <figure>
-  <img src="{{ '/assets/images/algorithms_intro/BN_VE1_pic.webp' | absolute_url }}" alt="BN_VE1" />
+  <img src="/assets/images/algorithms_intro/BN_VE1_pic.webp" alt="BN_VE1" />
 </figure>
 以上图为例，两种方法的形式化表达就是
 
@@ -100,20 +96,20 @@ J   M
 E和A是隐藏变量，需要合并
 ```
 首先在每个与证据有关的节点，只保留符合证据取值的部分（实例化） <br>
-所以$$P(J \mid A)$$和$$P(M \mid A)$$变为$$P(+j \mid A)$$和$$P(+m \mid A)$$ <br>
+所以$P(J \mid A)$和$P(M \mid A)$变为$P(+j \mid A)$和$P(+m \mid A)$ <br>
 现在合并A和E
 
-针对A，合并$$P(A \mid B,E)$$和$$P(+j \mid A)$$和$$P(+m \mid A)$$，为$$P(+j,+m,A \mid B,E)$$，然后对A消元得到$$P(+j,+m \mid B,E)$$ <br>
+针对A，合并$P(A \mid B,E)$和$P(+j \mid A)$和$P(+m \mid A)$，为$P(+j,+m,A \mid B,E)$，然后对A消元得到$P(+j,+m \mid B,E)$ <br>
 （B E与这一步无关，保留在条件的位置；A被合并，从条件变到左边；J和M是实例化的状态。这个式子没有太强的意义，只是变量消元法的中间步骤产生的因子） <br>
-现在只剩下三个因子$$P(B)$$ $$P(E)$$ $$(+j,+m \mid B,E)$$
+现在只剩下三个因子$P(B)$ $P(E)$ $(+j,+m \mid B,E)$
 
-针对E，合并$$P(E)$$和$$(+j,+m \mid B,E)$$，得到$$(+j,+m,E \mid B)$$，然后对E消元得到$$(+j,+m \mid B)$$ <br>
-只剩下两个因子$$P(B)$$ $$(+j,+m \mid B)$$，最后合并一次得到$$P(+j,+m,B)$$，直接归一化得到目标
+针对E，合并$P(E)$和$(+j,+m \mid B,E)$，得到$(+j,+m,E \mid B)$，然后对E消元得到$(+j,+m \mid B)$ <br>
+只剩下两个因子$P(B)$ $(+j,+m \mid B)$，最后合并一次得到$P(+j,+m,B)$，直接归一化得到目标
 
 ### 合并因子的顺序
 
 <figure>
-  <img src="{{ '/assets/images/algorithms_intro/BN_ordering_pic.webp' | absolute_url }}" alt="BN_ordering" />
+  <img src="/assets/images/algorithms_intro/BN_ordering_pic.webp" alt="BN_ordering" />
 </figure>
 
 上面这张图里，我们可以先合并 X1 到 X_n-1 每一项都只需要合并它的子节点 Y_i

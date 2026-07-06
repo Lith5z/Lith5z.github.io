@@ -1,12 +1,8 @@
 ---
-layout: default
 title: "Git常用命令"
 date: 2026-06-16
 tags: [教程]
-parent: "使用笔记"
 ---
-
-不过，我一般还是用vscode的GUI版本git
 
 ## 准备
 git init
@@ -89,6 +85,20 @@ git restore linked-list/joseph.c
 git restore --staged linked-list/joseph.c
 撤销已暂存的更改
 
-## 工作流解析
+## 不同工作流解析
 
-// TODO
+### 基于merge
+
+1. 在github fork别人的仓库
+2. git clone到本地
+3. 在本地git checkout -b xxx创建分支，并切换到新分支
+4. （如果云端发生了更新，在github网页端同步各个分支，然后在本地先git checkout main -> git pull origin main，再切换分支 -> git merge main）
+5. commit & push
+6. 到github网页发起pr
+
+- 优点：我会
+- 缺点：历史树会比较乱
+
+有时候第四步我会改成先暂存，删了现在的分支，更新main再创建，会干净些
+
+### 基于rebase

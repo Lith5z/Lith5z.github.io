@@ -1,14 +1,8 @@
 ---
-layout: default
 title: "CSP问题 局部搜索"
 date: 2026-03-29
 tags: [AI, CSP]
-parent: "笔记 CS188"
-nav_order: 3
 ---
-
-1. 目录
-{:toc}
 
 # 局部搜索
 
@@ -67,7 +61,7 @@ def local_search(initial_solution, max_iterations=1000):
 对于N-Queen问题，如果使用类似的方法，随机初始状态，然后选择不满足的变量，移动到违背约束最少的地方，大约能解决n~10 000 000的N-Queen问题 <br>
 根据R = number of constraints / number of constraints，这种方法需要的时间会有很大不同 <br>
 <figure>
-  <img src="{{ '/assets/images/algorithms_intro/R_pic.webp' | absolute_url }}" alt="diff" />
+  <img src="/assets/images/algorithms_intro/R_pic.webp" alt="diff" />
 </figure>
 在约束很少的时候，一开始的随机赋值很可能就很接近答案；约束很多的时候，很容易调整那些不满足的变量达到最优（可以结合梯度下降法的函数图像理解）
 

@@ -1,5 +1,4 @@
 ---
-layout: default
 title: "使用笔记"
 date: 2026-03-21
 tags: [教程]

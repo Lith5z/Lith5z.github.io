@@ -1,13 +1,11 @@
 ---
-layout: default
 title: "One More Thing"
 date: 2026-03-21
-nav_order: 2
 ---
 
 > 心存迷茫未尝不可，不置可否亦未尝不可。
 
-# 一些其他技能
+# 一些其他爱好
 
 ## 关于Ps
 
@@ -15,7 +13,7 @@ nav_order: 2
 除此之外，正在缓慢地推进设计百作挑战，下面是我的打卡#10：
 
 <figure>
-  <img src="{{ '/assets/images/cover_pic.webp' | absolute_url }}" alt="ps" />
+  <img src="/assets/images/cover_pic.webp" alt="ps" />
 </figure>
 
 由于图片压缩，之后会考虑找个办法展示之前的作品 <br>
@@ -26,14 +24,12 @@ nav_order: 2
 只会最简单的视频，最多拉个关键帧，做点简单的转场 <br>
 不过对于我这种只发点杂谈视频的人来说来说，好像也够用了
 
-# 兴趣爱好
-
 ## 输出
 
 喜欢输出东西，除了写点随笔，主要就是在发动漫杂谈视频 ~
 
 <figure>
-  <img src="{{ '/assets/images/bili_pic.webp' | absolute_url }}" alt="bili" />
+  <img src="/assets/images/bili_pic.webp" alt="bili" />
 </figure>
 
 目前更新频率还非常低...
@@ -43,11 +39,11 @@ nav_order: 2
 跑步，然后去逛各种自然景点 ~
 
 <figure>
-  <img src="{{ '/assets/images/qixiashan_pic.webp' | absolute_url }}" alt="photo1" style="width: 50%; max-width: 100%; height: auto;" />
+  <img src="/assets/images/qixiashan_pic.webp" alt="photo1" style="width: 50%; max-width: 100%; height: auto;" />
 </figure>
 
 <figure>
-  <img src="{{ '/assets/images/dazhongting_pic.webp' | absolute_url }}" alt="photo2" style="width: 80%; max-width: 100%; height: auto;"/>
+  <img src="/assets/images/dazhongting_pic.webp" alt="photo2" style="width: 80%; max-width: 100%; height: auto;"/>
 </figure>
 
 ## 哲学
@@ -61,5 +57,5 @@ nav_order: 2
 - MC 实在是玩了太久了
 
 <figure>
-  <img src="{{ '/assets/images/index_pic.webp' | absolute_url }}" alt="kano" />
+  <img src="/assets/images/index_pic.webp" alt="kano" />
 </figure>

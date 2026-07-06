@@ -1,0 +1,114 @@
+site_name: Lith5z的个人主页
+site_description: 个人简介和一些笔记
+site_author: 黄颖轩/Lith5z
+site_url: https://lith5z.github.io
+docs_dir: notes
+site_dir: site
+
+theme:
+  name: material
+  language: zh
+  favicon: assets/images/favicon.png
+  icon:
+    logo: material/book-open-page-variant
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - navigation.indexes
+    - navigation.top
+    - search.highlight
+    - search.suggest
+    - content.code.copy
+    - content.tabs.link
+  palette:
+    - scheme: default
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/weather-night
+        name: 切换到深色模式
+    - scheme: slate
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/weather-sunny
+        name: 切换到浅色模式
+
+markdown_extensions:
+  - pymdownx.arithmatex:
+      generic: true
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.superfences
+  - pymdownx.details
+  - pymdownx.tabbed:
+      alternate_style: true
+  - admonition
+  - attr_list
+  - toc:
+      permalink: true
+  - tables
+
+extra_javascript:
+  - assets/javascripts/mathjax.js
+  - https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js
+
+extra_css:
+  - assets/css/custom.css
+
+plugins:
+  - search
+  - tags:
+      tags_file: tags.md
+
+nav:
+  - 主页: index.md
+  - AI:
+    - CS188 人工智能导论:
+      - CS188 概述: AI/algorithms_intro/CS188_main.md
+      - 搜索算法: AI/algorithms_intro/search_algorithm.md
+      - CSP 回溯搜索: AI/algorithms_intro/CSP_backTracking.md
+      - CSP 局部搜索: AI/algorithms_intro/CSP_localSearch.md
+      - 对抗搜索 Minimax: AI/algorithms_intro/adversarial_minimax.md
+      - 对抗搜索 Expectimax: AI/algorithms_intro/adversarial_expectimax.md
+      - MDP 价值迭代: AI/algorithms_intro/MDP.md
+      - RL 强化学习: AI/algorithms_intro/RL.md
+      - 贝叶斯网络 D分离: AI/algorithms_intro/BN_Dsepre.md
+      - 贝叶斯网络 推理: AI/algorithms_intro/BN_inference.md
+      - 贝叶斯网络 采样: AI/algorithms_intro/BN_sampling.md
+      - 决策网络: AI/algorithms_intro/decision_network.md
+      - HMM 前向算法: AI/algorithms_intro/HMM_forward.md
+      - HMM 粒子滤波: AI/algorithms_intro/HMM_particleFiltering.md
+      - 机器学习: AI/algorithms_intro/ML.md
+    - 机器学习:
+      - 机器学习概述: AI/machine_learning/ML_main.md
+      - 感知器: AI/machine_learning/perceptron.md
+    - 深度学习:
+      - 3B1B 深度学习: AI/deep_learning/3b1b_main.md
+      - 多层感知器 MLP: AI/deep_learning/3b1b_MLP.md
+      - 梯度下降法: AI/deep_learning/3b1b_gradient_descent.md
+      - 反向传播算法: AI/deep_learning/3b1b_BP.md
+      - 嵌入和解嵌入: AI/deep_learning/3b1b_embedding.md
+      - 注意力机制: AI/deep_learning/3b1b_attention.md
+      - MLP in GPT: AI/deep_learning/3b1b_MLP_GPT.md
+  - 数学:
+    - 线性代数:
+      - 3B1B 线性代数: AI/linear_algebra/main.md
+      - 向量: AI/linear_algebra/vector.md
+      - 矩阵: AI/linear_algebra/matrix.md
+      - 线性变换与线性空间: AI/linear_algebra/linear_space.md
+      - 线性方程组: AI/linear_algebra/linear_equations.md
+      - 行列式: AI/linear_algebra/determinant.md
+      - 秩: AI/linear_algebra/rank.md
+      - 特征向量与特征值: AI/linear_algebra/eigen_value.md
+  - 编程:
+    - 从C到C++: Code/C2CPP.md
+    - 滑动窗口: Code/sliding_window.md
+  - 教程:
+    - 使用笔记: Instructions/ins_main.md
+    - Git常用命令: Instructions/git_command.md
+    - PS 使用: Instructions/ps_use.md
+  - 其他:
+    - 存在主义: Others/existentialism.md
+    - 月亮与六便士: Others/moon_and_sixpence.md
+  - 关于: about_me.md

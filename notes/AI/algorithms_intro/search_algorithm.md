@@ -1,27 +1,26 @@
 ---
-layout: default
 title: "搜索算法"
 date: 2026-03-25
 tags: [AI, GraphSearch]
-parent: "笔记 CS188"
-nav_order: 1
 ---
 
-1. 目录
-{:toc}
-
 # 搜索算法
+
 无信息搜索
+
 - DFS/BFS
 - UCS
 - IDDFS
+
 有信息搜索
+
 - Greedy
 - A-star
 
 这节课是CS188的第一部分，以PacMan为例子讲解搜索算法，属于Planning规划问题。下一节课讲解CSP问题，算法实现有很大不同，但也归类到搜索问题
 
 规划问题的特点是
+
 - 状态的具体细节不可知，只能判断是不是目标状态 bool
 - 关心如何到达目标状态，也就是路径
 - 通过一个后继函数得到下一个状态
@@ -60,6 +59,7 @@ def GRAPH-SEARCH(problem, frontier): #returns a solution, or failure
 ```
 
 不同的搜索算法都遵循这个框架，区别是
+
 1. 如何决定从边缘中取出哪个节点/边缘的数据结构
 2. 如何评判`if STATE[node] is not in closed`？如果有个更低代价的路线，但是走过，是不是要再走？
 
@@ -254,6 +254,7 @@ def aStarSearch(problem, heuristic=manhattanHeuristic):
 ```
 
 注意启发式函数的设计，除了满足非负，还要满足
+
 1. 可采纳性 Admissibility
 h(x) <= actual cost from x to GOAL <br>
 否则不一定找得到最优路径

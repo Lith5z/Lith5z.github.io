@@ -1,14 +1,8 @@
 ---
-layout: default
 title: "决策网络"
 date: 2026-05-21
 tags: [AI, BN]
-parent: "笔记 CS188"
-nav_order: 11
 ---
-
-1. 目录
-{:toc}
 
 # 决策网络 Decision Network
 
@@ -17,10 +11,11 @@ nav_order: 11
 把贝叶斯网络和Exceptimax结合
 
 <figure>
-  <img src="{{ '/assets/images/algorithms_intro/DN_example_pic.webp' | absolute_url }}" alt="DN_example" />
+  <img src="/assets/images/algorithms_intro/DN_example_pic.webp" alt="DN_example" />
 </figure>
 
 三种节点：
+
 - Chance Node：类似BN中的节点，带有一个条件概率表
 - 动作节点 Action Node：由agent决定进行什么行动，没有父节点
 - 效用节点 Utility Node：由父节点决定效用值
@@ -31,19 +26,19 @@ nav_order: 11
 
 - 实例化证据
 - 遍历所有可能的action
-  - 通过给定证据，推理得到需要的概率
-  - 结合目前选定的action计算效用值
+    - 通过给定证据，推理得到需要的概率
+    - 结合目前选定的action计算效用值
 - 选择使效用值最大的action
 
 $$ \text{MEU}(e) = \max_a \text{EU}(a) = \max_a \sum_s P(s \mid e) U(s,a) $$
 
-上图比较特殊，公式里的概率$$P(s)$$直接给出，一般来说要通过BN的特性推理得到；而且没有已知的证据（MEU的空集符号表示）
+上图比较特殊，公式里的概率$P(s)$直接给出，一般来说要通过BN的特性推理得到；而且没有已知的证据（MEU的空集符号表示）
 
 <figure>
-  <img src="{{ '/assets/images/algorithms_intro/DN_example2_pic.webp' | absolute_url }}" alt="DN_example2" />
+  <img src="/assets/images/algorithms_intro/DN_example2_pic.webp" alt="DN_example2" />
 </figure>
 
-这里，给定的证据Evidence是Forecast = bad，要根据这个证据计算出$$P(w \mid \text{bad})$$
+这里，给定的证据Evidence是Forecast = bad，要根据这个证据计算出$P(w \mid \text{bad})$
 
 可以看出，已知的证据改变，最后的MEU也发生了改变。在这里例子里，最佳的动作leave变成了take <br>
 这说明，获得信息Evidence会改变效用值，有时候还会改变决策行动
@@ -67,7 +62,7 @@ $$ \text{MEU}(e,E') = \sum_{e'} P(e' \mid e) \text{MEU}(e,e') $$
 $$ \text{VPI}(E' \mid e) = \text{MEU}(e,E') - \text{MEU}(e) $$
 
 <figure>
-  <img src="{{ '/assets/images/algorithms_intro/DN_VPI_pic.webp' | absolute_url }}" alt="DN_VPI" />
+  <img src="/assets/images/algorithms_intro/DN_VPI_pic.webp" alt="DN_VPI" />
 </figure>
 
 在之前的例子里，E'就是机会节点Forecast，e'可能是bad/good <br>
@@ -75,9 +70,10 @@ $$ \text{VPI}(E' \mid e) = \text{MEU}(e,E') - \text{MEU}(e) $$
 最后的差是7.8，也就是如果花7.8的效用值去揭示Forecast节点的信息，是不亏不赚的
 
 性质：
-- 非负性： $$ \forall E^{\prime},e:VPI(E^{\prime} \mid e)\geq0 $$
-- 不可加性： $$ VPI(E_j,E_k \mid e)\neq VPI(E_j \mid e)+VPI(E_k \mid e) $$
-- 顺序独立性：$$ VPI(E_j,E_k \mid e)=VPI(E_j \mid e)+VPI(E_k \mid e,E_j)=VPI(E_k \mid e)+VPI(E_j \mid e,E_k) $$
+
+- 非负性： $ \forall E^{\prime},e:VPI(E^{\prime} \mid e)\geq0 $
+- 不可加性： $ VPI(E_j,E_k \mid e)\neq VPI(E_j \mid e)+VPI(E_k \mid e) $
+- 顺序独立性：$ VPI(E_j,E_k \mid e)=VPI(E_j \mid e)+VPI(E_k \mid e,E_j)=VPI(E_k \mid e)+VPI(E_j \mid e,E_k) $
 
 ### 和BN的关系
 
@@ -86,7 +82,7 @@ $$ \text{VPI}(E' \mid e) = \text{MEU}(e,E') - \text{MEU}(e) $$
 可以通过BN的D分离，定性分析获得的信息有多大价值/没有价值
 
 <figure>
-  <img src="{{ '/assets/images/algorithms_intro/DN_VPI2_pic.webp' | absolute_url }}" alt="DN_VPI2" />
+  <img src="/assets/images/algorithms_intro/DN_VPI2_pic.webp" alt="DN_VPI2" />
 </figure>
 
 ```

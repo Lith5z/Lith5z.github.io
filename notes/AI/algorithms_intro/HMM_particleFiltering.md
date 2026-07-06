@@ -1,18 +1,12 @@
 ---
-layout: default
 title: "隐马尔可夫模型 粒子滤波"
 date: 2026-05-27
 tags: [AI, BN]
-parent: "笔记 CS188"
-nav_order: 13
 ---
-
-1. 目录
-{:toc}
 
 # 粒子滤波 Particle Filtering
 
-有时候HMM的状态空间$$X$$太大或者是连续的，无法推理/储存/计算，就需要用采样的方法解决
+有时候HMM的状态空间$X$太大或者是连续的，无法推理/储存/计算，就需要用采样的方法解决
 
 - 粒子：对系统真实状态的一个采样样本，带有权重
 - 滤波：根据截至当前时刻的所有观测数据，实时推断当前时刻真实状态
@@ -39,17 +33,17 @@ nav_order: 13
 在这个例子里，存储粒子的开销比直接存储状态要大，但一般存储粒子的开销是远低于状态的。
 ```
 
-某一个状态的$$P(x)$$就由粒子的加权占比决定，一开始初始化所有权重为1/N
+某一个状态的$P(x)$就由粒子的加权占比决定，一开始初始化所有权重为1/N
 
 粒子滤波的循环步骤是：预测（时间流逝更新），更新（观测更新），归一化，重采样
 
 ## 时间流逝更新
 
 <figure>
-  <img src="{{ '/assets/images/algorithms_intro/HMM_particleFiltering_pic.webp' | absolute_url }}" alt="HMM_particleFiltering" />
+  <img src="/assets/images/algorithms_intro/HMM_particleFiltering_pic.webp" alt="HMM_particleFiltering" />
 </figure>
 
-遍历所有粒子，对选中的粒子，假设在状态$$x$$，从转移概率$$P(X' \mid x)$$中采样一个状态$$x'$$ <br>
+遍历所有粒子，对选中的粒子，假设在状态$x$，从转移概率$P(X' \mid x)$中采样一个状态$x'$ <br>
 然后把这个粒子移动到这个状态
 
 **与前向算法的关系** <br>
@@ -57,19 +51,19 @@ nav_order: 13
 
 $$ B'(X_{t+1}) = \sum_{x_t} P(X' \mid x_t) B(x_t) $$
 
-粒子的情况相当于这里的信念分布$$B(x_t)$$，如果粒子数量足够多，这就可以反映转移概率的情况
+粒子的情况相当于这里的信念分布$B(x_t)$，如果粒子数量足够多，这就可以反映转移概率的情况
 
 ## 观测更新
 
 <figure>
-  <img src="{{ '/assets/images/algorithms_intro/HMM_particleFiltering2_pic.webp' | absolute_url }}" alt="HMM_particleFiltering2" />
+  <img src="/assets/images/algorithms_intro/HMM_particleFiltering2_pic.webp" alt="HMM_particleFiltering2" />
 </figure>
 
-观测一个新的证据，然后根据这个证据，和粒子（假设位于状态$$x$$）的匹配程度，为所有粒子分配权重$$w(x)$$
+观测一个新的证据，然后根据这个证据，和粒子（假设位于状态$x$）的匹配程度，为所有粒子分配权重$w(x)$
 
 $$w(x) = P(e \mid x) $$
 
-其中$$P(e \mid x)$$是观测概率，是HMM中给定的量 <br>
+其中$P(e \mid x)$是观测概率，是HMM中给定的量 <br>
 这个值越大，说明粒子的状态越支持这个证据，似然值越高，分配的权重也越大
 
 **与前向算法的关系** <br>
@@ -77,7 +71,7 @@ $$w(x) = P(e \mid x) $$
 
 $$ B(X_{t+1}) \propto_{X_{t+1}} P(e_{t+1} \mid X_{t+1}) B'(X_{t+1}) $$
 
-粒子的情况相当于这里的信念分布$$B'(X_{t+1})$$，通过分配权重，就是乘以了这个式子的系数$$P(e_{t+1} \mid X_{t+1})$$
+粒子的情况相当于这里的信念分布$B'(X_{t+1})$，通过分配权重，就是乘以了这个式子的系数$P(e_{t+1} \mid X_{t+1})$
 
 ## 归一化
 
@@ -90,14 +84,14 @@ $$ B(X_{t+1}) \propto_{X_{t+1}} P(e_{t+1} \mid X_{t+1}) B'(X_{t+1}) $$
 
 详细的说是：
 
-1.  一开始有 $$N$$ 个带权重的粒子，把这 $$N$$ 个粒子的归一化权重，看作概率分布
-2.  采样，从这个分布里，独立取 $$N$$ 次，得到 $$N$$ 个新粒子
-3.  完全替换，用这个新粒子集替换掉之前的旧粒子集，这时每个粒子，权重都是一致的，为 $$1/N$$
+1.  一开始有 $N$ 个带权重的粒子，把这 $N$ 个粒子的归一化权重，看作概率分布
+2.  采样，从这个分布里，独立取 $N$ 次，得到 $N$ 个新粒子
+3.  完全替换，用这个新粒子集替换掉之前的旧粒子集，这时每个粒子，权重都是一致的，为 $1/N$
 
 ## 总结
 
 <figure>
-  <img src="{{ '/assets/images/algorithms_intro/HMM_fullParticleFiltering_pic.webp' | absolute_url }}" alt="HMM_fullParticleFiltering" />
+  <img src="/assets/images/algorithms_intro/HMM_fullParticleFiltering_pic.webp" alt="HMM_fullParticleFiltering" />
 </figure>
 
 ```
@@ -107,6 +101,7 @@ $$ B(X_{t+1}) \propto_{X_{t+1}} P(e_{t+1} \mid X_{t+1}) B'(X_{t+1}) $$
 和推理方法不同，粒子滤波这种采样的方法直接模拟HMM里那些不可知的状态
 
 应用（强烈建议观看1h出头的演示）：
+
 - 机器人定位
 - SLAM: Simultaneous Localization And Mapping
 - Dynamic Bayes Net
