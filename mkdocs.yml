@@ -103,11 +103,12 @@ nav:
       - 特征向量与特征值: AI/linear_algebra/eigen_value.md
   - 编程:
     - 从C到C++: Code/C2CPP.md
+    - 从C到Python: Code/python.md
     - 滑动窗口: Code/sliding_window.md
-  - 教程:
+  - 使用:
     - 使用笔记: Instructions/ins_main.md
-    - Git常用命令: Instructions/git_command.md
-    - PS 使用: Instructions/ps_use.md
+    - Git使用: Instructions/git_command.md
+    - PS使用: Instructions/ps_use.md
   - 其他:
     - 存在主义: Others/existentialism.md
     - 月亮与六便士: Others/moon_and_sixpence.md

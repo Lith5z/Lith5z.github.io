@@ -17,9 +17,10 @@ description: 这里是我的极简个人介绍和笔记分享
 
 ### 编程 Coding
 
-- [一个简单的个人c语言项目](https://github.com/Lith5z/cpl-practice)
-- [未完成 滑动窗口](Code/sliding_window.md)
 - [从C到C++ 语法学习](Code/C2CPP.md)
+- [从C到Python 语法学习](Code/python.md)
+- [未完成 滑动窗口](Code/sliding_window.md)
+- [一个简单的个人c语言项目](https://github.com/Lith5z/cpl-practice)
 
 ### 数学 Math
 
@@ -42,8 +43,8 @@ description: 这里是我的极简个人介绍和笔记分享
 
 比较像教程实则是工具推荐的可以看[飞书文档 百宝箱推荐](https://rcnx330isacs.feishu.cn/drive/folder/PbBUfzbnBlQcGQd3fKncd4MMnOf?from=from_copylink)
 
-- [Git 常用命令](Instructions/git_command.md)
-- [PS 使用](Instructions/ps_use.md)
+- [Git使用](Instructions/git_command.md)
+- [PS使用](Instructions/ps_use.md)
 
 ---
 

@@ -13,8 +13,6 @@ tags: [ML, 感知器, AI]
 > 感知器由 **Frank Rosenblatt** 于 1957 年在 Cornell 航空实验室提出，并在 1958 年正式发表论文 *"The Perceptron — A Perceiving and Recognizing Automaton"*。这是第一个具有学习能力的人工神经元模型，在当时的 AI 社区引起了巨大轰动。
 > 
 > Rosenblatt 甚至为感知器设计了专门的硬件 **Mark I Perceptron**，能够通过模拟电路实时学习识别简单的视觉模式。它被视为连接主义（Connectionism）的开端，也是现代神经网络的雏形。
-> 
-> ——DeepSeek v4
 
 借鉴了生物神经元的结构，通过多个树突接收特征信息，权重模拟神经元之间连接的强弱，进行加权求和后判断是否激活
 
@@ -96,8 +94,6 @@ $$
 > 这一结论对当时的神经网络研究造成了沉重打击，加之计算资源匮乏，政府资助大幅转向符号主义 AI，导致神经网络研究进入了长达十余年的 **"AI 寒冬"**（First AI Winter）。
 > 
 > 直到 1986 年，**Rumelhart、Hinton 和 Williams** 在 *"Learning representations by back-propagating errors"* 中系统阐述了 **反向传播算法（Backpropagation）**，为**多层感知器MLP**的训练提供了可行的梯度下降方案。多层感知器通过引入隐藏层和非线性激活函数（如 Sigmoid），克服了单层感知器无法解决非线性问题的缺陷，开启了神经网络的复兴之路。
-> 
-> ——DeepSeek v4
 
 可见[[3B1B 多层感知器]]
 
