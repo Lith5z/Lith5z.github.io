@@ -1,3 +1,9 @@
+---
+title: "语法 Python"
+date: 2026-07-08
+tags: [编程]
+---
+
 # Python 速通
 
 建立在熟悉c/cpp的基础之上，面向ML/DL的需要学习Python
