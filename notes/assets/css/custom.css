@@ -1,5 +1,14 @@
 /* 自定义样式 — Material for MkDocs 迁移适配 */
 
+/* 页面日期显示 */
+.md-date {
+  color: var(--md-default-fg-color--light);
+  font-size: 0.85em;
+  margin-bottom: 1.2em;
+  border-bottom: 1px solid var(--md-default-fg-color--lightest);
+  padding-bottom: 0.6em;
+}
+
 /* 图片自适应 */
 .md-content img {
   max-width: 100%;
