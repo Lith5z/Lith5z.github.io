@@ -8,6 +8,9 @@
   border-bottom: 1px solid var(--md-default-fg-color--lightest);
   padding-bottom: 0.6em;
 }
+.md-date__sep {
+  margin: 0 0.5em;
+}
 
 /* 图片自适应 */
 .md-content img {

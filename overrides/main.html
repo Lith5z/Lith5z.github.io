@@ -1,10 +1,5 @@
 {% extends "base.html" %}
 
 {% block content %}
-  {% if page.meta.date %}
-    <div class="md-date">
-      📅 {{ page.meta.date }}
-    </div>
-  {% endif %}
   {{ super() }}
 {% endblock %}
