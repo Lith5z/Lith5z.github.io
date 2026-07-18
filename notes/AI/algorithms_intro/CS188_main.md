@@ -65,3 +65,8 @@ tags: [AI, Algorithms]
         - Time Elapse Update 时间流逝更新
         - Observation Update 观测更新
     - Particle Filtering 粒子滤波
+- Machine Learning 机器学习
+    - Naive Bayes 朴素贝叶斯
+    - Perceptron 感知器
+    - Logistic Regression 逻辑回归
+    - Decision Tree 决策树
