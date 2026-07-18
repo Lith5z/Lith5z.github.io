@@ -19,6 +19,9 @@ description: 这里是我的极简个人介绍和笔记分享
 
 - [从C到C++ 语法学习](Code/C2CPP.md)
 - [从C到Python 语法学习](Code/python.md)
+- [Numpy库](Code/numpy.md)
+- [Pandas库](Code/pandas.md)
+- [Matplotlib库](Code/matplotlib.md)
 - [未完成 滑动窗口](Code/sliding_window.md)
 - [一个简单的个人c语言项目](https://github.com/Lith5z/cpl-practice)
 
@@ -44,6 +47,7 @@ description: 这里是我的极简个人介绍和笔记分享
 比较像教程实则是工具推荐的可以看[飞书文档 百宝箱推荐](https://rcnx330isacs.feishu.cn/drive/folder/PbBUfzbnBlQcGQd3fKncd4MMnOf?from=from_copylink)
 
 - [Git使用](Instructions/git_command.md)
+- [Python虚拟环境](Instructions/conda&uv.md)
 - [PS使用](Instructions/ps_use.md)
 
 ---
@@ -52,7 +56,7 @@ description: 这里是我的极简个人介绍和笔记分享
 
 那我最好是真会了：
 
-- C/C++/Python
+- C/C++/Python (np+pd+plt+torch)
 - Git/Latex
 - Ps/Pr 会一点点平面设计
 - [其他..](about_me.md)
@@ -63,7 +67,7 @@ description: 这里是我的极简个人介绍和笔记分享
 
 Source: [这个网页的仓库](https://github.com/Lith5z/Lith5z.github.io)
 
-南京大学 智能科学与技术 大一在读中
+南京大学 智能科学与技术 大二在读中
 
 - Email: yingxuanhuang@smail.nju.edu.cn
 - GitHub: [@Lith5z](https://github.com/Lith5z)

@@ -111,10 +111,14 @@ nav:
   - 编程:
     - 从C到C++: Code/C2CPP.md
     - 从C到Python: Code/python.md
+    - Numpy库: Code/numpy.md
+    - Pandas库: Code/pandas.md
+    - Matplotlib库: Code/matplotlib.md
     - 滑动窗口: Code/sliding_window.md
   - 使用:
     - 使用笔记: Instructions/ins_main.md
     - Git使用: Instructions/git_command.md
+    - Python虚拟环境: Instructions/conda&uv.md
     - PS使用: Instructions/ps_use.md
   - 其他:
     - 存在主义: Others/existentialism.md
