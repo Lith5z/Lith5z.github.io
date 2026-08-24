@@ -13,6 +13,8 @@ description: 这里是我的极简个人介绍和笔记分享
 
 其实就是为了这点醋包的饺子
 
+如果笔记公式渲染有问题，刷新网页试试看
+
 按主题跳转：
 
 ### 编程 Coding
@@ -34,6 +36,8 @@ description: 这里是我的极简个人介绍和笔记分享
 - [伯克利CS188 人工智能导论](AI/algorithms_intro/CS188_main.md)
 - [机器学习](AI/machine_learning/ML_main.md)
 - [3B1B 深度学习](AI/deep_learning/3b1b_main.md)
+
+### 技术性&胡思乱想博客 Blog
 
 ### 读书笔记和随笔 Others
 

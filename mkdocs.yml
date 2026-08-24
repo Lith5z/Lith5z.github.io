@@ -115,6 +115,8 @@ nav:
     - Pandas库: Code/pandas.md
     - Matplotlib库: Code/matplotlib.md
     - 滑动窗口: Code/sliding_window.md
+  - 博客:
+    - 260816_为什么PyTorch的默认初始化不是Kaiming/设置参数sqrt5: Blog/why_pytorch_use_sqrt5_for_init_260816.md
   - 使用:
     - 使用笔记: Instructions/ins_main.md
     - Git使用: Instructions/git_command.md
