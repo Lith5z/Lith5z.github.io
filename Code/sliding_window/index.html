@@ -18,7 +18,7 @@
         <link rel="prev" href="../matplotlib/">
       
       
-        <link rel="next" href="../../Instructions/ins_main/">
+        <link rel="next" href="../../Blog/why_pytorch_use_sqrt5_for_init_260816/">
       
       
         
@@ -311,6 +311,28 @@
     
   
   编程
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../Blog/why_pytorch_use_sqrt5_for_init_260816/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  博客
 
         </a>
       </li>
@@ -2211,12 +2233,6 @@
       
         
       
-        
-      
-        
-      
-        
-      
     
     
     
@@ -2240,7 +2256,7 @@
   <span class="md-ellipsis">
     
   
-    使用
+    博客
   
 
     
@@ -2253,6 +2269,103 @@
         
         <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    博客
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Blog/why_pytorch_use_sqrt5_for_init_260816/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    260816_为什么PyTorch的默认初始化不是Kaiming/设置参数sqrt5
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    使用
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -2407,10 +2520,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
         
           
-          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
             
   
   
@@ -2428,8 +2541,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_6">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -2835,9 +2948,9 @@
 <div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>给定一个字符串 s ，请你找出其中不含有重复字符的 最长 子串 的长度。
 <a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>
 <a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>示例 1:
-<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>输入: s = &quot;abcabcbb&quot;
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>输入: s = "abcabcbb"
 <a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>输出: 3 
-<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>解释: 因为无重复字符的最长子串是 &quot;abc&quot;，所以其长度为 3。注意 &quot;bca&quot; 和 &quot;cab&quot; 也是正确答案。
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>解释: 因为无重复字符的最长子串是 "abc"，所以其长度为 3。注意 "bca" 和 "cab" 也是正确答案。
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="k">class</span><span class="w"> </span><span class="nc">Solution</span><span class="w"> </span><span class="p">{</span>
 <a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="k">public</span><span class="o">:</span>
@@ -2868,17 +2981,17 @@
 <a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>如果 s 中没有子字符串可以转化成 t 中对应的子字符串，则返回 0。
 <a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a>
 <a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a>示例 1：
-<a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a>输入：s = &quot;abcd&quot;, t = &quot;bcdf&quot;, maxCost = 3
+<a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a>输入：s = "abcd", t = "bcdf", maxCost = 3
 <a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a>输出：3
-<a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a>解释：s 中的 &quot;abc&quot; 可以变为 &quot;bcd&quot;。开销为 3，所以最大长度为 3。
+<a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a>解释：s 中的 "abc" 可以变为 "bcd"。开销为 3，所以最大长度为 3。
 <a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a>
 <a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a>示例 2：
-<a id="__codelineno-4-13" name="__codelineno-4-13" href="#__codelineno-4-13"></a>输入：s = &quot;abcd&quot;, t = &quot;cdef&quot;, maxCost = 3
+<a id="__codelineno-4-13" name="__codelineno-4-13" href="#__codelineno-4-13"></a>输入：s = "abcd", t = "cdef", maxCost = 3
 <a id="__codelineno-4-14" name="__codelineno-4-14" href="#__codelineno-4-14"></a>输出：1
 <a id="__codelineno-4-15" name="__codelineno-4-15" href="#__codelineno-4-15"></a>解释：s 中的任一字符要想变成 t 中对应的字符，其开销都是 2。因此，最大长度为 1。
 <a id="__codelineno-4-16" name="__codelineno-4-16" href="#__codelineno-4-16"></a>
 <a id="__codelineno-4-17" name="__codelineno-4-17" href="#__codelineno-4-17"></a>示例 3：
-<a id="__codelineno-4-18" name="__codelineno-4-18" href="#__codelineno-4-18"></a>输入：s = &quot;abcd&quot;, t = &quot;acde&quot;, maxCost = 0
+<a id="__codelineno-4-18" name="__codelineno-4-18" href="#__codelineno-4-18"></a>输入：s = "abcd", t = "acde", maxCost = 0
 <a id="__codelineno-4-19" name="__codelineno-4-19" href="#__codelineno-4-19"></a>输出：1
 <a id="__codelineno-4-20" name="__codelineno-4-20" href="#__codelineno-4-20"></a>解释：a -&gt; a, cost = 0，字符串未发生变化，所以最大长度为 1。
 </code></pre></div>

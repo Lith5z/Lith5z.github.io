@@ -12,13 +12,13 @@
         <meta name="author" content="黄颖轩/Lith5z">
       
       
-        <link rel="canonical" href="https://lith5z.github.io/Others/moon_and_sixpence/">
+        <link rel="canonical" href="https://lith5z.github.io/Blog/why_pytorch_use_sqrt5_for_init_260816/">
       
       
-        <link rel="prev" href="../existentialism/">
+        <link rel="prev" href="../../Code/sliding_window/">
       
       
-        <link rel="next" href="../../about_me/">
+        <link rel="next" href="../../Instructions/ins_main/">
       
       
         
@@ -29,7 +29,7 @@
     
     
       
-        <title>读书笔记 月亮与六便士 - Lith5z的个人主页</title>
+        <title>为什么PyTorch的默认初始化不是Kaiming/设置参数sqrt5 - Lith5z的个人主页</title>
       
     
     
@@ -82,7 +82,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#_1" class="md-skip">
+        <a href="#pytorchlinearkaimingsqrt5" class="md-skip">
           跳转至
         </a>
       
@@ -116,7 +116,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              读书笔记 月亮与六便士
+              为什么PyTorch的默认初始化不是Kaiming/设置参数sqrt5
             
           </span>
         </div>
@@ -320,11 +320,13 @@
   
   
   
+    
+  
   
     
     
-      <li class="md-tabs__item">
-        <a href="../../Blog/why_pytorch_use_sqrt5_for_init_260816/" class="md-tabs__link">
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="./" class="md-tabs__link">
           
   
   
@@ -364,13 +366,11 @@
   
   
   
-    
-  
   
     
     
-      <li class="md-tabs__item md-tabs__item--active">
-        <a href="../existentialism/" class="md-tabs__link">
+      <li class="md-tabs__item">
+        <a href="../../Others/existentialism/" class="md-tabs__link">
           
   
   
@@ -2046,8 +2046,10 @@
       
   
   
+    
   
   
+  
     
     
       
@@ -2057,19 +2059,22 @@
     
     
       
+        
+        
+      
       
         
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
         
           
-          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
             
   
   
@@ -2087,7 +2092,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_5">
             <span class="md-nav__icon md-icon"></span>
             
@@ -2102,10 +2107,37 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../../Blog/why_pytorch_use_sqrt5_for_init_260816/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    260816_为什么PyTorch的默认初始化不是Kaiming/设置参数sqrt5
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -2121,6 +2153,126 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        理解问题
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="理解问题">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#kaiming" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        标准的Kaiming初始化
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pytorch" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        PyTorch的实现
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        问题所在
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        一种解释
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        一种更深入的解释
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="一种更深入的解释">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        那么，为什么这样效果更好？
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        参考资料
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -2318,10 +2470,8 @@
       
   
   
-    
   
   
-  
     
     
       
@@ -2333,22 +2483,19 @@
     
     
       
-        
-        
-      
       
         
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
         
           
-          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="">
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
             
   
   
@@ -2366,7 +2513,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_7">
             <span class="md-nav__icon md-icon"></span>
             
@@ -2384,7 +2531,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../existentialism/" class="md-nav__link">
+      <a href="../../Others/existentialism/" class="md-nav__link">
         
   
   
@@ -2409,37 +2556,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    月亮与六便士
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../Others/moon_and_sixpence/" class="md-nav__link">
         
   
   
@@ -2455,87 +2575,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="目录">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      目录
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        几个值得思考的点
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="几个值得思考的点">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        关于本书的“我”
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        关于原始的回归
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        关于最后画作的毁灭
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        个人感受
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -2602,22 +2641,22 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
+  <a href="#_1" class="md-nav__link">
     <span class="md-ellipsis">
       
-        几个值得思考的点
+        理解问题
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="几个值得思考的点">
+    <nav class="md-nav" aria-label="理解问题">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
+  <a href="#kaiming" class="md-nav__link">
     <span class="md-ellipsis">
       
-        关于本书的“我”
+        标准的Kaiming初始化
       
     </span>
   </a>
@@ -2625,21 +2664,60 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
+  <a href="#pytorch" class="md-nav__link">
     <span class="md-ellipsis">
       
-        关于原始的回归
+        PyTorch的实现
       
     </span>
   </a>
   
 </li>
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        问题所在
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        一种解释
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        一种更深入的解释
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="一种更深入的解释">
+      <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#_5" class="md-nav__link">
     <span class="md-ellipsis">
       
-        关于最后画作的毁灭
+        那么，为什么这样效果更好？
       
     </span>
   </a>
@@ -2655,7 +2733,7 @@
   <a href="#_6" class="md-nav__link">
     <span class="md-ellipsis">
       
-        个人感受
+        参考资料
       
     </span>
   </a>
@@ -2705,10 +2783,10 @@
     
     
       <li class="md-path__item">
-        <a href="../existentialism/" class="md-path__link">
+        <a href="./" class="md-path__link">
           
   <span class="md-ellipsis">
-    其他
+    博客
   </span>
 
         </a>
@@ -2732,46 +2810,151 @@
       
       
       
-        <span class="md-tag">存在主义</span>
+        <span class="md-tag">PyTorch</span>
       
     
       
       
       
       
-        <span class="md-tag">小说</span>
+        <span class="md-tag">博客</span>
+      
+    
+      
+      
+      
+      
+        <span class="md-tag">参数初始化</span>
       
     
   </nav>
 
 
 
-<p>作者：毛姆
-著书时间：1919年
-读书时间：2024年11月</p>
+<h1 id="pytorchlinearkaimingsqrt5">为什么PyTorch给Linear层的默认初始化不是标准Kaiming/为什么设置参数sqrt5<a class="headerlink" href="#pytorchlinearkaimingsqrt5" title="Permanent link">&para;</a></h1>
+<p><em>最近在学习这方面的内容，发现这个问题网上没有现成的解释，AI给的解释我也不太满意，于是自己去翻了github issue，整理成这份笔记。</em></p>
+<h2 id="_1">理解问题<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<h3 id="kaiming">标准的Kaiming初始化<a class="headerlink" href="#kaiming" title="Permanent link">&para;</a></h3>
+<p>下面是对问题背景的阐述，这两个问题某种意义上是一个问题。如果熟悉背景，可以直接跳到下面看解释部分</p>
+<p>神经网络训练中参数的初始化是很重要的一步。如果给所有参数初始化为同一个值，每层的所有神经元都将给出一样的输出，在反向传播时也将得到一样的梯度，这样一整层的神经元相当于退化成一个神经元。</p>
+<p>所以需要随机初始化，目前常用的随机初始化方法是<strong>Kaiming初始化</strong>，也就是保证参数的<strong>方差</strong>和标准差是</p>
+<div class="arithmatex">\[\text{Var}(W) = \frac{2}{n} \implies \text{std}=\sqrt\frac{2}{n}\]</div>
+<p>其中 <span class="arithmatex">\(n\)</span> 通常取 <span class="arithmatex">\(\text{fan}_\text{in}\)</span>（该层输入单元数）</p>
+<p>如果从<strong>均匀分布</strong> <span class="arithmatex">\(U[-a,a]\)</span> 中采样，因为均匀分布的方差是 <span class="arithmatex">\(\text{Var} = \frac{a^2}{3}\)</span>，要满足Kaiming初始化的方差条件，需要让两者方差相等，即</p>
+<div class="arithmatex">\[\frac{a^2}{3} = \frac{2}{n} \implies a = \sqrt{\frac{6}{n}}\]</div>
+<p>也就是说<strong>要满足Kaiming初始化，应当让参数从均匀分布</strong> <span class="arithmatex">\(U[-\sqrt{\frac{6}{n}},\sqrt{\frac{6}{n}}]\)</span> 中采样。详细推导见结尾参考资料</p>
+<h3 id="pytorch">PyTorch的实现<a class="headerlink" href="#pytorch" title="Permanent link">&para;</a></h3>
+<p>但是查阅PyTorch源码发现，对于<code>nn.Linear</code>的初始化是这样的：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">reset_parameters</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">    </span><span class="sd">"""</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="sd">    Resets parameters based on their initialization used in ``__init__``.</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="sd">    """</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>    <span class="c1"># Setting a=sqrt(5) in kaiming_uniform is the same as initializing with</span>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>    <span class="c1"># uniform(-1/sqrt(in_features), 1/sqrt(in_features)). For details, see</span>
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>    <span class="c1"># https://github.com/pytorch/pytorch/issues/57109</span>
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>    <span class="n">init</span><span class="o">.</span><span class="n">kaiming_uniform_</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">weight</span><span class="p">,</span> <span class="n">a</span><span class="o">=</span><span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">5</span><span class="p">))</span>
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">bias</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>        <span class="n">fan_in</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">init</span><span class="o">.</span><span class="n">_calculate_fan_in_and_fan_out</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">weight</span><span class="p">)</span>
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>        <span class="n">bound</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">/</span> <span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">fan_in</span><span class="p">)</span> <span class="k">if</span> <span class="n">fan_in</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="k">else</span> <span class="mi">0</span>
+<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>        <span class="n">init</span><span class="o">.</span><span class="n">uniform_</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">bias</span><span class="p">,</span> <span class="o">-</span><span class="n">bound</span><span class="p">,</span> <span class="n">bound</span><span class="p">)</span>
+</code></pre></div>
+<p>这里对权重weight调用了<code>init.kaiming_uniform_()</code>，这个函数还有默认参数<code>nonlinearity='leaky_relu'</code>未写出，代码里给定的<code>a=math.sqrt(5)</code>也就是leaky_relu激活函数的负斜率系数，这里为根号5</p>
+<p>这个函数的具体行为是从均匀分布</p>
+<div class="arithmatex">\[U[-\text{bound},\text{bound}], \quad \text{bound}=\text{gain} \times \sqrt{\frac{3}{\text{fan\_mode}}}\]</div>
+<p>里采样，公式中的 <span class="arithmatex">\(\text{fan\_mode}\)</span> 默认为 <span class="arithmatex">\(\text{fan\_in}\)</span>，也就是我们上文里的 <span class="arithmatex">\(n\)</span></p>
+<p>公式里的 <span class="arithmatex">\(\text{gain}\)</span> 会调用<code>torch.nn.init.calculate_gain(nonlinearity, param=None)</code>来计算。对于上面的代码，默认给定的<code>nonlinearity='leaky_relu'</code>，给定负斜率系数为根号5，所以增益 <span class="arithmatex">\(\text{gain}\)</span> 为</p>
+<div class="arithmatex">\[\text{gain} = \sqrt{\frac{2}{1+\text{negative\_slope}^2}} = \sqrt\frac{2}{1+5} = \sqrt{\frac{1}{3}}\]</div>
+<p>再代入</p>
+<div class="arithmatex">\[\text{bound}=\text{gain} \times \sqrt{\frac{3}{\text{fan\_mode}}} = \sqrt{\frac{1}{3}} \times \sqrt{\frac{3}{n}} = \sqrt{\frac{1}{n}}\]</div>
+<p>综上，<strong>PyTorch对于权重调用的</strong><code>init.kaiming_uniform_(self.weight, a=math.sqrt(5))</code>，<strong>等价于从均匀分布</strong> <span class="arithmatex">\(U[-\sqrt{\frac{1}{n}},\sqrt{\frac{1}{n}}]\)</span> 中采样</p>
+<p>这里忽略了偏置bias，实际上偏置虽然没有使用<code>kaiming_uniform_</code>，但它和权重实际采样的分布相同，这点可以从代码<code>init.uniform_(self.bias, -bound, bound)</code>里看出</p>
+<h3 id="_2">问题所在<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
+<p>我们刚刚简单推导过，标准的Kaiming初始化，应当从 <span class="arithmatex">\(U[-\sqrt{\frac{6}{n}},\sqrt{\frac{6}{n}}]\)</span> 中采样；但是PyTorch的实现却是从 <span class="arithmatex">\(U[-\sqrt{\frac{1}{n}},\sqrt{\frac{1}{n}}]\)</span> 中采样的</p>
+<p>这就是我们开篇的问题</p>
+<ul>
+<li>为什么PyTorch给Linear层的默认初始化不是标准Kaiming初始化？</li>
+<li>或者说，设置一个参数sqrt5的意义是什么？</li>
+<li>其实我还看到过第三种问法：为什么PyTorch的标准差只有标准Kaiming初始化的40%左右？</li>
+</ul>
+<p>可以计算PyTorch实现的初始化的标准差。对于 <span class="arithmatex">\(U[-\sqrt{\frac{1}{n}},\sqrt{\frac{1}{n}}]\)</span>，代入均匀分布的方差公式，得到</p>
+<div class="arithmatex">\[\text{Var} = \frac{a^2}{3} = \frac{1}{3n} \implies \text{std} = \sqrt{\frac{1}{3n}}\]</div>
+<p>与Kaiming初始化的标准差 <span class="arithmatex">\(\text{std}=\sqrt\frac{2}{n}\)</span> 作比例</p>
+<div class="arithmatex">\[\frac{\sqrt{\frac{1}{3n}}}{\sqrt\frac{2}{n}} = \frac{1}{\sqrt{6}} \approx 40.82 \%\]</div>
+<h2 id="_3">一种解释<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<p>我看到最多的解释是<strong>向后兼容</strong>，也就是在PyTorch的前身，Lush/Senna/Torch5/Torch7都在使用 <span class="arithmatex">\(U[-\sqrt{\frac{1}{n}},\sqrt{\frac{1}{n}}]\)</span> 的初始化方法，所以PyTorch最初使用这个初始化而非Kaiming初始化</p>
+<p>最初PyTorch的代码是这样的</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">reset_parameters</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>    <span class="n">stdv</span> <span class="o">=</span> <span class="mf">1.</span> <span class="o">/</span> <span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">weight</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>    <span class="bp">self</span><span class="o">.</span><span class="n">weight</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">uniform_</span><span class="p">(</span><span class="o">-</span><span class="n">stdv</span><span class="p">,</span> <span class="n">stdv</span><span class="p">)</span>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">bias</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">bias</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">uniform_</span><span class="p">(</span><span class="o">-</span><span class="n">stdv</span><span class="p">,</span> <span class="n">stdv</span><span class="p">)</span>
+</code></pre></div>
+<p>后来PyTorch的默认初始化改为调用<code>kaiming_uniform_()</code>初始化，具体计算可以看之前解释PyTorch实现的部分</p>
+<p>所以这个根号5的参数是为了让修改前后的效果一致</p>
+<h2 id="_4">一种更深入的解释<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
+<p>但是上一种解释里，没有说明为什么不用标准的Kaiming初始化，这个sqrt5也是为了兼容硬凑出来的，我觉得应该有更深层的原因</p>
+<p>查阅GitHub仓库，我找到了两个和本问题强相关的issue，而且都来自同一个人soumtih的回复（加粗是我自己加的标注，原本没有）</p>
+<p><a href="https://github.com/pytorch/pytorch/issues/15314">GitHub issue#15314</a></p>
 <blockquote>
-<p>做自己最想做的事，生活在自己喜欢的环境里，享受内心的宁静，这就是糟蹋生活吗？当一个有名的外科医生，每年赚得上万英镑，娶个漂亮妻子，这就是成功吗？我认为，这取决于你如何看待生活的意义，取决于你要对社会尽到什么义务，对自己有什么要求。</p>
+<p>the code refactor from jramseyer changes the default pytorch initialization from manually initializing the weights <strong>by calling random number generator function uniform to using torch.nn.init</strong>.kaiming -- but it <strong>wanted to have the same end-result in weights</strong>, because we wanted to preserve backward-compatibility. So the sqrt(5) is nothing more than giving the code the same end-result as before.</p>
+<p><strong>The initialization itself comes from torch7 and torch5 and is a modified version of initialization fro Lecun'98 Efficient Backprop</strong>. This post gives more context: https://plus.google.com/106447253626219410322/posts/RZfdrRQWL6u</p>
 </blockquote>
-<h1 id="_1">概述<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
-<p>给那些消解理想、拥抱世俗的人一针玻璃纤维，隐痛而不显现。</p>
-<h2 id="_2">几个值得思考的点<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
-<h3 id="_3">关于本书的“我”<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
-<p>我后来成为了作家，本书就是“我”对斯特克利兰的种种事迹的回忆。我在大部分剧情中是参与者，但因为“我”回忆时大多是不加评价的描述，这个“我”给我的第一印象是个旁观者。其实，在旁观的应当不是小说的“我”，而是现实中的我们吧。作者并没有很直接的发表对斯特克利兰的评判，而是让我们自己去感受。</p>
-<p>也因为大量篇幅都由我来诉说，这种叙事风格让阅读本书像是一次走走停停的旅行，一次深刻的聊天。</p>
-<h3 id="_4">关于原始的回归<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
-<p>貌似说的是人类的创作激情，这是人类的本能。从情欲到艺术创作欲。</p>
-<h3 id="_5">关于最后画作的毁灭<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
-<p>这与斯特克利兰的性格有关。他只需要自身对艺术的追求达成，而不需要金钱名利和别人的欣赏。在这幅巨型壁画完成的时候，他也完成了对艺术美的最后理解。那么，画作本身也不重要了。</p>
-<p>就像本书开头所说的：</p>
+<p>这条回复的前半部分和第一种解释一样，是为了达成同样的效果才设置了这个参数；后半部分和另一条issue里的回复</p>
+<p><a href="https://github.com/pytorch/pytorch/issues/57109">GitHub issue#57109</a></p>
 <blockquote>
-<p>作者应得的报酬就在写作本身的乐趣之中，就在终于卸下了思想的重负之中，其他的一切都可置之度外，作品成功或失败，获得赞誉或诋毁，都大可不必在意。</p>
+<p>one thing worth noticing here is that by default, <strong>we don't multiply the stdv with sqrt(3)</strong>.
+The reason we don't do that because <strong>Collobert at al. in some historical past have figured out that this not-multiplying and having a slight gain</strong> in the uniform distributions heuristically works better. This is not recorded in literature anywhere but has been recorded in code since Lush, Senna, Torch5, Torch7 and now PyTorch which is somewhat unfortunate. A detailed discussion of this was recorded on <strong>Google Plus</strong>, which is now defunct and that discussion has been erased from the internet. However, I've revived a copy of that discussion here: https://soumith.ch/files/20141213_gplus_nninit_discussion.htm</p>
 </blockquote>
-<h2 id="_6">个人感受<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
-<p>在这里，我不打算讨论本作的写作水平，因为我也不懂。</p>
-<p>不是所有人都有勇气为追求心中的真理而抛弃一切。我们大可不必机械性地理解本书的这一主题，去认为只有像斯特克利兰一般，冷酷地对待其他事物，狂热地追求艺术才算合格。毕竟，小说的艺术性就在于虚构与现实的融合。
-因而我更想说，位于没有虚构，只有现实，处于这一社会阶段的我们，或许没法摆脱为六便士谋生，但仍可以，也完全能够保有、甚至去实现对月亮的向往。
-很幸运是在这个年纪读了这本书，虽然也只是勉强读个大概而已。</p>
-<p>不知道是谁说的，眼中只有六便士的人有两种，一种是资产阶级，一种是处于贫困中的劳动者。后者眼中不太可能有我们通俗意义的月亮，因为经济条件不允许他们有这种追求。而眼中能看到六便士的匮乏的人，他们的眼睛才是月亮，那是革命精神与理想。</p>
+<p>都指向一篇2014年在Google+ Deep Learning Community上的讨论，大概是说这其实是一个bug，但是结果得到了一个轻微的提升，于是就保留在了代码中，一直延续到现在的PyTorch里</p>
+<p>在这篇讨论里，Soumith Chintala提到</p>
+<blockquote>
+<p>A few months ago we had a small post here discussing different <strong>weight initializations</strong>, and I remember +Sander Dieleman and a few others had a good discussion. It is fairly important to do good weight initializations, as the rewards are non-trivial.</p>
+<p>For example, AlexNet, which is fairly popular, from Alex's One Weird Trick paper, converges in 90 epochs (using alex's 0.01 stdv initialization).</p>
+<p>I retrained it from scratch using the weight initialization from Yann's 98 paper, and <strong>it converges to the same error within just 50 epochs</strong>, so technically +Alex Krizhevsky could've rewritten the paper with even more stellar results (training Alexnet in 8 hours with 8 GPUs).</p>
+<p>In fact, more interestingly, just by doing good weight initialization, I <strong>even removed the Local Response Normalization layers in AlexNet with no drop in error</strong>.</p>
+</blockquote>
+<p>他的初始化参考了LeCun的论文<em>Efficient BackProp</em>的初始化，需要先满足两个条件</p>
+<ul>
+<li>训练集经过标准化</li>
+<li>使用 <span class="arithmatex">\(f(x) = 1.7159 \tanh(\frac{2}{3}x)\)</span> 作为激活函数</li>
+</ul>
+<p>然后从满足均值为0同时 <span class="arithmatex">\(\text{std}=\sqrt{\frac{1}{n}}, \quad n = \text{fan}_\text{in}\)</span> 的均匀分布中采样，要满足这个条件，也就是从</p>
+<div class="arithmatex">\[U[-\sqrt{3} \times \sqrt{\frac{1}{n}},\sqrt{3} \times \sqrt{\frac{1}{n}}] = U[-\sqrt{3} \times \text{std}, \sqrt{3} \times \text{std}]\]</div>
+<p>里采样（计算同理），边界是标准差的根号3倍</p>
+<p>但是他的代码写错了（由Sander Dieleman指出），写成了 <span class="arithmatex">\(U[-\text{std}, \text{std}]\)</span>，少乘了一个根号3</p>
+<p>（FYI，少乘一个根号3之后，就正好是现在PyTorch的标准差是 <span class="arithmatex">\(\sqrt{\frac{1}{3n}}\)</span>。而Kaiming初始化的标准差是 <span class="arithmatex">\(\sqrt\frac{2}{n}\)</span>）</p>
+<p>Sander Dieleman回复的原话是</p>
+<blockquote>
+<p>Actually, after reading the code that +Soumith Chintala linked more carefully, the distribution that the initial values are drawn from doesn't have the specified stddev at all, so <strong>it's not actually implementing the initialization from LeCun '98</strong>.</p>
+<p><strong>In the code, the distribution is Uniform[-stddev, stddev], but to get the desired standard deviation, this should actually be Uniform[-sqrt(3)*stddev, sqrt(3)*stddev]</strong>.</p>
+<p>With that factor of sqrt(3) missing there isn't really a theoretical justification for this initialization. <strong>But clearly it seems to work well</strong>, from Soumith's experience, so what's going on there?</p>
+</blockquote>
+<p>尽管代码写错了，但是最后的效果又很好，Soumith Chintala回复</p>
+<blockquote>
+<p>Ah yes <strong>its a good bug</strong>. Apparently it was a bug to not multiply by sqrt(3) but it <strong>helped with some gradient scaling issues across layers</strong>, so <strong>it was left in there</strong> as it works slightly better in practice</p>
+</blockquote>
+<p>因为没乘根号3反而对梯度在层间的缩放问题有帮助，这个bug被保留了</p>
+<p>这篇讨论想按着Efficient BackProp论文的初始化操作，但是少乘了一个根号3，反而带来了更好的效果，所以这个初始化一直保留到现在的PyTorch（应该还是为了向后兼容）；而在当时，Kaiming初始化可能还没提出或者没被广泛运用，这大概就是问题的答案</p>
+<h3 id="_5">那么，为什么这样效果更好？<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
+<p><em>下面的内容仅为我的个人猜测，我还在学习这方面的内容，水平有限，欢迎批评指正。</em></p>
+<p>既然PyTorch是为了兼容没有改掉这个良性bug，那么为什么在当时，少乘的根号3反而有更好的效果呢？</p>
+<p>理论上说，<span class="arithmatex">\(\sqrt{\frac{1}{3n}}\)</span> 的标准差确实偏小了些。对于当时用的tanh和sigmoid（也许是），应该使用Xavier初始化要求的 <span class="arithmatex">\(\sqrt{\frac{1}{n}}\)</span>，以保证激活值和梯度在层间传播保持稳定，既不饱和也不爆炸</p>
+<p>我猜当时的网络层数还不深，更小的方差意味着预激活值的方差也更小，预激活值就会更多的落在0附近，这可能减弱了预激活值过大/过小（饱和）带来的梯度消失现象，也就是所谓的"helped with some gradient scaling issues across layers"</p>
+<p>而对于后来更深层的、使用ReLU激活函数的网络，PyTorch的这个默认初始化就会带来问题了，这时候需要自己手动调用以实现标准的Kaiming Uniform</p>
+<p>这还不是一个完全满意的解释，也暂时没找到当时Soumith Chintala的源码，之后有机会可能会继续补充qwq</p>
+<h2 id="_6">参考资料<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
+<ol>
+<li>关于Kaiming初始化的数学推导：<a href="https://zhuanlan.zhihu.com/p/1999932426844125029">[论文阅读] Delving Deep into Rectifiers:Surpassing Human-Level Performance on ImageNet Classification</a></li>
+<li>Kaiming初始化论文原文：<a href="https://arxiv.org/abs/1502.01852">Delving Deep into Rectifiers: Surpassing Human-Level Performance on ImageNet Classification</a></li>
+<li>PyTorch关于Linear层默认初始化的源码：<a href="https://github.com/pytorch/pytorch/blob/8f988c9c6b3586efbc00a981d9d8cac11f26bcdb/torch/nn/modules/linear.py#L117">GitHub linear.py 行117</a></li>
+<li>PyTorch关于nn.init的官方文档：<a href="https://docs.pytorch.org/docs/2.13/nn.init.html">torch.nn.init</a></li>
+<li>一个类似的知乎问题里：<a href="https://www.zhihu.com/question/405929936/answer/1786694422">作者：西伯利亚大恶龙 Pytorch中Linear层默认的初始化方式中a=sqrt(5)的原理是什么？</a></li>
+<li>一条关于这个问题的issue下的回复里给出了真正的历史原因：<a href="https://github.com/pytorch/pytorch/issues/57109">GitHub issue#57109</a></li>
+<li>另一条issue下也指向同一个网站：<a href="https://github.com/pytorch/pytorch/issues/15314">GitHub issue#15314</a></li>
+<li>两条issue指向的网站备份：<a href="https://soumith.ch/files/20141213_gplus_nninit_discussion.htm">Google Plus论坛备份</a></li>
+<li>实际上应该是这个打不开的网站：<a href="https://plus.google.com/106447253626219410322/posts/RZfdrRQWL6u">原网站</a></li>
+<li><a href="http://yann.lecun.com/exdb/publis/pdf/lecun-98b.pdf">Efficient BackProp</a></li>
+</ol>
 
 
 
@@ -2794,7 +2977,7 @@
     <span class="md-icon" title="最后更新">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2026年7月6日 12:13:09 UTC">2026年7月6日</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2026年8月24日 08:29:30 UTC">2026年8月24日</span>
   </span>
 
     
@@ -2804,7 +2987,7 @@
     <span class="md-icon" title="创建日期">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14.47 15.08 11 13V7h1.5v5.25l3.08 1.83c-.41.28-.79.62-1.11 1m-1.39 4.84c-.36.05-.71.08-1.08.08-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8c0 .37-.03.72-.08 1.08.69.1 1.33.32 1.92.64.1-.56.16-1.13.16-1.72 0-5.5-4.5-10-10-10S2 6.5 2 12s4.47 10 10 10c.59 0 1.16-.06 1.72-.16-.32-.59-.54-1.23-.64-1.92M18 15v3h-3v2h3v3h2v-3h3v-2h-3v-3z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2026年3月15日 08:45:26 UTC">2026年3月15日</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2026年8月24日 08:29:30 UTC">2026年8月24日</span>
   </span>
 
     

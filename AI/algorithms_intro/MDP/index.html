@@ -328,6 +328,28 @@
     
     
       <li class="md-tabs__item">
+        <a href="../../../Blog/why_pytorch_use_sqrt5_for_init_260816/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  博客
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
         <a href="../../../Instructions/ins_main/" class="md-tabs__link">
           
   
@@ -2162,12 +2184,6 @@
       
         
       
-        
-      
-        
-      
-        
-      
     
     
     
@@ -2191,7 +2207,7 @@
   <span class="md-ellipsis">
     
   
-    使用
+    博客
   
 
     
@@ -2204,6 +2220,103 @@
         
         <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    博客
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Blog/why_pytorch_use_sqrt5_for_init_260816/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    260816_为什么PyTorch的默认初始化不是Kaiming/设置参数sqrt5
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    使用
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -2358,10 +2471,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
         
           
-          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
             
   
   
@@ -2379,8 +2492,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_6">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -2781,7 +2894,7 @@
 <a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a>对于Cool状态
 <a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a>如果选择slow，这一步得到+1奖励，还剩一步就相当于V_1(cool) = 2，因而选择slow的总价值为1+2=3
 <a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a>如果选择fast，这一步得到+2奖励，还剩一步有0.5的概率转移到V_1(cool) = 2，有0.5概率转移到V_1(warm) = 1，因此选择fast的总价值为2 + 0.5*2 + 0.5*1 = 3.5
-<a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a>-&gt; 这一步是计算\sum_{s&#39;} T(s,a,s&#39;) 之前没有出现过这一项，而且状态可以复用！不需要一路算到V_0
+<a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a>-&gt; 这一步是计算\sum_{s'} T(s,a,s') 之前没有出现过这一项，而且状态可以复用！不需要一路算到V_0
 <a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a>因此 V_2(Cool) = 3.5 -&gt; max_action
 <a id="__codelineno-1-18" name="__codelineno-1-18" href="#__codelineno-1-18"></a>同理可以得到V_2(Warm) = 2.5
 </code></pre></div>
