@@ -13,18 +13,26 @@ description: 这里是我的极简个人介绍和笔记分享
 
 其实就是为了这点醋包的饺子
 
-如果笔记公式渲染有问题，刷新网页试试看
+**如果笔记公式渲染有问题，刷新网页试试看**
 
 按主题跳转：
 
 ### 编程 Coding
+
+#### 语法
 
 - [从C到C++ 语法学习](Code/C2CPP.md)
 - [从C到Python 语法学习](Code/python.md)
 - [Numpy库](Code/numpy.md)
 - [Pandas库](Code/pandas.md)
 - [Matplotlib库](Code/matplotlib.md)
+
+#### 算法
+
 - [未完成 滑动窗口](Code/sliding_window.md)
+
+#### 代码
+
 - [一个简单的个人c语言项目](https://github.com/Lith5z/cpl-practice)
 
 ### 数学 Math
@@ -38,6 +46,8 @@ description: 这里是我的极简个人介绍和笔记分享
 - [3B1B 深度学习](AI/deep_learning/3b1b_main.md)
 
 ### 技术性&胡思乱想博客 Blog
+
+- [为什么PyTorch的默认初始化不是Kaiming/设置参数sqrt5](Blog/why_pytorch_use_sqrt5_for_init_260816.md)
 
 ### 读书笔记和随笔 Others
 
@@ -60,7 +70,7 @@ description: 这里是我的极简个人介绍和笔记分享
 
 那我最好是真会了：
 
-- C/C++/Python (np+pd+plt+torch)
+- C/C++/Python
 - Git/Latex
 - Ps/Pr 会一点点平面设计
 - [其他..](about_me.md)

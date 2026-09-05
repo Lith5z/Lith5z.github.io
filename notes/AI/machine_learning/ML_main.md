@@ -56,4 +56,5 @@ tags: [ML, 感知器, AI]
 
 - 朴素贝叶斯：
 - 感知器Perceptrons：分类 [[感知器]]
-- 线性回归Linear Regression：回归
+- 线性回归Linear Regression：回归 [[线性回归]]
+- 逻辑回归Logistic Regression：分类 [[逻辑回归]]

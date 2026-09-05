@@ -90,6 +90,8 @@ nav:
     - 机器学习:
       - 机器学习概述: AI/machine_learning/ML_main.md
       - 感知器: AI/machine_learning/perceptron.md
+      - 线性回归: AI/machine_learning/linear_regression.md
+      - 逻辑回归: AI/machine_learning/logistic_regression.md
     - 深度学习:
       - 3B1B 深度学习: AI/deep_learning/3b1b_main.md
       - 多层感知器 MLP: AI/deep_learning/3b1b_MLP.md
