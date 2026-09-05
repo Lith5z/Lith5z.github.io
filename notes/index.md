@@ -15,7 +15,7 @@ description: 这里是我的极简个人介绍和笔记分享
 
 上次更新于 20260905
 
-## 技术性&胡思乱想博客 Blog
+## 技术性&胡思乱想博客
 
 - [为什么PyTorch的默认初始化不是Kaiming/设置参数sqrt5](Blog/why_pytorch_use_sqrt5_for_init_260816.md)
 
