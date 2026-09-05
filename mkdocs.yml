@@ -101,15 +101,15 @@ nav:
       - 注意力机制: AI/deep_learning/3b1b_attention.md
       - MLP in GPT: AI/deep_learning/3b1b_MLP_GPT.md
   - 数学:
-    - 线性代数:
-      - 3B1B 线性代数: AI/linear_algebra/main.md
-      - 向量: AI/linear_algebra/vector.md
-      - 矩阵: AI/linear_algebra/matrix.md
-      - 线性变换与线性空间: AI/linear_algebra/linear_space.md
-      - 线性方程组: AI/linear_algebra/linear_equations.md
-      - 行列式: AI/linear_algebra/determinant.md
-      - 秩: AI/linear_algebra/rank.md
-      - 特征向量与特征值: AI/linear_algebra/eigen_value.md
+    - 3B1B 线性代数:
+      - 概述: Math/3B1B_linear_algebra/main.md
+      - 向量: Math/3B1B_linear_algebra/vector.md
+      - 矩阵: Math/3B1B_linear_algebra/matrix.md
+      - 线性变换与线性空间: Math/3B1B_linear_algebra/linear_space.md
+      - 线性方程组: Math/3B1B_linear_algebra/linear_equations.md
+      - 行列式: Math/3B1B_linear_algebra/determinant.md
+      - 秩: Math/3B1B_linear_algebra/rank.md
+      - 特征向量与特征值: Math/3B1B_linear_algebra/eigen_value.md
   - 编程:
     - 从C到C++: Code/C2CPP.md
     - 从C到Python: Code/python.md

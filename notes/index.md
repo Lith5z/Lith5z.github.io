@@ -9,60 +9,13 @@ description: 这里是我的极简个人介绍和笔记分享
 
 ---
 
-## 笔记库
-
 其实就是为了这点醋包的饺子
 
 **如果笔记公式渲染有问题，刷新网页试试看**
 
-按主题跳转：
-
-### 编程 Coding
-
-#### 语法
-
-- [从C到C++ 语法学习](Code/C2CPP.md)
-- [从C到Python 语法学习](Code/python.md)
-- [Numpy库](Code/numpy.md)
-- [Pandas库](Code/pandas.md)
-- [Matplotlib库](Code/matplotlib.md)
-
-#### 算法
-
-- [未完成 滑动窗口](Code/sliding_window.md)
-
-#### 代码
-
-- [一个简单的个人c语言项目](https://github.com/Lith5z/cpl-practice)
-
-### 数学 Math
-
-- [3B1B 线性代数](AI/linear_algebra/main.md)
-
-### 和智能科学 AI
-
-- [伯克利CS188 人工智能导论](AI/algorithms_intro/CS188_main.md)
-- [机器学习](AI/machine_learning/ML_main.md)
-- [3B1B 深度学习](AI/deep_learning/3b1b_main.md)
-
-### 技术性&胡思乱想博客 Blog
+## 技术性&胡思乱想博客 Blog
 
 - [为什么PyTorch的默认初始化不是Kaiming/设置参数sqrt5](Blog/why_pytorch_use_sqrt5_for_init_260816.md)
-
-### 读书笔记和随笔 Others
-
-- [存在主义是一种人道主义](Others/existentialism.md)
-- [月亮与六便士](Others/moon_and_sixpence.md)
-
-### 使用方法记录 Instructions
-
-事实上，这里不是教程，只是我学的时候记录的笔记。
-
-比较像教程实则是工具推荐的可以看[飞书文档 百宝箱推荐](https://rcnx330isacs.feishu.cn/drive/folder/PbBUfzbnBlQcGQd3fKncd4MMnOf?from=from_copylink)
-
-- [Git使用](Instructions/git_command.md)
-- [Python虚拟环境](Instructions/conda&uv.md)
-- [PS使用](Instructions/ps_use.md)
 
 ---
 
