@@ -12,13 +12,13 @@
         <meta name="author" content="黄颖轩/Lith5z">
       
       
-        <link rel="canonical" href="https://lith5z.github.io/AI/deep_learning/3b1b_MLP/">
+        <link rel="canonical" href="https://lith5z.github.io/AI/3B1B_deep_learning/3b1b_MLP_GPT/">
       
       
-        <link rel="prev" href="../3b1b_main/">
+        <link rel="prev" href="../3b1b_attention/">
       
       
-        <link rel="next" href="../3b1b_gradient_descent/">
+        <link rel="next" href="../../../Math/3B1B_linear_algebra/main/">
       
       
         
@@ -29,7 +29,7 @@
     
     
       
-        <title>多层感知器MLP - Lith5z的个人主页</title>
+        <title>事实储存在何处 - Lith5z的个人主页</title>
       
     
     
@@ -111,7 +111,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              多层感知器MLP
+              事实储存在何处
             
           </span>
         </div>
@@ -367,13 +367,13 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../Others/existentialism/" class="md-tabs__link">
+        <a href="../../../Reading/existentialism/" class="md-tabs__link">
           
   
   
     
   
-  其他
+  读书
 
         </a>
       </li>
@@ -1119,7 +1119,7 @@
   <span class="md-ellipsis">
     
   
-    机器学习概述
+    机器学习 概述
   
 
     
@@ -1276,7 +1276,7 @@
   <span class="md-ellipsis">
     
   
-    深度学习
+    3B1B 深度学习
   
 
     
@@ -1292,7 +1292,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    深度学习
+    3B1B 深度学习
   
 
           </label>
@@ -1312,7 +1312,7 @@
   <span class="md-ellipsis">
     
   
-    3B1B 深度学习
+    3B1B 深度学习 概述
   
 
     
@@ -1330,17 +1330,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../3b1b_MLP/" class="md-nav__link">
         
   
   
@@ -1356,7 +1349,6 @@
   
 
       </a>
-      
     </li>
   
 
@@ -1478,10 +1470,17 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../3b1b_MLP_GPT/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -1497,6 +1496,7 @@
   
 
       </a>
+      
     </li>
   
 
@@ -1659,7 +1659,7 @@
   <span class="md-ellipsis">
     
   
-    概述
+    3B1B 线性代数 概述
   
 
     
@@ -2555,7 +2555,7 @@
   <span class="md-ellipsis">
     
   
-    其他
+    读书
   
 
     
@@ -2571,7 +2571,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    其他
+    读书
   
 
           </label>
@@ -2584,14 +2584,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../Others/existentialism/" class="md-nav__link">
+      <a href="../../../Reading/existentialism/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    存在主义
+    存在主义是一种人道主义
   
 
     
@@ -2612,7 +2612,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../Others/moon_and_sixpence/" class="md-nav__link">
+      <a href="../../../Reading/moon_and_sixpence/" class="md-nav__link">
         
   
   
@@ -2755,7 +2755,7 @@
         <a href="../3b1b_main/" class="md-path__link">
           
   <span class="md-ellipsis">
-    深度学习
+    3B1B 深度学习
   </span>
 
         </a>
@@ -2793,40 +2793,24 @@
 
 
 
-  <h1>多层感知器 MLP</h1>
+  <h1>MLP in GPT</h1>
 
-<p>最基本的神经网络——多层感知器MLP(MultiLayer Perceptron) 概说</p>
-<p>输入部分有24×24共576个像素，抽象成576个神经元/节点，神经元的有0-1的值代表像素灰度。这就是MLP的第一层</p>
-<p>输出部分有10个神经元，代表十个数字的激发强度/概率</p>
-<p>中间有两个隐含层，具体的细节<strong>之后解释</strong></p>
-<p>一层神经元的特定激活情况叫做图案/模式(模式识别) Pattern</p>
-<p>每一个神经元的值都由上一层所有神经元的值、神经元之间的连线的权重 weight ，和一个偏差 bias 决定</p>
-<p>神经元可以看作一个函数，自变量为上一层的所有神经元，参数是权重和偏差，因变量是自己的值</p>
-<p>为了保证神经元的值还是在0-1之间，结果要带入一个 <span class="arithmatex">\(R\to[0,1]\)</span> 的压缩函数</p>
-<p>（注意目标和GPT章节3B1B 嵌入和解嵌入所用的softmax不同，这里不需要所有值的和为1）</p>
-<p>这里使用sigmoid函数 <span class="arithmatex">\(\sigma(x) = \frac{1}{1+e^{-x}}\)</span></p>
+<p>视频里以“迈克尔乔丹打篮球”为例，当输入“迈克尔乔丹”之后，模型能输出“篮球”等相关的事实性信息，说明模型中某些地方储存了信息</p>
+<p>很可能在MLP层中，占了GPT3 1/3的参数</p>
 <figure>
-  <img src="/assets/images/deep_learning/sigmoid_pic.webp" alt="example1" />
+  <img src="/assets/images/deep_learning/MLPinGPT0_pic.webp" alt="example1" />
 </figure>
-<p>但是实际上，常用线性整流函数 <span class="arithmatex">\(\text{ReLU}(x) = \max(0,x)\)</span>，更好训练，效果也不会差。可能是为了模拟生物神经元的激发阈值，不超过某个值就不激发</p>
-<div class="arithmatex">\[a^{(1)}_{0} = \sigma(w_{0,0}a^{(0)}_{0}+w_{0,1}a^{(0)}_{1}+\cdots+w_{0,n}a^{(0)}_{n}+b_0)\]</div>
-<p>这里 <span class="arithmatex">\(a^{(1)}_{0}\)</span> 的上标下标代表第1层的第0个神经元。<span class="arithmatex">\(w_{0,0}\)</span> 的第一个0代表与下层第0个神经元连线，第二个0代表与上一层的第0个神经元连线。</p>
-<p>这是对某一个神经元的写法，对于一整层，写成矩阵乘法的形式</p>
-<div class="arithmatex">\[\begin{pmatrix} w_{0,0} &amp; w_{0,1} &amp; \cdots &amp; w_{0,n} \\ w_{1,0} &amp; w_{1,1} &amp; \cdots &amp; w_{1,n} \\ \vdots &amp; \vdots &amp; \ddots &amp; \vdots \\ w_{k,0} &amp; w_{k,1} &amp; \cdots &amp; w_{k,n} \end{pmatrix} \begin{pmatrix} a^{(0)}_{0} \\ a^{(0)}_{1} \\ \vdots \\ a^{(0)}_{n} \end{pmatrix} + \begin{pmatrix} b_0 \\ b_1 \\ \cdots \\ b_k \end{pmatrix} \xrightarrow{\sigma(x)} \begin{pmatrix} a^{(1)}_{0} \\ a^{(1)}_{1} \\ \vdots \\ a^{(1)}_{k} \end{pmatrix}\]</div>
-<p>或</p>
-<div class="arithmatex">\[\vec{a}^{(1)} = \sigma(\mathbf{W}\vec{a}^{(0)}+\vec{b})\]</div>
-<p>左边矩阵的每一行都代表右侧输出神经元的所有权重，整个矩阵代表第0层的权重</p>
-<p>第0层有n个神经元，而第1层有k个</p>
+<p>视频的例子里，输入向量先与一个升维矩阵相乘。可以理解成，这个句子的行代表嵌入空间的一系列信息，乘积衡量了信息和输入向量的匹配度（bias决定触发之后ReLU的阈值）相当于对输入向量问各类问题</p>
+<p>然后再通过一个降阶矩阵，得到问题的答案向量，这个向量再与输入向量叠加，得到了编码了事实的信息</p>
+<p>这其实就是之前所说的3B1B 多层感知器</p>
 <figure>
-  <img src="/assets/images/deep_learning/matrixForm_pic.webp" alt="example1" />
+  <img src="/assets/images/deep_learning/MLPinGPT_pic.webp" alt="example2" />
 </figure>
-
-<figure>
-  <img src="/assets/images/deep_learning/total_pic.webp" alt="example1" />
-</figure>
-
-<p>整个网络就是一个函数，自变量是图像的784个像素灰度值，输出10个数字的概率值，参数为极大量的权重和偏差</p>
-<p>机器学习实际上就是通过训练数据和某种算法，让机器自己调整这些所有的参数，从而使代价函数最小化</p>
+<p>是一个三层的MLP，第一层输入，第三层输出，中间层更高阶一些</p>
+<p>视频里还提到了<strong>叠加</strong>super position的概念，可能是模型难以解释的原因</p>
+<p>一个n维的空间有n个正交基，但是如果放宽正交的性质，比如把垂直角度放到89-91°，可能放进的“正交”向量数量随维度以指数级别增长。对应到嵌入空间里，大大增加了方向对应的词义，这可能就部分解释了模型参数增加带来的质变</p>
+<p>这样的话，在MLP的得到的高阶向量的每一个神经元，可能不一一对应着某个特定的信息。某个信息可能表现为所有神经元的一个线性组合</p>
+<p>Johnson-Lindenstrauss Lemma</p>
 
 
 
@@ -2859,7 +2843,7 @@
     <span class="md-icon" title="创建日期">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14.47 15.08 11 13V7h1.5v5.25l3.08 1.83c-.41.28-.79.62-1.11 1m-1.39 4.84c-.36.05-.71.08-1.08.08-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8c0 .37-.03.72-.08 1.08.69.1 1.33.32 1.92.64.1-.56.16-1.13.16-1.72 0-5.5-4.5-10-10-10S2 6.5 2 12s4.47 10 10 10c.59 0 1.16-.06 1.72-.16-.32-.59-.54-1.23-.64-1.92M18 15v3h-3v2h3v3h2v-3h3v-2h-3v-3z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2026年3月15日 08:33:34 UTC">2026年3月15日</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2026年3月16日 02:49:30 UTC">2026年3月16日</span>
   </span>
 
     
