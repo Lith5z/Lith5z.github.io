@@ -12,13 +12,13 @@
         <meta name="author" content="黄颖轩/Lith5z">
       
       
-        <link rel="canonical" href="https://lith5z.github.io/AI/machine_learning/perceptron/">
+        <link rel="canonical" href="https://lith5z.github.io/AI/machine_learning/logistic_regression/">
       
       
-        <link rel="prev" href="../ML_main/">
+        <link rel="prev" href="../linear_regression/">
       
       
-        <link rel="next" href="../linear_regression/">
+        <link rel="next" href="../../deep_learning/3b1b_main/">
       
       
         
@@ -29,7 +29,7 @@
     
     
       
-        <title>感知器 - Lith5z的个人主页</title>
+        <title>逻辑回归 - Lith5z的个人主页</title>
       
     
     
@@ -82,7 +82,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#perceptron" class="md-skip">
+        <a href="#logistic-regression" class="md-skip">
           跳转至
         </a>
       
@@ -116,7 +116,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              感知器
+              逻辑回归
             
           </span>
         </div>
@@ -1144,6 +1144,62 @@
                 
   
   
+  
+  
+    <li class="md-nav__item">
+      <a href="../perceptron/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    感知器
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../linear_regression/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    线性回归
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
     
   
   
@@ -1163,7 +1219,7 @@
   <span class="md-ellipsis">
     
   
-    感知器
+    逻辑回归
   
 
     
@@ -1181,7 +1237,7 @@
   <span class="md-ellipsis">
     
   
-    感知器
+    逻辑回归
   
 
     
@@ -1221,7 +1277,7 @@
   <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
       
-        权重更新
+        损失
       
     </span>
   </a>
@@ -1232,7 +1288,7 @@
   <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
       
-        多分类感知器
+        梯度
       
     </span>
   </a>
@@ -1243,7 +1299,7 @@
   <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
       
-        缺陷
+        参数更新
       
     </span>
   </a>
@@ -1254,18 +1310,46 @@
   <a href="#_5" class="md-nav__link">
     <span class="md-ellipsis">
       
-        代码实现
+        多分类的梯度
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="多分类的梯度">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        逐元素形式
       
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
     <span class="md-ellipsis">
       
-        扩展阅读
+        矩阵形式
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        代码实现
       
     </span>
   </a>
@@ -1276,62 +1360,6 @@
   
 </nav>
       
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../linear_regression/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    线性回归
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../logistic_regression/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    逻辑回归
-  
-
-    
-  </span>
-  
-  
-
-      </a>
     </li>
   
 
@@ -2694,7 +2722,7 @@
   <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
       
-        权重更新
+        损失
       
     </span>
   </a>
@@ -2705,7 +2733,7 @@
   <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
       
-        多分类感知器
+        梯度
       
     </span>
   </a>
@@ -2716,7 +2744,7 @@
   <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
       
-        缺陷
+        参数更新
       
     </span>
   </a>
@@ -2727,18 +2755,46 @@
   <a href="#_5" class="md-nav__link">
     <span class="md-ellipsis">
       
-        代码实现
+        多分类的梯度
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="多分类的梯度">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        逐元素形式
       
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
     <span class="md-ellipsis">
       
-        扩展阅读
+        矩阵形式
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        代码实现
       
     </span>
   </a>
@@ -2855,149 +2911,212 @@
       
       
       
-        <span class="md-tag">感知器</span>
+        <span class="md-tag">逻辑回归</span>
       
     
   </nav>
 
 
 
-<h1 id="perceptron">感知器 Perceptron<a class="headerlink" href="#perceptron" title="Permanent link">&para;</a></h1>
-<figure>
-  <img src="/assets/images/machine_learning/perceptron_pic.webp" alt="perceptron" />
-</figure>
-
-<blockquote>
-<p>感知器由 <strong>Frank Rosenblatt</strong> 于 1957 年在 Cornell 航空实验室提出，并在 1958 年正式发表论文 <em>"The Perceptron — A Perceiving and Recognizing Automaton"</em>。这是第一个具有学习能力的人工神经元模型，在当时的 AI 社区引起了巨大轰动。</p>
-<p>Rosenblatt 甚至为感知器设计了专门的硬件 <strong>Mark I Perceptron</strong>，能够通过模拟电路实时学习识别简单的视觉模式。它被视为连接主义（Connectionism）的开端，也是现代神经网络的雏形。</p>
-</blockquote>
-<p>借鉴了生物神经元的结构，通过多个树突接收特征信息，权重模拟神经元之间连接的强弱，进行加权求和后判断是否激活</p>
-<p>如果没有特别说明，下面讨论的都是二元的感知器</p>
+<h1 id="logistic-regression">逻辑回归 Logistic Regression<a class="headerlink" href="#logistic-regression" title="Permanent link">&para;</a></h1>
+<p>在线性回归的基础之上增加一个sigmoid函数，并换用交叉熵作为损失函数</p>
+<p>用于解决分类问题，下面先介绍二分类</p>
 <h2 id="_1">输出<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
-<p>感知器最后输出的结果是一个二元变量，用于分类问题</p>
-<p><span class="arithmatex">\(\hat{y} = g(w \cdot x + b)\)</span></p>
+<div class="arithmatex">\[z = w^T x + b\]</div>
+<div class="arithmatex">\[\hat y = \sigma(z)\]</div>
+<p>其中 <span class="arithmatex">\(\sigma\)</span> 是sigmoid，表达式为</p>
+<div class="arithmatex">\[\sigma(z) = \frac{1}{1 + e^{-z}}\]</div>
+<p>图像是</p>
+<figure>
+  <img src="/assets/images/machine_learning/sigmoid_pic.webp" alt="sigmoid_pic" />
+</figure>
+
+<p>因为目的是分类，需要最后的结果是二元变量01，或者分为某类的概率</p>
+<p>这就需要把线性回归的原始输出 <span class="arithmatex">\(z\)</span> 映射到集合 <span class="arithmatex">\(\{0,1\}\)</span> 或者区间 <span class="arithmatex">\([0,1]\)</span> 上，其中前者的函数不连续，没法通过梯度下降进行训练</p>
+<p>sigmoid作为激活函数，有下面的好处：</p>
 <ul>
-<li><span class="arithmatex">\(w\)</span>为权重向量</li>
-<li><span class="arithmatex">\(x\)</span>为输入的特征向量，做内积</li>
-<li><span class="arithmatex">\(b\)</span>为偏置，一个标量</li>
-<li><span class="arithmatex">\(g\)</span>为激活函数，这里一般是阶跃函数（区别神经网络），例如：</li>
+<li>输出范围是 <span class="arithmatex">\((0,1)\)</span>，符合概率分布</li>
+<li><span class="arithmatex">\(z=0\)</span> 是分界线，分出正类和负类</li>
+<li>处处可导，而且导数比较简单</li>
 </ul>
-<div class="arithmatex">\[g(x) = \begin{cases} 1, &amp; x &gt; 0 \\ -1, &amp; x \leq 0 \end{cases}\]</div>
-<blockquote>
-<p>如果偏置项为0，激活函数以0为界，那么决定输出的分界点就是w和x点积为0，即正交的时候。所以感知器找到的分类界限，是与权重向量正交的一个分界面。</p>
-<p>偏置项会影响wx=0时的结果，相当于平移这个分界面。</p>
-<p>权重向量其实代表某类典型的输入，做点积的过程就是在衡量两个向量的相似度。</p>
-</blockquote>
-<h2 id="_2">权重更新<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
-<p>一开始所有参数初始化为0</p>
-<p>如果预测结果符合真实结果，不做变动；如果有误，更新</p>
-<div class="arithmatex">\[ w \leftarrow w + \eta \cdot (y - \hat{y}) \cdot x \]</div>
-<div class="arithmatex">\[ b \leftarrow b + \eta \cdot (y - \hat{y}) \]</div>
-<p>其中<span class="arithmatex">\(\eta\)</span>是学习率</p>
-<p><strong>从公式的角度理解</strong> <br>
-假设<span class="arithmatex">\(g(x)\)</span>就是上面的那个阶跃函数，期望的<span class="arithmatex">\(y=1\)</span>，而模型预测<span class="arithmatex">\(\hat{y}=0\)</span>，<span class="arithmatex">\(x \gt 0\)</span>。此时权重会被增大，让<span class="arithmatex">\(g(x)\)</span>的输入变大，更可能得到预期的+1</p>
-<p><strong>从线性变换的角度理解</strong> <br>
-如果<span class="arithmatex">\(x\)</span>和<span class="arithmatex">\(w\)</span>在分界线的两侧且预测错误，这一项会逐渐把特征向量拉到<span class="arithmatex">\(w\)</span>的一侧</p>
-<figure>
-  <img src="/assets/images/machine_learning/perceptron_update_pic.webp" alt="perceptron_update" />
-</figure>
-
-<h2 id="_3">多分类感知器<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
-<p>如果要进行多个类别的分类，输出的就不能只是简单的二元数值</p>
-<figure>
-  <img src="/assets/images/machine_learning/perceptron_multi_pic.webp" alt="perceptron_multi" />
-</figure>
-
-<p>这时候对于每个类别都要提供一个特征向量<span class="arithmatex">\(w_y\)</span>，输出的结果是产生最大点积的那个类别：</p>
-<div class="arithmatex">\[ y = \arg \max_y w_y \cdot x \]</div>
-<p>更新过程也类似，对于分类出错的样本，只更新相关的两个特征向量：对于正确类别的特征向量，点积要增大；目前预测类别的特征向量，点积要减小。其他类别的权重向量保持不变</p>
-<p>设真实类别为 <span class="arithmatex">\(y^*\)</span>，模型预测类别为 <span class="arithmatex">\(\hat{y}\)</span>，当 <span class="arithmatex">\(y^* \neq \hat{y}\)</span> 时：</p>
-<div class="arithmatex">\[
-\begin{aligned}
-w_{y^*} &amp;\leftarrow w_{y^*} + \eta \cdot x \\
-w_{\hat{y}} &amp;\leftarrow w_{\hat{y}} - \eta \cdot x
-\end{aligned}
-\]</div>
-<p>每次犯错，就把真实类别的“模板”向量拉向当前样本，把错误类别的“模板”向量推离当前样本，从而在特征空间中划出更清晰的决策边界。</p>
-<h2 id="_4">缺陷<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
-<p>对于可分Separable的数据，上面的训练过程一定会收敛（感知器收敛定理，Perceptron Convergence Theorem） <br>
-但如果不具备可分性，比如XOR（异或）的功能，训练过程不会收敛，也就是说单层感知器无法解决这一问题</p>
-<blockquote>
-<p>1969 年，<strong>Marvin Minsky</strong> 和 <strong>Seymour Papert</strong> 在著作 <em>"Perceptrons"</em> 中系统分析了感知器的数学局限性，严格证明了单层感知器无法处理线性不可分问题（如 XOR）。</p>
-<p>这一结论对当时的神经网络研究造成了沉重打击，加之计算资源匮乏，政府资助大幅转向符号主义 AI，导致神经网络研究进入了长达十余年的 <strong>"AI 寒冬"</strong>（First AI Winter）。</p>
-<p>直到 1986 年，<strong>Rumelhart、Hinton 和 Williams</strong> 在 <em>"Learning representations by back-propagating errors"</em> 中系统阐述了 <strong>反向传播算法（Backpropagation）</strong>，为<strong>多层感知器MLP</strong>的训练提供了可行的梯度下降方案。多层感知器通过引入隐藏层和非线性激活函数（如 Sigmoid），克服了单层感知器无法解决非线性问题的缺陷，开启了神经网络的复兴之路。</p>
-</blockquote>
-<p>可见[[3B1B 多层感知器]]</p>
-<h2 id="_5">代码实现<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
-<p>我自己写了个，基于numpy
+<h2 id="_2">损失<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<p>与线性回归不同，逻辑回归的损失函数是交叉熵损失</p>
+<p>在线性回归里，MSE+线性输出得到的损失函数，如果以参数为自变量，是凸函数，这确保能收敛到全局最优</p>
+<p>但是MSE+线性输出+sigmoid得到的函数是非凸的，把MSE换为交叉熵损失，又回到了凸函数</p>
+<div class="arithmatex">\[J(\theta) = -\frac{1}{n} \sum_{i=1}^n [y_i \log(\hat y) + (1-y_i) \log(1 - \hat y)] \]</div>
+<p>交叉熵损失的推导可见[[似然估计]]</p>
+<p>被求和的部分有两项，在二分类问题里，标签 <span class="arithmatex">\(y_i\)</span> 只有0/1两个取值，所以对每个样本而言，只剩下一项对数项</p>
+<p>假设 <span class="arithmatex">\(y_i=1\)</span>，那么只剩下 <span class="arithmatex">\(\log(\hat y)\)</span>，预测标签 <span class="arithmatex">\(\hat y\)</span> 越接近1，损失越接近0；如果越接近0，损失会趋于无穷大</p>
+<h2 id="_3">梯度<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<p>接下来推导 <span class="arithmatex">\(\nabla_w J\)</span></p>
+<p>sigmoid的导数性质是显然的</p>
+<div class="arithmatex">\[\sigma'(z) = \sigma(z)(1-\sigma(z)) = \hat y (1 - \hat y)\]</div>
+<p>对单个样本 <span class="arithmatex">\((x_i, y_i)\)</span>，用链式法则</p>
+<div class="arithmatex">\[\frac{\partial J_i}{\partial w}
+= \frac{\partial J_i}{\partial \hat y_i} \cdot \frac{\partial \hat y_i}{\partial z_i} \cdot \frac{\partial z_i}{\partial w}\]</div>
+<p>逐项计算</p>
+<div class="arithmatex">\[\frac{\partial J_i}{\partial \hat y_i}
+= -\left( \frac{y_i}{\hat y_i} - \frac{1-y_i}{1-\hat y_i} \right)
+= \frac{\hat y_i - y_i}{\hat y_i (1-\hat y_i)}\]</div>
+<div class="arithmatex">\[\frac{\partial \hat y_i}{\partial z_i} = \sigma'(z_i) = \hat y_i (1-\hat y_i)\]</div>
+<div class="arithmatex">\[\frac{\partial z_i}{\partial w} = x_i\]</div>
+<p>三项相乘，中间的 <span class="arithmatex">\(\hat y_i (1-\hat y_i)\)</span> 恰好约掉：</p>
+<div class="arithmatex">\[\frac{\partial J_i}{\partial w}
+= \frac{\hat y_i - y_i}{\cancel{\hat y_i (1-\hat y_i)}} \cdot \cancel{\hat y_i (1-\hat y_i)} \cdot x_i
+= (\hat y_i - y_i)\, x_i\]</div>
+<p>对所有样本取平均，最后的结果是</p>
+<div class="arithmatex">\[\nabla_w J = \frac{1}{n} \sum_{i=1}^n (\hat y_i - y_i)\, x_i\]</div>
+<p>同理可得偏置的梯度：</p>
+<div class="arithmatex">\[\nabla_b J = \frac{1}{n} \sum_{i=1}^n (\hat y_i - y_i)\]</div>
+<p>如果线性回归的MSE多乘一个1/2，那么两者的梯度在形式上就是完全一样的了</p>
+<h2 id="_4">参数更新<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
+<p>和线性回归一样</p>
+<div class="arithmatex">\[w \leftarrow w - \eta \cdot \nabla_w L\]</div>
+<div class="arithmatex">\[b \leftarrow b - \eta \cdot \nabla_b L\]</div>
+<h2 id="_5">多分类的梯度<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
+<p>上面都是二分类问题，如果需要对 <span class="arithmatex">\(K\)</span> 个分类输出概率，需要做一些改动</p>
+<p><span class="arithmatex">\(z \in R^K\)</span> 每个元素 <span class="arithmatex">\(z_i\)</span> 都是对应类别 <span class="arithmatex">\(i\)</span> 的预测logits，然后代入softmax</p>
+<div class="arithmatex">\[P(y=k) = \hat y_k = \frac{e^{z_k}}{\sum_{j=1}^K e^{z_j}}\]</div>
+<p>交叉熵损失做相应扩展，从两项变成 K 项</p>
+<div class="arithmatex">\[J(\theta) = -\frac{1}{n} \sum_{i=1}^n \sum_{k=1}^K y_{ik} \log(\hat y_{ik})\]</div>
+<p>其中 <span class="arithmatex">\(y_{ik}\)</span> 是第 <span class="arithmatex">\(i\)</span> 个样本的 one-hot 标签，属于类别 <span class="arithmatex">\(k\)</span> 时为 1，否则为 0</p>
+<p>最后每个样本的求和里其实也只剩下一项，和二分类的情况一样</p>
+<h3 id="_6">逐元素形式<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
+<p>接下来推导 <span class="arithmatex">\(\nabla_{w_k} J\)</span></p>
+<p>对单个样本 <span class="arithmatex">\((x_i, y_i)\)</span>，用链式法则。注意损失中每个 <span class="arithmatex">\(\hat y_j\)</span> 都有贡献，而每个 <span class="arithmatex">\(\hat y_j\)</span> 又都依赖 <span class="arithmatex">\(z_k\)</span>，所以要加上对 <span class="arithmatex">\(j\)</span> 的求和：</p>
+<div class="arithmatex">\[\frac{\partial J_i}{\partial w_k}
+= \sum_{j=1}^K \frac{\partial J_i}{\partial \hat y_j} \cdot \frac{\partial \hat y_j}{\partial z_k} \cdot \frac{\partial z_k}{\partial w_k}\]</div>
+<p>逐项计算，其中</p>
+<div class="arithmatex">\[\frac{\partial J_i}{\partial \hat y_j} = -\frac{y_j}{\hat y_j}\]</div>
+<p>第二项比较复杂，二分类里 sigmoid 的导数是标量 <span class="arithmatex">\(\hat y(1-\hat y)\)</span>，但 softmax 的每个输出 <span class="arithmatex">\(\hat y_j\)</span> 都通过分母依赖<strong>所有</strong> <span class="arithmatex">\(z_1,\dots,z_K\)</span>，所以导数要分 <span class="arithmatex">\(j=k\)</span> 和 <span class="arithmatex">\(j \neq k\)</span> 两种情况：</p>
+<div class="arithmatex">\[\frac{\partial \hat y_j}{\partial z_k} = \begin{cases} \hat y_k (1 - \hat y_k) &amp; j = k \\ -\hat y_j \hat y_k &amp; j \neq k \end{cases}\]</div>
+<div class="arithmatex">\[\frac{\partial z_k}{\partial w_k} = x_i\]</div>
+<p>代入导数，把求和拆成 <span class="arithmatex">\(j=k\)</span> 的一项和 <span class="arithmatex">\(j \neq k\)</span> 的其余项：</p>
+<div class="arithmatex">\[\frac{\partial J_i}{\partial w_k}
+= -\left[ \frac{y_k}{\hat y_k} \cdot \hat y_k (1-\hat y_k) + \sum_{j \neq k} \frac{y_j}{\hat y_j} \cdot (-\hat y_j \hat y_k) \right] x_i \\ = -\left[ y_k (1-\hat y_k) - \hat y_k \sum_{j \neq k} y_j \right] x_i\]</div>
+<p>用 one-hot 和为1的性质 <span class="arithmatex">\(\sum_{j \neq k} y_j + y_k = 1\)</span> 整理括号里的项：</p>
+<div class="arithmatex">\[= -\left[ y_k - \hat y_k \left( y_k + \sum_{j \neq k} y_j \right) \right] x_i = (\hat y_k - y_k)\, x_i\]</div>
+<p>对所有样本取平均，最后的结果是</p>
+<div class="arithmatex">\[\nabla_{w_k} J = \frac{1}{n} \sum_{i=1}^n (\hat y_{ik} - y_{ik})\, x_i\]</div>
+<p>同理可得偏置的梯度：</p>
+<div class="arithmatex">\[\nabla_{b_k} J = \frac{1}{n} \sum_{i=1}^n (\hat y_{ik} - y_{ik})\]</div>
+<p>和二分类的形式完全一样</p>
+<h3 id="_7">矩阵形式<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
+<p>下面的内容改编自<a href="https://zhuanlan.zhihu.com/p/24709748">知乎-矩阵求导术</a>，非常值得一看；或者笔记[[矩阵微积分]]中也要大致摘要</p>
+<p><span class="arithmatex">\(l = -\boldsymbol{y}^T\log\text{softmax}(W\boldsymbol{x})\)</span>，求 <span class="arithmatex">\(\frac{\partial l}{\partial W}\)</span></p>
+<p>其中 <span class="arithmatex">\(\boldsymbol{y}\)</span> 是除一个元素为1外其它元素为0的 <span class="arithmatex">\(m×1\)</span> 列向量，<span class="arithmatex">\(W\)</span> 是 <span class="arithmatex">\(m\times n\)</span> 矩阵，<span class="arithmatex">\(\boldsymbol{x}\)</span> 是 <span class="arithmatex">\(n×1\)</span> 列向量，<span class="arithmatex">\(l\)</span> 是标量；log表示自然对数，<span class="arithmatex">\(\text{softmax}(\boldsymbol{a}) = \frac{\exp(\boldsymbol{a})}{\boldsymbol{1}^T\exp(\boldsymbol{a})}\)</span>，其中 <span class="arithmatex">\(\exp(\boldsymbol{a})\)</span> 表示逐元素求指数，<span class="arithmatex">\(\boldsymbol{1}\)</span> 代表全1向量</p>
+<p>代入softmax</p>
+<div class="arithmatex">\[l = -\boldsymbol{y}^T \left(\log (\exp(W\boldsymbol{x}))-\boldsymbol{1}\log(\boldsymbol{1}^T\exp(W\boldsymbol{x}))\right) = -\boldsymbol{y}^TW\boldsymbol{x} + \log(\boldsymbol{1}^T\exp(W\boldsymbol{x}))\]</div>
+<p>注意逐元素log满足等式 <span class="arithmatex">\(\log(\boldsymbol{u}/c) = \log(\boldsymbol{u}) - \boldsymbol{1}\log(c)\)</span>，以及 <span class="arithmatex">\(\boldsymbol{y}\)</span> 满足 <span class="arithmatex">\(\boldsymbol{y}^T \boldsymbol{1} = 1\)</span></p>
+<p>求微分</p>
+<div class="arithmatex">\[dl =- \boldsymbol{y}^TdW\boldsymbol{x}+\frac{\boldsymbol{1}^T\left(\exp(W\boldsymbol{x})\odot(dW\boldsymbol{x})\right)}{\boldsymbol{1}^T\exp(W\boldsymbol{x})}\]</div>
+<p>再套上迹并做交换，注意可化简 <span class="arithmatex">\(\boldsymbol{1}^T\left(\exp(W\boldsymbol{x})\odot(dW\boldsymbol{x})\right) = \exp(W\boldsymbol{x})^TdW\boldsymbol{x}\)</span>，这是根据等式 <span class="arithmatex">\(\boldsymbol{1}^T (\boldsymbol{u}\odot \boldsymbol{v}) = \boldsymbol{u}^T \boldsymbol{v}\)</span></p>
+<div class="arithmatex">\[dl = \text{tr}\left(-\boldsymbol{y}^TdW\boldsymbol{x}+\frac{\exp(W\boldsymbol{x})^TdW\boldsymbol{x}}{\boldsymbol{1}^T\exp(W\boldsymbol{x})}\right) =\text{tr}(-\boldsymbol{y}^TdW\boldsymbol{x}+\text{softmax}(W\boldsymbol{x})^TdW\boldsymbol{x}) = \text{tr}(\boldsymbol{x}(\text{softmax}(W\boldsymbol{x})-\boldsymbol{y})^TdW)\]</div>
+<p>所以 <span class="arithmatex">\(\frac{\partial l}{\partial W}= (\text{softmax}(W\boldsymbol{x})-\boldsymbol{y})\boldsymbol{x}^T = (\hat{\boldsymbol{y}} - \boldsymbol{y})\boldsymbol{x}^T\)</span> 这一公式符合上面的逐元素推导</p>
+<h2 id="_8">代码实现<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h2>
+<p>优化了[[线性回归]]里关于泰坦尼克的代码</p>
+<p>有意思的是，最后收敛的准确率也还是80%左右，这说明在这个<strong>线性的</strong>3参数模型（单纯捕捉sex age Pclass）的极限基本就是如此了。无论是逻辑回归和线性回归，其实都在训练一个超平面 <span class="arithmatex">\(w^T x + b = 0\)</span> 把两类情况分开，所以差别不大</p>
+<p>不过下面的代码把循环写法改成向量写法，效率会高非常多</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
-<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>
-<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="c1"># 下面约定，大写字母为向量/矩阵等数据集，小写字母是从中抽取的单条样本</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
 <a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>
-<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">]])</span> <span class="c1"># one row is one input</span>
-<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="n">Y_and</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">])</span>
-<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="n">Y_or</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">])</span>
-<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="n">Y_xor</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">])</span>
-<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="c1"># 不过一般数据集X是大写，标签集y是小写..</span>
-<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>
-<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="k">class</span><span class="w"> </span><span class="nc">Perceptron</span><span class="p">:</span>
-<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">learning_rate</span><span class="o">=</span><span class="mf">0.01</span><span class="p">,</span> <span class="n">n_epochs</span><span class="o">=</span><span class="mi">100</span><span class="p">):</span>
-<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">lr</span> <span class="o">=</span> <span class="n">learning_rate</span>
-<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">epochs</span> <span class="o">=</span> <span class="n">n_epochs</span>
-<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">w</span> <span class="o">=</span> <span class="kc">None</span>
-<a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">b</span> <span class="o">=</span> <span class="kc">None</span>
-<a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a>
-<a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a>    <span class="k">def</span><span class="w"> </span><span class="nf">activation</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">z</span><span class="p">):</span>
-<a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a>        <span class="k">return</span> <span class="mi">1</span> <span class="k">if</span> <span class="n">z</span> <span class="o">&gt;=</span> <span class="mi">0</span> <span class="k">else</span> <span class="mi">0</span>
-<a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a>
-<a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a>    <span class="k">def</span><span class="w"> </span><span class="nf">predict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
-<a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a><span class="w">        </span><span class="sd">'''x is one sample'''</span>
-<a id="__codelineno-0-23" name="__codelineno-0-23" href="#__codelineno-0-23"></a>        <span class="n">z</span> <span class="o">=</span> <span class="n">x</span> <span class="o">@</span> <span class="bp">self</span><span class="o">.</span><span class="n">w</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">b</span>
-<a id="__codelineno-0-24" name="__codelineno-0-24" href="#__codelineno-0-24"></a>        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">activation</span><span class="p">(</span><span class="n">z</span><span class="p">)</span>
-<a id="__codelineno-0-25" name="__codelineno-0-25" href="#__codelineno-0-25"></a>
-<a id="__codelineno-0-26" name="__codelineno-0-26" href="#__codelineno-0-26"></a>    <span class="k">def</span><span class="w"> </span><span class="nf">fit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">):</span>
-<a id="__codelineno-0-27" name="__codelineno-0-27" href="#__codelineno-0-27"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">w</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
-<a id="__codelineno-0-28" name="__codelineno-0-28" href="#__codelineno-0-28"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">b</span> <span class="o">=</span> <span class="mi">0</span>
-<a id="__codelineno-0-29" name="__codelineno-0-29" href="#__codelineno-0-29"></a>        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">epochs</span><span class="p">):</span>
-<a id="__codelineno-0-30" name="__codelineno-0-30" href="#__codelineno-0-30"></a>            <span class="n">correct_nums</span> <span class="o">=</span> <span class="mi">0</span>
-<a id="__codelineno-0-31" name="__codelineno-0-31" href="#__codelineno-0-31"></a>            <span class="k">for</span> <span class="n">idx</span><span class="p">,</span> <span class="n">sample</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">X</span><span class="p">):</span>
-<a id="__codelineno-0-32" name="__codelineno-0-32" href="#__codelineno-0-32"></a>                <span class="c1"># 计算预测值和误差</span>
-<a id="__codelineno-0-33" name="__codelineno-0-33" href="#__codelineno-0-33"></a>                <span class="n">y_pred</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">sample</span><span class="p">)</span>
-<a id="__codelineno-0-34" name="__codelineno-0-34" href="#__codelineno-0-34"></a>                <span class="n">error</span> <span class="o">=</span> <span class="n">Y</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span> <span class="o">-</span> <span class="n">y_pred</span>
-<a id="__codelineno-0-35" name="__codelineno-0-35" href="#__codelineno-0-35"></a>
-<a id="__codelineno-0-36" name="__codelineno-0-36" href="#__codelineno-0-36"></a>                <span class="c1"># 更新权重和偏置</span>
-<a id="__codelineno-0-37" name="__codelineno-0-37" href="#__codelineno-0-37"></a>                <span class="bp">self</span><span class="o">.</span><span class="n">w</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">lr</span> <span class="o">*</span> <span class="n">error</span> <span class="o">*</span> <span class="n">sample</span>
-<a id="__codelineno-0-38" name="__codelineno-0-38" href="#__codelineno-0-38"></a>                <span class="bp">self</span><span class="o">.</span><span class="n">b</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">lr</span> <span class="o">*</span> <span class="n">error</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="n">DEBUG</span> <span class="o">=</span> <span class="kc">True</span>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="c1"># PassengerId Survived Pclass Name Sex Age SibSp Parch Ticket Fare Cabin Embarked</span>
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="n">X_train</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">"D:</span><span class="se">\\</span><span class="s2">dataset</span><span class="se">\\</span><span class="s2">titanic</span><span class="se">\\</span><span class="s2">train.csv"</span><span class="p">)</span>  <span class="c1"># 891 samples</span>
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="n">X_test</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">"D:</span><span class="se">\\</span><span class="s2">dataset</span><span class="se">\\</span><span class="s2">titanic</span><span class="se">\\</span><span class="s2">test.csv"</span><span class="p">)</span>  <span class="c1"># 418 samples</span>
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="n">y_test</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">"D:</span><span class="se">\\</span><span class="s2">dataset</span><span class="se">\\</span><span class="s2">titanic</span><span class="se">\\</span><span class="s2">gender_submission.csv"</span><span class="p">)</span>
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>
+<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="c1"># 打算只对Pclass(int) Sex(str) Age(int)进行拟合，需要对Sex处理一下</span>
+<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="c1"># female -&gt; -1, male -&gt; 1</span>
+<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a><span class="n">X_train</span><span class="p">[</span><span class="s2">"Sex"</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="mi">1</span> <span class="k">if</span> <span class="n">s</span> <span class="o">==</span> <span class="s2">"female"</span> <span class="k">else</span> <span class="mi">1</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">X_train</span><span class="p">[</span><span class="s2">"Sex"</span><span class="p">]]</span>
+<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a><span class="n">X_test</span><span class="p">[</span><span class="s2">"Sex"</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="mi">1</span> <span class="k">if</span> <span class="n">s</span> <span class="o">==</span> <span class="s2">"female"</span> <span class="k">else</span> <span class="mi">1</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">X_test</span><span class="p">[</span><span class="s2">"Sex"</span><span class="p">]]</span>
+<a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a>
+<a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a><span class="c1"># Age有大约20%缺失项，做一下填充</span>
+<a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a><span class="c1"># 只对训练集进行fit，再对测试集根据得到的数据进行transform</span>
+<a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a><span class="n">median</span> <span class="o">=</span> <span class="n">X_train</span><span class="p">[</span><span class="s2">"Age"</span><span class="p">]</span><span class="o">.</span><span class="n">median</span><span class="p">()</span>
+<a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a><span class="n">X_train</span><span class="p">[</span><span class="s2">"Age"</span><span class="p">]</span> <span class="o">=</span> <span class="n">X_train</span><span class="p">[</span><span class="s2">"Age"</span><span class="p">]</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="n">median</span><span class="p">)</span>
+<a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a><span class="n">X_test</span><span class="p">[</span><span class="s2">"Age"</span><span class="p">]</span> <span class="o">=</span> <span class="n">X_test</span><span class="p">[</span><span class="s2">"Age"</span><span class="p">]</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="n">median</span><span class="p">)</span>
+<a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a>
+<a id="__codelineno-0-23" name="__codelineno-0-23" href="#__codelineno-0-23"></a><span class="c1"># 特征标准化</span>
+<a id="__codelineno-0-24" name="__codelineno-0-24" href="#__codelineno-0-24"></a><span class="n">feature_cols</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"Pclass"</span><span class="p">,</span> <span class="s2">"Sex"</span><span class="p">,</span> <span class="s2">"Age"</span><span class="p">]</span>
+<a id="__codelineno-0-25" name="__codelineno-0-25" href="#__codelineno-0-25"></a><span class="n">mean</span> <span class="o">=</span> <span class="n">X_train</span><span class="p">[</span><span class="n">feature_cols</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<a id="__codelineno-0-26" name="__codelineno-0-26" href="#__codelineno-0-26"></a><span class="n">std</span> <span class="o">=</span> <span class="n">X_train</span><span class="p">[</span><span class="n">feature_cols</span><span class="p">]</span><span class="o">.</span><span class="n">std</span><span class="p">()</span>
+<a id="__codelineno-0-27" name="__codelineno-0-27" href="#__codelineno-0-27"></a><span class="n">X_train</span><span class="p">[</span><span class="n">feature_cols</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">X_train</span><span class="p">[</span><span class="n">feature_cols</span><span class="p">]</span> <span class="o">-</span> <span class="n">mean</span><span class="p">)</span> <span class="o">/</span> <span class="n">std</span>
+<a id="__codelineno-0-28" name="__codelineno-0-28" href="#__codelineno-0-28"></a><span class="n">X_test</span><span class="p">[</span><span class="n">feature_cols</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">X_test</span><span class="p">[</span><span class="n">feature_cols</span><span class="p">]</span> <span class="o">-</span> <span class="n">mean</span><span class="p">)</span> <span class="o">/</span> <span class="n">std</span>
+<a id="__codelineno-0-29" name="__codelineno-0-29" href="#__codelineno-0-29"></a>
+<a id="__codelineno-0-30" name="__codelineno-0-30" href="#__codelineno-0-30"></a><span class="k">class</span><span class="w"> </span><span class="nc">LogisticRegression</span><span class="p">:</span>
+<a id="__codelineno-0-31" name="__codelineno-0-31" href="#__codelineno-0-31"></a>    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">learning_rate</span><span class="o">=</span><span class="mf">0.01</span><span class="p">,</span> <span class="n">n_epochs</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">20</span><span class="p">):</span>
+<a id="__codelineno-0-32" name="__codelineno-0-32" href="#__codelineno-0-32"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">lr</span> <span class="o">=</span> <span class="n">learning_rate</span>
+<a id="__codelineno-0-33" name="__codelineno-0-33" href="#__codelineno-0-33"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">epochs</span> <span class="o">=</span> <span class="n">n_epochs</span>
+<a id="__codelineno-0-34" name="__codelineno-0-34" href="#__codelineno-0-34"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">batch_size</span> <span class="o">=</span> <span class="n">batch_size</span>
+<a id="__codelineno-0-35" name="__codelineno-0-35" href="#__codelineno-0-35"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">w</span> <span class="o">=</span> <span class="kc">None</span>
+<a id="__codelineno-0-36" name="__codelineno-0-36" href="#__codelineno-0-36"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">b</span> <span class="o">=</span> <span class="kc">None</span>
+<a id="__codelineno-0-37" name="__codelineno-0-37" href="#__codelineno-0-37"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">epoch_record</span> <span class="o">=</span> <span class="p">[]</span>
+<a id="__codelineno-0-38" name="__codelineno-0-38" href="#__codelineno-0-38"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">acc_record</span> <span class="o">=</span> <span class="p">[]</span>
 <a id="__codelineno-0-39" name="__codelineno-0-39" href="#__codelineno-0-39"></a>
-<a id="__codelineno-0-40" name="__codelineno-0-40" href="#__codelineno-0-40"></a>                <span class="k">if</span> <span class="n">error</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-<a id="__codelineno-0-41" name="__codelineno-0-41" href="#__codelineno-0-41"></a>                    <span class="n">correct_nums</span> <span class="o">+=</span> <span class="mi">1</span>
-<a id="__codelineno-0-42" name="__codelineno-0-42" href="#__codelineno-0-42"></a>            <span class="n">acc</span> <span class="o">=</span> <span class="n">correct_nums</span> <span class="o">/</span> <span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-<a id="__codelineno-0-43" name="__codelineno-0-43" href="#__codelineno-0-43"></a>            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Epoch: </span><span class="si">{</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s2"> / </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">epochs</span><span class="si">}</span><span class="s2"> - Acc: </span><span class="si">{</span><span class="n">acc</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
-<a id="__codelineno-0-44" name="__codelineno-0-44" href="#__codelineno-0-44"></a>
-<a id="__codelineno-0-45" name="__codelineno-0-45" href="#__codelineno-0-45"></a>            <span class="k">if</span> <span class="n">correct_nums</span> <span class="o">==</span> <span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]:</span>
-<a id="__codelineno-0-46" name="__codelineno-0-46" href="#__codelineno-0-46"></a>                <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Finish at epoch </span><span class="si">{</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s2">. Final Acc: </span><span class="si">{</span><span class="n">acc</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
-<a id="__codelineno-0-47" name="__codelineno-0-47" href="#__codelineno-0-47"></a>                <span class="k">return</span>
+<a id="__codelineno-0-40" name="__codelineno-0-40" href="#__codelineno-0-40"></a>    <span class="k">def</span><span class="w"> </span><span class="nf">predict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">):</span>
+<a id="__codelineno-0-41" name="__codelineno-0-41" href="#__codelineno-0-41"></a><span class="w">        </span><span class="sd">"""X: (m, 3) batch matrix, returns output matrix (m,)"""</span>
+<a id="__codelineno-0-42" name="__codelineno-0-42" href="#__codelineno-0-42"></a>        <span class="k">return</span> <span class="mi">1</span> <span class="o">/</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="p">(</span><span class="n">X</span> <span class="o">@</span> <span class="bp">self</span><span class="o">.</span><span class="n">w</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">b</span><span class="p">)))</span>
+<a id="__codelineno-0-43" name="__codelineno-0-43" href="#__codelineno-0-43"></a>
+<a id="__codelineno-0-44" name="__codelineno-0-44" href="#__codelineno-0-44"></a>    <span class="k">def</span><span class="w"> </span><span class="nf">loss</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+<a id="__codelineno-0-45" name="__codelineno-0-45" href="#__codelineno-0-45"></a><span class="w">        </span><span class="sd">"""向量化交叉熵损失"""</span>
+<a id="__codelineno-0-46" name="__codelineno-0-46" href="#__codelineno-0-46"></a>        <span class="n">y_pred</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">clip</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X</span><span class="p">),</span> <span class="mf">1e-15</span><span class="p">,</span> <span class="mi">1</span> <span class="o">-</span> <span class="mf">1e-15</span><span class="p">)</span> <span class="c1"># 防止log无意义</span>
+<a id="__codelineno-0-47" name="__codelineno-0-47" href="#__codelineno-0-47"></a>        <span class="k">return</span> <span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">y</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">y_pred</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">y</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">y_pred</span><span class="p">))</span>
 <a id="__codelineno-0-48" name="__codelineno-0-48" href="#__codelineno-0-48"></a>
-<a id="__codelineno-0-49" name="__codelineno-0-49" href="#__codelineno-0-49"></a>        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Finish at epoch </span><span class="si">{</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s2">. Final Acc: </span><span class="si">{</span><span class="n">acc</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
-<a id="__codelineno-0-50" name="__codelineno-0-50" href="#__codelineno-0-50"></a>
-<a id="__codelineno-0-51" name="__codelineno-0-51" href="#__codelineno-0-51"></a><span class="n">model</span> <span class="o">=</span> <span class="n">Perceptron</span><span class="p">(</span><span class="n">n_epochs</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
-<a id="__codelineno-0-52" name="__codelineno-0-52" href="#__codelineno-0-52"></a><span class="nb">print</span><span class="p">(</span><span class="s2">"Example 1 - and func"</span><span class="p">)</span>
-<a id="__codelineno-0-53" name="__codelineno-0-53" href="#__codelineno-0-53"></a><span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">Y_and</span><span class="p">)</span>
-<a id="__codelineno-0-54" name="__codelineno-0-54" href="#__codelineno-0-54"></a><span class="nb">print</span><span class="p">(</span><span class="s2">"</span><span class="se">\n</span><span class="s2">-------------------</span><span class="se">\n</span><span class="s2">"</span><span class="p">)</span>
-<a id="__codelineno-0-55" name="__codelineno-0-55" href="#__codelineno-0-55"></a><span class="nb">print</span><span class="p">(</span><span class="s2">"Example 2 - or func"</span><span class="p">)</span>
-<a id="__codelineno-0-56" name="__codelineno-0-56" href="#__codelineno-0-56"></a><span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">Y_or</span><span class="p">)</span>
-<a id="__codelineno-0-57" name="__codelineno-0-57" href="#__codelineno-0-57"></a><span class="nb">print</span><span class="p">(</span><span class="s2">"</span><span class="se">\n</span><span class="s2">-------------------</span><span class="se">\n</span><span class="s2">"</span><span class="p">)</span>
-<a id="__codelineno-0-58" name="__codelineno-0-58" href="#__codelineno-0-58"></a><span class="nb">print</span><span class="p">(</span><span class="s2">"Example 3 - xor func"</span><span class="p">)</span>
-<a id="__codelineno-0-59" name="__codelineno-0-59" href="#__codelineno-0-59"></a><span class="n">model2</span> <span class="o">=</span> <span class="n">Perceptron</span><span class="p">(</span><span class="n">n_epochs</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
-<a id="__codelineno-0-60" name="__codelineno-0-60" href="#__codelineno-0-60"></a><span class="n">model2</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">Y_xor</span><span class="p">)</span>
-</code></pre></div></p>
-<p>最后xor的例子里，50轮正确率一直是0，这与之前的理论相吻合</p>
-<h2 id="_6">扩展阅读<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
-<ul>
-<li>"The Perceptron — A Perceiving and Recognizing Automaton" (Rosenblatt 1957)</li>
-<li>"Perceptrons" (Marvin Minsky / Seymour A. Papert)</li>
-<li><a href="https://www.yuque.com/qx2io/blz6hd/kuqdhoh4p4wgirey">语雀文档 感知器</a></li>
-</ul>
+<a id="__codelineno-0-49" name="__codelineno-0-49" href="#__codelineno-0-49"></a>    <span class="k">def</span><span class="w"> </span><span class="nf">fit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X_df</span><span class="p">):</span>
+<a id="__codelineno-0-50" name="__codelineno-0-50" href="#__codelineno-0-50"></a>        <span class="c1"># 一次性提取 numpy 矩阵，后续全部向量化运算</span>
+<a id="__codelineno-0-51" name="__codelineno-0-51" href="#__codelineno-0-51"></a>        <span class="n">X</span> <span class="o">=</span> <span class="n">X_df</span><span class="p">[</span><span class="n">feature_cols</span><span class="p">]</span><span class="o">.</span><span class="n">values</span> <span class="c1"># (n,3)</span>
+<a id="__codelineno-0-52" name="__codelineno-0-52" href="#__codelineno-0-52"></a>        <span class="n">y</span> <span class="o">=</span> <span class="n">X_df</span><span class="p">[</span><span class="s2">"Survived"</span><span class="p">]</span><span class="o">.</span><span class="n">values</span> <span class="c1"># (n,1)</span>
+<a id="__codelineno-0-53" name="__codelineno-0-53" href="#__codelineno-0-53"></a>        <span class="n">n</span> <span class="o">=</span> <span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<a id="__codelineno-0-54" name="__codelineno-0-54" href="#__codelineno-0-54"></a>
+<a id="__codelineno-0-55" name="__codelineno-0-55" href="#__codelineno-0-55"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">w</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span> <span class="c1"># (3,)</span>
+<a id="__codelineno-0-56" name="__codelineno-0-56" href="#__codelineno-0-56"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">b</span> <span class="o">=</span> <span class="mf">0.0</span>
+<a id="__codelineno-0-57" name="__codelineno-0-57" href="#__codelineno-0-57"></a>
+<a id="__codelineno-0-58" name="__codelineno-0-58" href="#__codelineno-0-58"></a>        <span class="k">for</span> <span class="n">epoch</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">epochs</span><span class="p">):</span>
+<a id="__codelineno-0-59" name="__codelineno-0-59" href="#__codelineno-0-59"></a>            <span class="k">if</span> <span class="n">DEBUG</span> <span class="ow">and</span> <span class="p">(</span><span class="n">epoch</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">%</span> <span class="mi">10</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+<a id="__codelineno-0-60" name="__codelineno-0-60" href="#__codelineno-0-60"></a>                <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"In epochs </span><span class="si">{</span><span class="n">epoch</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+<a id="__codelineno-0-61" name="__codelineno-0-61" href="#__codelineno-0-61"></a>
+<a id="__codelineno-0-62" name="__codelineno-0-62" href="#__codelineno-0-62"></a>            <span class="bp">self</span><span class="o">.</span><span class="n">epoch_record</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">epoch</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+<a id="__codelineno-0-63" name="__codelineno-0-63" href="#__codelineno-0-63"></a>            <span class="n">correct</span> <span class="o">=</span> <span class="mi">0</span>
+<a id="__codelineno-0-64" name="__codelineno-0-64" href="#__codelineno-0-64"></a>
+<a id="__codelineno-0-65" name="__codelineno-0-65" href="#__codelineno-0-65"></a>            <span class="k">for</span> <span class="n">start</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">batch_size</span><span class="p">):</span>
+<a id="__codelineno-0-66" name="__codelineno-0-66" href="#__codelineno-0-66"></a>                <span class="n">end</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">start</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">batch_size</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span>
+<a id="__codelineno-0-67" name="__codelineno-0-67" href="#__codelineno-0-67"></a>                <span class="n">X_batch</span> <span class="o">=</span> <span class="n">X</span><span class="p">[</span><span class="n">start</span><span class="p">:</span><span class="n">end</span><span class="p">]</span> <span class="c1"># (m,3)</span>
+<a id="__codelineno-0-68" name="__codelineno-0-68" href="#__codelineno-0-68"></a>                <span class="n">y_batch</span> <span class="o">=</span> <span class="n">y</span><span class="p">[</span><span class="n">start</span><span class="p">:</span><span class="n">end</span><span class="p">]</span> <span class="c1"># (m,1)</span>
+<a id="__codelineno-0-69" name="__codelineno-0-69" href="#__codelineno-0-69"></a>                <span class="n">m</span> <span class="o">=</span> <span class="n">end</span> <span class="o">-</span> <span class="n">start</span>  <span class="c1"># 当前 batch 的样本数</span>
+<a id="__codelineno-0-70" name="__codelineno-0-70" href="#__codelineno-0-70"></a>
+<a id="__codelineno-0-71" name="__codelineno-0-71" href="#__codelineno-0-71"></a>                <span class="c1"># 向量化前向 + 准确率统计</span>
+<a id="__codelineno-0-72" name="__codelineno-0-72" href="#__codelineno-0-72"></a>                <span class="n">y_pred</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_batch</span><span class="p">)</span> <span class="c1"># (m,)</span>
+<a id="__codelineno-0-73" name="__codelineno-0-73" href="#__codelineno-0-73"></a>                <span class="n">correct</span> <span class="o">+=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">y_pred</span><span class="p">)</span> <span class="o">==</span> <span class="n">y_batch</span><span class="p">)</span> <span class="c1"># batch中正确的总量</span>
+<a id="__codelineno-0-74" name="__codelineno-0-74" href="#__codelineno-0-74"></a>
+<a id="__codelineno-0-75" name="__codelineno-0-75" href="#__codelineno-0-75"></a>                <span class="c1"># 向量化梯度 + 更新</span>
+<a id="__codelineno-0-76" name="__codelineno-0-76" href="#__codelineno-0-76"></a>                <span class="n">error</span> <span class="o">=</span> <span class="n">y_pred</span> <span class="o">-</span> <span class="n">y_batch</span> <span class="c1"># (m,)</span>
+<a id="__codelineno-0-77" name="__codelineno-0-77" href="#__codelineno-0-77"></a>                <span class="bp">self</span><span class="o">.</span><span class="n">w</span> <span class="o">-=</span> <span class="bp">self</span><span class="o">.</span><span class="n">lr</span> <span class="o">*</span> <span class="p">(</span><span class="n">X_batch</span><span class="o">.</span><span class="n">T</span> <span class="o">@</span> <span class="n">error</span><span class="p">)</span> <span class="o">/</span> <span class="n">m</span> <span class="c1"># 括号内是(3,)对应w的shape</span>
+<a id="__codelineno-0-78" name="__codelineno-0-78" href="#__codelineno-0-78"></a>                <span class="bp">self</span><span class="o">.</span><span class="n">b</span> <span class="o">-=</span> <span class="bp">self</span><span class="o">.</span><span class="n">lr</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">error</span><span class="p">)</span> <span class="c1"># batch中error向量的均值，就是求和再平均</span>
+<a id="__codelineno-0-79" name="__codelineno-0-79" href="#__codelineno-0-79"></a>
+<a id="__codelineno-0-80" name="__codelineno-0-80" href="#__codelineno-0-80"></a>            <span class="bp">self</span><span class="o">.</span><span class="n">acc_record</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">correct</span> <span class="o">/</span> <span class="n">n</span><span class="p">)</span>
+<a id="__codelineno-0-81" name="__codelineno-0-81" href="#__codelineno-0-81"></a>
+<a id="__codelineno-0-82" name="__codelineno-0-82" href="#__codelineno-0-82"></a>    <span class="k">def</span><span class="w"> </span><span class="nf">test</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X_df</span><span class="p">,</span> <span class="n">y_df</span><span class="p">):</span>
+<a id="__codelineno-0-83" name="__codelineno-0-83" href="#__codelineno-0-83"></a><span class="w">        </span><span class="sd">'''X_df: test set, return a acc rate'''</span>
+<a id="__codelineno-0-84" name="__codelineno-0-84" href="#__codelineno-0-84"></a>        <span class="n">X</span> <span class="o">=</span> <span class="n">X_df</span><span class="p">[</span><span class="n">feature_cols</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
+<a id="__codelineno-0-85" name="__codelineno-0-85" href="#__codelineno-0-85"></a>        <span class="n">y</span> <span class="o">=</span> <span class="n">y_df</span><span class="p">[</span><span class="s2">"Survived"</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
+<a id="__codelineno-0-86" name="__codelineno-0-86" href="#__codelineno-0-86"></a>        <span class="n">n</span> <span class="o">=</span> <span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<a id="__codelineno-0-87" name="__codelineno-0-87" href="#__codelineno-0-87"></a>
+<a id="__codelineno-0-88" name="__codelineno-0-88" href="#__codelineno-0-88"></a>        <span class="n">y_pred</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+<a id="__codelineno-0-89" name="__codelineno-0-89" href="#__codelineno-0-89"></a>        <span class="n">correct</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">y_pred</span><span class="p">)</span> <span class="o">==</span> <span class="n">y</span><span class="p">)</span>
+<a id="__codelineno-0-90" name="__codelineno-0-90" href="#__codelineno-0-90"></a>        <span class="k">return</span> <span class="n">correct</span> <span class="o">/</span> <span class="n">n</span>
+<a id="__codelineno-0-91" name="__codelineno-0-91" href="#__codelineno-0-91"></a>
+<a id="__codelineno-0-92" name="__codelineno-0-92" href="#__codelineno-0-92"></a>
+<a id="__codelineno-0-93" name="__codelineno-0-93" href="#__codelineno-0-93"></a><span class="n">model</span> <span class="o">=</span> <span class="n">LogisticRegression</span><span class="p">(</span><span class="n">learning_rate</span><span class="o">=</span><span class="mf">0.005</span><span class="p">,</span> <span class="n">n_epochs</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">64</span><span class="p">)</span>
+<a id="__codelineno-0-94" name="__codelineno-0-94" href="#__codelineno-0-94"></a><span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">)</span>
+<a id="__codelineno-0-95" name="__codelineno-0-95" href="#__codelineno-0-95"></a><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">epoch_record</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">acc_record</span><span class="p">)</span>
+<a id="__codelineno-0-96" name="__codelineno-0-96" href="#__codelineno-0-96"></a><span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">"Acc curve"</span><span class="p">)</span>
+<a id="__codelineno-0-97" name="__codelineno-0-97" href="#__codelineno-0-97"></a><span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">"Epochs"</span><span class="p">)</span>
+<a id="__codelineno-0-98" name="__codelineno-0-98" href="#__codelineno-0-98"></a><span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">"Acc rate"</span><span class="p">)</span>
+<a id="__codelineno-0-99" name="__codelineno-0-99" href="#__codelineno-0-99"></a><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div>
 
 
 
@@ -3020,7 +3139,7 @@ w_{\hat{y}} &amp;\leftarrow w_{\hat{y}} - \eta \cdot x
     <span class="md-icon" title="最后更新">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2026年7月8日 09:59:20 UTC">2026年7月8日</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2026年9月5日 09:28:25 UTC">2026年9月5日</span>
   </span>
 
     
@@ -3030,7 +3149,7 @@ w_{\hat{y}} &amp;\leftarrow w_{\hat{y}} - \eta \cdot x
     <span class="md-icon" title="创建日期">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14.47 15.08 11 13V7h1.5v5.25l3.08 1.83c-.41.28-.79.62-1.11 1m-1.39 4.84c-.36.05-.71.08-1.08.08-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8c0 .37-.03.72-.08 1.08.69.1 1.33.32 1.92.64.1-.56.16-1.13.16-1.72 0-5.5-4.5-10-10-10S2 6.5 2 12s4.47 10 10 10c.59 0 1.16-.06 1.72-.16-.32-.59-.54-1.23-.64-1.92M18 15v3h-3v2h3v3h2v-3h3v-2h-3v-3z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2026年6月14日 12:29:45 UTC">2026年6月14日</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2026年9月5日 09:28:25 UTC">2026年9月5日</span>
   </span>
 
     
