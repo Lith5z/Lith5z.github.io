@@ -110,6 +110,9 @@ nav:
       - 行列式: Math/3B1B_linear_algebra/determinant.md
       - 秩: Math/3B1B_linear_algebra/rank.md
       - 特征向量与特征值: Math/3B1B_linear_algebra/eigen_value.md
+    - 其他:
+      - 矩阵理论: Math/matrix_theory.md
+      - 矩阵微积分: Math/matrix_calculus.md
   - 编程:
     - 从C到C++: Code/C2CPP.md
     - 从C到Python: Code/python.md
