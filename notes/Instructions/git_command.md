@@ -4,7 +4,10 @@ date: 2026-06-16
 tags: [教程]
 ---
 
-## 准备
+# 准备
+
+可以先去github上创建空仓库
+
 git init
 初始化仓库
 首先确保命令行已经切换到目标路径
@@ -18,12 +21,12 @@ git remote add <这里写想设置的仓库的名字> <这里写地址>
 
 初始化 .gitignore 文件
 
-## 基础命令
+# 基础命令
 本地工作区 -> 暂存区 -> 本地仓库 -> 云端仓库
 
 git add -> git commit -> git push
 
-### git add
+## git add
 将文件的更改（新增、修改或删除）从工作区添加到暂存区，为随后的提交做准备
 
 git add .
@@ -35,7 +38,7 @@ git add .gitignore
 git restore --staged README.md
 从暂存区中移除文件
 
-### git commit
+## git commit
 git commit -m "Commit Message"
 将暂存区的文件提交到本地仓库
 如果不写 -m 参数，则打开默认编辑器来填写message
@@ -48,7 +51,7 @@ git commit --amend
 git commit --amend -m "Commit Message"
 修改上一次的提交记录
 
-### git push
+## git push
 git push -u <仓库名> <分支名>
 例如 git push -u origin main
 
@@ -56,7 +59,7 @@ git push -u <仓库名> <分支名>
 
 云端仓库 -> 本地仓库
 
-### git clone
+## git clone
 git clone <目标仓库地址> <可选：指定克隆到的目标目录>
 例如 git clone https://github.com/njuer/NJU-CPL.git
 上面这个命令会克隆完整的仓库副本
@@ -67,12 +70,12 @@ git clone -b preview https://github.com/njuer/NJU-CPL.git
 git clone --depth=1 https://github.com/njuer/NJU-CPL.git
 克隆最近的提交记录（浅克隆）
 
-### git pull/git fetch
+## git pull/git fetch
 从远程仓库获取最新的更改，并将这些更改合并到本地仓库的命令
 
 它是 git fetch 和 git merge 的组合操作。git fetch 拉取远程仓库的更改到本地，但并不自动合并；git merge 是将远程分支的更改合并到当前分支
 
-## 其他命令
+# 其他命令
 git log
 查看提交历史
 
@@ -85,9 +88,9 @@ git restore linked-list/joseph.c
 git restore --staged linked-list/joseph.c
 撤销已暂存的更改
 
-## 不同工作流解析
+# 不同pr工作流解析
 
-### 基于merge
+## 基于merge
 
 1. 在github fork别人的仓库
 2. git clone到本地
@@ -101,4 +104,4 @@ git restore --staged linked-list/joseph.c
 
 有时候第四步我会改成先暂存，删了现在的分支，更新main再创建，会干净些
 
-### 基于rebase
+## 基于rebase

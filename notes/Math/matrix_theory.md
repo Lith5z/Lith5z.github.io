@@ -14,7 +14,21 @@ $A^H = \overline{A^T}$ 共轭转置，对于实矩阵 $A^H=A^T$
 
 正交矩阵 $A^T A=I$；酉矩阵 $A^H A=I$
 
-奇异值 $\sigma_i = \sqrt{\lambda_i(A^H A)} = \sqrt{\lambda_i(A A^H)}$
+## 奇异值
+
+奇异值定义为
+
+$$\sigma_i = \sqrt{\lambda_i(A^H A)} = \sqrt{\lambda_i(A A^H)}$$
+
+即矩阵 $A^H A$ 的特征值开根
+
+行列式绝对值等于奇异值的乘积，即
+
+$$|\text{det}(A)| = \prod_i \sigma_i$$
+
+上式对 $A^H A$ 取行列式，再利用 $\text{det} = \prod_i |\lambda_i|$ 即得
+
+注意，当 $A$ 是对称矩阵时，才有 $\sigma_i = |\lambda_i|$
 
 ## 向量范数
 

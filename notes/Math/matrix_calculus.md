@@ -82,6 +82,8 @@ $$\nabla \nabla^T = \begin{bmatrix} \frac{\partial^2}{\partial x_1^2} & \cdots &
 
 ## 矩阵和向量的求导
 
+相关内容，关于二阶导在多元函数的推广可见[[Hessian矩阵]]
+
 ### 定义
 
 下面约定所有向量都是列向量
