@@ -70,7 +70,7 @@ plugins:
 
 nav:
   - 主页: index.md
-  - AI:
+  - 课程:
     - CS188 人工智能导论:
       - CS188 概述: AI/algorithms_intro/CS188_main.md
       - 搜索算法: AI/algorithms_intro/search_algorithm.md
@@ -87,11 +87,6 @@ nav:
       - HMM 前向算法: AI/algorithms_intro/HMM_forward.md
       - HMM 粒子滤波: AI/algorithms_intro/HMM_particleFiltering.md
       - 机器学习: AI/algorithms_intro/ML.md
-    - 机器学习:
-      - 机器学习 概述: AI/machine_learning/ML_main.md
-      - 感知器: AI/machine_learning/perceptron.md
-      - 线性回归: AI/machine_learning/linear_regression.md
-      - 逻辑回归: AI/machine_learning/logistic_regression.md
     - 3B1B 深度学习:
       - 3B1B 深度学习 概述: AI/3B1B_deep_learning/3b1b_main.md
       - 多层感知器 MLP: AI/3B1B_deep_learning/3b1b_MLP.md
@@ -100,7 +95,6 @@ nav:
       - 嵌入和解嵌入: AI/3B1B_deep_learning/3b1b_embedding.md
       - 注意力机制: AI/3B1B_deep_learning/3b1b_attention.md
       - MLP in GPT: AI/3B1B_deep_learning/3b1b_MLP_GPT.md
-  - 数学:
     - 3B1B 线性代数:
       - 3B1B 线性代数 概述: Math/3B1B_linear_algebra/main.md
       - 向量: Math/3B1B_linear_algebra/vector.md
@@ -110,9 +104,26 @@ nav:
       - 行列式: Math/3B1B_linear_algebra/determinant.md
       - 秩: Math/3B1B_linear_algebra/rank.md
       - 特征向量与特征值: Math/3B1B_linear_algebra/eigen_value.md
-    - 其他:
-      - 矩阵理论: Math/matrix_theory.md
-      - 矩阵微积分: Math/matrix_calculus.md
+  - AI:
+    - 机器学习:
+      - 机器学习 概述: AI/machine_learning/ML_main.md
+      - 感知器: AI/machine_learning/perceptron.md
+      - 线性回归: AI/machine_learning/linear_regression.md
+      - 逻辑回归: AI/machine_learning/logistic_regression.md
+    - 深度学习基础:
+      - 深度学习 概述: AI/deep_learning_basic/DL_main.md
+      - 多层感知器: AI/deep_learning_basic/MLP.md
+      - 激活函数: AI/deep_learning_basic/activation_func.md
+      - 优化器 SGD: AI/deep_learning_basic/optimizer1.md
+      - 优化器 自适应: AI/deep_learning_basic/optimizer2.md
+      - 损失函数: AI/deep_learning_basic/loss_func.md
+      - 学习率调度器: AI/deep_learning_basic/lr_scheduler.md
+      - 参数初始化: AI/deep_learning_basic/paras_init.md
+      - 归一化: AI/deep_learning_basic/normalization.md
+      - 正则化: AI/deep_learning_basic/regularization.md
+  - 数学:
+    - 矩阵理论: Math/matrix_theory.md
+    - 矩阵微积分: Math/matrix_calculus.md
   - 编程:
     - 编程 概述: Code/code_main.md
     - 语法:
