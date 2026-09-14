@@ -114,12 +114,16 @@ nav:
       - 矩阵理论: Math/matrix_theory.md
       - 矩阵微积分: Math/matrix_calculus.md
   - 编程:
-    - 从C到C++: Code/C2CPP.md
-    - 从C到Python: Code/python.md
-    - Numpy库: Code/numpy.md
-    - Pandas库: Code/pandas.md
-    - Matplotlib库: Code/matplotlib.md
-    - 滑动窗口: Code/sliding_window.md
+    - 编程 概述: Code/code_main.md
+    - 语法:
+      - 从C到C++: Code/C2CPP.md
+      - 从C到Python: Code/python.md
+      - Numpy库: Code/numpy.md
+      - Pandas库: Code/pandas.md
+      - Matplotlib库: Code/matplotlib.md
+      - PyTorch库: Code/pytorch.md
+    - 数据结构和算法:
+      - 滑动窗口: Code/sliding_window.md
   - 博客:
     - 260816_为什么PyTorch的默认初始化不是Kaiming/设置参数sqrt5: Blog/why_pytorch_use_sqrt5_for_init_260816.md
   - 使用:
