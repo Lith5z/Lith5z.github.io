@@ -16,12 +16,18 @@ import torch
 
 tensor类包装了梯度等训练需要的信息，和np数组的使用基本一致
 
-创建时的参数`.requires_grad`
-bool，决定pytorch是否要对这个张量构建运算图，从而自动求导
-
 `.shape` `.dtype` `.device`
 
 `.item()` 转为标量
+
+### grad
+
+创建时的参数`.requires_grad`
+bool，决定pytorch是否要对这个张量构建运算图，从而自动微分
+
+`.backward()`只能对标量函数使用，虽然向量对向量的导数数学上的存在的
+
+grad默认会自动累积
 
 ### 创建
 
@@ -31,6 +37,8 @@ tensor1 = torch.tensor([[1, 2, 3],
 ```
 
 `torch.zeros()` `torch.ones()` `torch.randn` 传入shape创建
+
+带有`_like`后缀的版本可以创建同样shape的
 
 ### 变形
 
@@ -48,6 +56,17 @@ x.flatten(1)  # 从第1维开始展平
 3. tensor：需要transforms实例化一个ToTensor类，再调用
 
 注意，PIL和np的shape都是HWC，数据范围是[0,255]；而tensor是CHW，范围是[0,1]；三者都可以通过[][][]来访问某个像素的值
+
+### 内存问题
+
+对于张量，如果执行`Y=Y+X`，其实会进行内存分配（计算Y + X，为结果分配新的内存，然后使Y指向内存中的这个新位置）
+
+为了避免这个问题，可以
+
+- `Y += X`
+- `Y[:] = Y + X`
+
+这两个都是原地操作
 
 ## Dataset
 

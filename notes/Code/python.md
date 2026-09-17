@@ -10,6 +10,9 @@ tags: [编程]
 
 来自于[爆肝杰哥 Python基础](https://www.bilibili.com/video/BV1K14y1c75e)
 
+使用`print(dir())`和`help()`，来解决没见过的函数/类
+~~有了AI真的还有人会用吗~~
+
 ## 基本变量类型
 
 str int float bool

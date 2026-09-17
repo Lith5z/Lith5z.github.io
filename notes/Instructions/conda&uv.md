@@ -6,7 +6,26 @@ tags: [编程]
 
 # conda
 
-cls 清屏
+我本来使用cmd命令行，后来换成了powershell7，不能直接输入conda命令，会提示conda init
+
+但是conda init之后，只要打开pwsh就会加载conda环境，打开速度慢了3-4s
+
+所以改为做以下初始化（先如果`conda init powershell`了要先`conda init --reverse powershell`）
+
+打开pwsh输入`notepad $PROFILE`
+
+添加
+```powershell
+function Load-Conda {
+    if (Test-Path "你的Anaconda安装路径\Scripts\conda.exe") {
+        (& "你的Anaconda安装路径\Scripts\conda.exe" "shell.powershell" "hook") | Out-String | ?{$_} | Invoke-Expression
+    }
+    conda @args
+}
+Set-Alias conda Load-Conda
+```
+
+这样输入conda相关命令的时候会自动加载
 
 ## 虚拟环境
 
@@ -45,17 +64,13 @@ setx UV_CACHE_DIR D:\uv-cache
 
 （否则默认在C盘，如果项目跨盘的话，uv的hardlink机制会失败，会复制一份一模一样的包在项目的`.venv`下）
 
-## 虚拟环境
-
-### init
+## 虚拟环境的init&venv
 
 init会配置git和readme等文件，在当前目录创建一个my-project文件夹
 
 uv init my-project -p 3.12
 
-### venv
-
-只创建环境
+venv只创建环境
 
 uv venv my-env -p 3.11      # 指定环境名字和python版本
 
