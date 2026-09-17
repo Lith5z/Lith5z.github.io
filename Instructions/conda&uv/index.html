@@ -3417,7 +3417,20 @@
 
 
 <h1 id="conda">conda<a class="headerlink" href="#conda" title="Permanent link">&para;</a></h1>
-<p>cls 清屏</p>
+<p>我本来使用cmd命令行，后来换成了powershell7，不能直接输入conda命令，会提示conda init</p>
+<p>但是conda init之后，只要打开pwsh就会加载conda环境，打开速度慢了3-4s</p>
+<p>所以改为做以下初始化（先如果<code>conda init powershell</code>了要先<code>conda init --reverse powershell</code>）</p>
+<p>打开pwsh输入<code>notepad $PROFILE</code></p>
+<p>添加
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="k">function</span> <span class="n">Load-Conda</span> <span class="p">{</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>    <span class="k">if</span> <span class="p">(</span><span class="nb">Test-Path</span> <span class="s2">"你的Anaconda安装路径\Scripts\conda.exe"</span><span class="p">)</span> <span class="p">{</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>        <span class="p">(&amp;</span> <span class="s2">"你的Anaconda安装路径\Scripts\conda.exe"</span> <span class="s2">"shell.powershell"</span> <span class="s2">"hook"</span><span class="p">)</span> <span class="p">|</span> <span class="nb">Out-String</span> <span class="p">|</span> <span class="p">?{</span><span class="nv">$_</span><span class="p">}</span> <span class="p">|</span> <span class="nb">Invoke-Expression</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>    <span class="p">}</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>    <span class="n">conda</span> <span class="nv">@args</span>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="p">}</span>
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="nb">Set-Alias</span> <span class="n">conda</span> <span class="n">Load-Conda</span>
+</code></pre></div></p>
+<p>这样输入conda相关命令的时候会自动加载</p>
 <h2 id="_1">虚拟环境<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
 <p>conda env list //列出当前所有的虚拟环境
 conda create -n &lt;环境名&gt; python=3.10.2 //创建虚拟环境，默认在conda的安装路径下
@@ -3431,53 +3444,51 @@ pip install &lt;库名&gt;==&lt;版本号&gt; (-i <URL>)</p>
 <p>// pytorch不能直接这样安装，去官网匹配自己GPU的版本，需要自己GPU的CUDA版本 大于等于 pytorch的cuda版本；也要匹配python版本</p>
 <h1 id="uv">uv<a class="headerlink" href="#uv" title="Permanent link">&para;</a></h1>
 <p>使用</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>.venv\Scripts\activate
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>.venv\Scripts\activate
 </code></pre></div>
 <p>来激活虚拟环境</p>
 <h2 id="_3">安装后配置<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
 <p>修改环境变量，把uv下载的包缓存在D盘</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="n">setx</span> <span class="n">UV_CACHE_DIR</span> <span class="n">D</span><span class="p">:\</span><span class="n">uv-cache</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="n">setx</span> <span class="n">UV_CACHE_DIR</span> <span class="n">D</span><span class="p">:\</span><span class="n">uv-cache</span>
 </code></pre></div>
 <p>（否则默认在C盘，如果项目跨盘的话，uv的hardlink机制会失败，会复制一份一模一样的包在项目的<code>.venv</code>下）</p>
-<h2 id="_4">虚拟环境<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
-<h3 id="init">init<a class="headerlink" href="#init" title="Permanent link">&para;</a></h3>
+<h2 id="initvenv">虚拟环境的init&amp;venv<a class="headerlink" href="#initvenv" title="Permanent link">&para;</a></h2>
 <p>init会配置git和readme等文件，在当前目录创建一个my-project文件夹</p>
 <p>uv init my-project -p 3.12</p>
-<h3 id="venv">venv<a class="headerlink" href="#venv" title="Permanent link">&para;</a></h3>
-<p>只创建环境</p>
+<p>venv只创建环境</p>
 <p>uv venv my-env -p 3.11      # 指定环境名字和python版本</p>
-<h2 id="_5">包管理<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
+<h2 id="_4">包管理<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
 <p>uv add # 为项目加包
 uv pip install # 添加一些临时的包的时候，不会记录在pyproject</p>
 <p>uv sync # 如果有一个uv的项目，直接sync即可配置好环境（如果需要复现旧环境 加上 --frozen）</p>
 <p>uv pip freeze &gt; requirements.txt</p>
 <h2 id="pyprojecttoml">pyproject.toml<a class="headerlink" href="#pyprojecttoml" title="Permanent link">&para;</a></h2>
 <p>配置清华源
-<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>[[tool.uv.index]]
-<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>url = "https://pypi.tuna.tsinghua.edu.cn/simple"
-<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>default = true
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>[[tool.uv.index]]
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>url = "https://pypi.tuna.tsinghua.edu.cn/simple"
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>default = true
 </code></pre></div></p>
 <p>下载torch时注意，默认只会下载cpu版本，需要从官网找到版本，手动添加
-<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>[[tool.uv.index]]
-<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>name = "pytorch-cu132"
-<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>url = "https://download.pytorch.org/whl/cu132"
-<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>explicit = true
-<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>
-<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>[tool.uv.sources]
-<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a>torch = { index = "pytorch-cu132" }
-<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a>torchvision = { index = "pytorch-cu132" }
-<a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a>torchaudio = { index = "pytorch-cu132" }
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>[[tool.uv.index]]
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>name = "pytorch-cu132"
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>url = "https://download.pytorch.org/whl/cu132"
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>explicit = true
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>
+<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a>[tool.uv.sources]
+<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a>torch = { index = "pytorch-cu132" }
+<a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a>torchvision = { index = "pytorch-cu132" }
+<a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a>torchaudio = { index = "pytorch-cu132" }
 </code></pre></div></p>
-<h1 id="_6">其他<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h1>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">torch</span>
-<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>
-<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="k">if</span> <span class="n">torch</span><span class="o">.</span><span class="n">cuda</span><span class="o">.</span><span class="n">is_available</span><span class="p">():</span>
-<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"PyTorch version: </span><span class="si">{</span><span class="n">torch</span><span class="o">.</span><span class="n">__version__</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
-<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"CUDA version: </span><span class="si">{</span><span class="n">torch</span><span class="o">.</span><span class="n">version</span><span class="o">.</span><span class="n">cuda</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
-<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"GPU count: </span><span class="si">{</span><span class="n">torch</span><span class="o">.</span><span class="n">cuda</span><span class="o">.</span><span class="n">device_count</span><span class="p">()</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
-<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Current GPU: </span><span class="si">{</span><span class="n">torch</span><span class="o">.</span><span class="n">cuda</span><span class="o">.</span><span class="n">get_device_name</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
-<a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a><span class="k">else</span><span class="p">:</span>
-<a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">"No CUDA device detected."</span><span class="p">)</span>
+<h1 id="_5">其他<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h1>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">torch</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="k">if</span> <span class="n">torch</span><span class="o">.</span><span class="n">cuda</span><span class="o">.</span><span class="n">is_available</span><span class="p">():</span>
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"PyTorch version: </span><span class="si">{</span><span class="n">torch</span><span class="o">.</span><span class="n">__version__</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"CUDA version: </span><span class="si">{</span><span class="n">torch</span><span class="o">.</span><span class="n">version</span><span class="o">.</span><span class="n">cuda</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"GPU count: </span><span class="si">{</span><span class="n">torch</span><span class="o">.</span><span class="n">cuda</span><span class="o">.</span><span class="n">device_count</span><span class="p">()</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+<a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Current GPU: </span><span class="si">{</span><span class="n">torch</span><span class="o">.</span><span class="n">cuda</span><span class="o">.</span><span class="n">get_device_name</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+<a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a><span class="k">else</span><span class="p">:</span>
+<a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">"No CUDA device detected."</span><span class="p">)</span>
 </code></pre></div>
 
 
@@ -3501,7 +3512,7 @@ uv pip install # 添加一些临时的包的时候，不会记录在pyproject</p
     <span class="md-icon" title="最后更新">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2026年9月9日 11:43:13 UTC">2026年9月9日</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2026年9月17日 12:58:41 UTC">2026年9月17日</span>
   </span>
 
     

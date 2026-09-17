@@ -2751,6 +2751,17 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#grad" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        grad
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#_1" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2777,6 +2788,17 @@
     <span class="md-ellipsis">
       
         读取图片
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        内存问题
       
     </span>
   </a>
@@ -2845,7 +2867,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
+  <a href="#_5" class="md-nav__link">
     <span class="md-ellipsis">
       
         连接层
@@ -2890,7 +2912,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
+  <a href="#_6" class="md-nav__link">
     <span class="md-ellipsis">
       
         手动初始化
@@ -2901,7 +2923,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
+  <a href="#_7" class="md-nav__link">
     <span class="md-ellipsis">
       
         其他
@@ -2917,7 +2939,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_7" class="md-nav__link">
+  <a href="#_8" class="md-nav__link">
     <span class="md-ellipsis">
       
         损失函数&amp;反向传播
@@ -2972,7 +2994,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_8" class="md-nav__link">
+  <a href="#_9" class="md-nav__link">
     <span class="md-ellipsis">
       
         一个完整示例
@@ -2983,7 +3005,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_9" class="md-nav__link">
+  <a href="#_10" class="md-nav__link">
     <span class="md-ellipsis">
       
         保存和加载
@@ -3582,6 +3604,17 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#grad" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        grad
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#_1" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -3608,6 +3641,17 @@
     <span class="md-ellipsis">
       
         读取图片
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        内存问题
       
     </span>
   </a>
@@ -3676,7 +3720,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
+  <a href="#_5" class="md-nav__link">
     <span class="md-ellipsis">
       
         连接层
@@ -3721,7 +3765,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
+  <a href="#_6" class="md-nav__link">
     <span class="md-ellipsis">
       
         手动初始化
@@ -3732,7 +3776,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
+  <a href="#_7" class="md-nav__link">
     <span class="md-ellipsis">
       
         其他
@@ -3748,7 +3792,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_7" class="md-nav__link">
+  <a href="#_8" class="md-nav__link">
     <span class="md-ellipsis">
       
         损失函数&amp;反向传播
@@ -3803,7 +3847,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_8" class="md-nav__link">
+  <a href="#_9" class="md-nav__link">
     <span class="md-ellipsis">
       
         一个完整示例
@@ -3814,7 +3858,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_9" class="md-nav__link">
+  <a href="#_10" class="md-nav__link">
     <span class="md-ellipsis">
       
         保存和加载
@@ -3950,15 +3994,19 @@
 <h2 id="tensor">tensor张量<a class="headerlink" href="#tensor" title="Permanent link">&para;</a></h2>
 <p><code>torch.tensor</code></p>
 <p>tensor类包装了梯度等训练需要的信息，和np数组的使用基本一致</p>
-<p>创建时的参数<code>.requires_grad</code>
-bool，决定pytorch是否要对这个张量构建运算图，从而自动求导</p>
 <p><code>.shape</code> <code>.dtype</code> <code>.device</code></p>
 <p><code>.item()</code> 转为标量</p>
+<h3 id="grad">grad<a class="headerlink" href="#grad" title="Permanent link">&para;</a></h3>
+<p>创建时的参数<code>.requires_grad</code>
+bool，决定pytorch是否要对这个张量构建运算图，从而自动微分</p>
+<p><code>.backward()</code>只能对标量函数使用，虽然向量对向量的导数数学上的存在的</p>
+<p>grad默认会自动累积</p>
 <h3 id="_1">创建<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">tensor1</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span>
 <a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>                        <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">]])</span>
 </code></pre></div>
 <p><code>torch.zeros()</code> <code>torch.ones()</code> <code>torch.randn</code> 传入shape创建</p>
+<p>带有<code>_like</code>后缀的版本可以创建同样shape的</p>
 <h3 id="_2">变形<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="c1"># (B, 3, 32, 32) -&gt; (B, 3072)，下面的三个写法均可</span>
 <a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="n">x</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="c1"># 要求内存连续，更快些</span>
@@ -3972,6 +4020,14 @@ bool，决定pytorch是否要对这个张量构建运算图，从而自动求导
 <li>tensor：需要transforms实例化一个ToTensor类，再调用</li>
 </ol>
 <p>注意，PIL和np的shape都是HWC，数据范围是[0,255]；而tensor是CHW，范围是[0,1]；三者都可以通过[][][]来访问某个像素的值</p>
+<h3 id="_4">内存问题<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
+<p>对于张量，如果执行<code>Y=Y+X</code>，其实会进行内存分配（计算Y + X，为结果分配新的内存，然后使Y指向内存中的这个新位置）</p>
+<p>为了避免这个问题，可以</p>
+<ul>
+<li><code>Y += X</code></li>
+<li><code>Y[:] = Y + X</code></li>
+</ul>
+<p>这两个都是原地操作</p>
 <h2 id="dataset">Dataset<a class="headerlink" href="#dataset" title="Permanent link">&para;</a></h2>
 <p><code>from torch.utils.data import Dataset</code></p>
 <p>创建自己的数据集，需要重载下面的函数：</p>
@@ -4126,7 +4182,7 @@ bool，决定pytorch是否要对这个张量构建运算图，从而自动求导
 </ul>
 <p>forward方法是对<code>()</code>的重载，之后可以直接写<code>output = model(input)</code></p>
 <p>实例化的模型可以直接print，查看模型的结构</p>
-<h3 id="_4">连接层<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
+<h3 id="_5">连接层<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
 <ul>
 <li><code>Linear</code> 等线性层<ul>
 <li><code>in_features</code> <code>out_features</code></li>
@@ -4189,7 +4245,7 @@ bool，决定pytorch是否要对这个张量构建运算图，从而自动求导
 <blockquote>
 <p>这可能不是标准的Kaiming初始化。如果是ReLU激活函数，这里的分布应该再乘增益 根号2，而pytorch默认没有，导致<code>nn.Linear</code>默认初始化的权重标准差只有针对ReLU的标准Kaiming初始化的40%左右。浅层网络的影响不大，对于<strong>深层网络，需要自行设置正确的gain数值</strong>。</p>
 </blockquote>
-<h4 id="_5">手动初始化<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
+<h4 id="_6">手动初始化<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h4>
 <p>不同的激活函数需要不同的初始化公式，pytorch的做法是提供一个增益因子gain</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="n">gain</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">init</span><span class="o">.</span><span class="n">calculate_gain</span><span class="p">(</span>
 <a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a>    <span class="s2">"leaky_relu"</span><span class="p">,</span> <span class="mf">0.2</span>
@@ -4241,11 +4297,11 @@ bool，决定pytorch是否要对这个张量构建运算图，从而自动求导
 <a id="__codelineno-13-36" name="__codelineno-13-36" href="#__codelineno-13-36"></a>        <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
 <a id="__codelineno-13-37" name="__codelineno-13-37" href="#__codelineno-13-37"></a>        <span class="k">return</span> <span class="n">x</span>
 </code></pre></div>
-<h4 id="_6">其他<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h4>
+<h4 id="_7">其他<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h4>
 <p>对于<strong>SELU激活函数</strong>有个“自归一化”的特性，只要保证输入权重的方差等于<code>1 / fan_in</code>，网络输出自动保持均值为0、方差为1。这就要求gain为1，但是pytorch给SELU默认的gain是3/4，目的是“牺牲归一化效果，以换取矩形层中更稳定的梯度流”</p>
 <p>所以如果需要复刻SELU论文中的效果，请自行传入<code>nonlinearity='linear'</code>让gain为1</p>
 <p>另外，Kaiming初始化的fan_in和fan_out默认<strong>矩阵的转置</strong>乘法，即x @ w.T。如果自己实现线性层需要注意，使用<code>nn.Linear</code>无所谓这个</p>
-<h3 id="_7">损失函数&amp;反向传播<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
+<h3 id="_8">损失函数&amp;反向传播<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
 <ul>
 <li>nn.MSELoss</li>
 <li>nn.CrossEntropyLoss （注意这个会对输入进行softmax，所以模型输出最后一步不需要加一个softmax）</li>
@@ -4340,7 +4396,7 @@ bool，决定pytorch是否要对这个张量构建运算图，从而自动求导
 <li>数据X,y（原始数据集或者从loader中取出）</li>
 <li>实例化的model</li>
 </ul>
-<h2 id="_8">一个完整示例<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h2>
+<h2 id="_9">一个完整示例<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h2>
 <p>对CIFAR10数据集进行分类，网络是简单的MLP，添加了两个Dropout层防止过拟合，AdamW+余弦退火</p>
 <p>在50个Epoch之后，训练集准确率47.53%，测试集准确率48.56%</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="sd">"""</span>
@@ -4547,7 +4603,7 @@ bool，决定pytorch是否要对这个张量构建运算图，从而自动求导
 <a id="__codelineno-18-202" name="__codelineno-18-202" href="#__codelineno-18-202"></a><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">"__main__"</span><span class="p">:</span>
 <a id="__codelineno-18-203" name="__codelineno-18-203" href="#__codelineno-18-203"></a>    <span class="n">main</span><span class="p">()</span>
 </code></pre></div>
-<h2 id="_9">保存和加载<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h2>
+<h2 id="_10">保存和加载<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h2>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a><span class="n">torch</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">model</span><span class="p">,</span><span class="s2">"1.pth"</span><span class="p">)</span> <span class="c1"># 完整保存</span>
 <a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a><span class="n">torch</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">state_dict</span><span class="p">(),</span><span class="s2">"2.pth"</span><span class="p">)</span> <span class="c1"># 只保存参数，优先</span>
 <a id="__codelineno-19-3" name="__codelineno-19-3" href="#__codelineno-19-3"></a><span class="c1"># 对应1</span>
@@ -4607,7 +4663,7 @@ bool，决定pytorch是否要对这个张量构建运算图，从而自动求导
     <span class="md-icon" title="最后更新">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2026年9月14日 12:22:32 UTC">2026年9月14日</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2026年9月17日 12:58:41 UTC">2026年9月17日</span>
   </span>
 
     
