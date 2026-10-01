@@ -114,4 +114,4 @@ criterion = nn.CrossEntropyLoss()
 loss = criterion(logits, target.long())
 ```
 
-特别注意，**在使用pytorch的交叉熵时，输入的是logits而不是概率**，所以定义模型结构的时候**最后一层不需要添加**`nn.Softmax(dim=-1)`
+特别注意，**在使用pytorch的交叉熵时，输入的是logits而不是概率**，所以定义模型结构的时候**最后一层不需要添加**`nn.Softmax(dim=-1)`（具体可见[[逻辑回归]]）

@@ -142,6 +142,16 @@ $$df = \text{tr}\left(\frac{\partial f}{\partial Y}^T dY\right) = \text{tr}\left
 
 综合上述的运算法则，可以解决数量值函数对向量/矩阵的导数问题
 
+### 常用导数表
+
+尽管可以自己写出微分求导，但是还是需要记忆
+
+- $\nabla_x Ax = A^T$
+- $\nabla_x x^T A = A$
+- $\nabla_x x^T A x = (A + A^T)x$
+- $\nabla_x ||x||^2 = \nabla_x x^T x = 2x$
+- $\nabla_X ||X||_F^2 = 2X$
+
 ## 扩展阅读
 
 1. [nabla算子 与梯度、散度、旋度](https://www.bilibili.com/video/BV1a541127cX)

@@ -8,16 +8,27 @@ tags: [ML, 线性回归, AI]
 
 最简单的机器学习模型，用于回归问题，下面以单特征的线性回归为例
 
+从神经网络的视角来看，单特征的线性回归就是一个无隐藏层的网络，输出层只有一个神经元
+
 ## 输出
+
+对于一条有d个特征的样本 $x \in \R^d$，对应一个同样d维权重向量
 
 $$\hat y = w^T x + b$$
 
-- $w$和$x$都是向量
-- 做点积得到的结果是标量
+- $w$和$x$都是向量，$b$为标量
+- 结果$\hat y$是标量
+
+如果把n条样本（dataloader里n取batch_size，dataset里是总样本数）并为一个矩阵 $X \in \R^{n \times d}$，每个行向量是一个样本
+
+$$\hat y = X w + b$$
+
+- $b$数学上是向量，但是往往是标量广播得到
+- 结果$\hat y \in \R^n$是向量
 
 ## 计算损失
 
-和[[感知器]]中的用于分类的离散的输出不同，线性回归的输出是连续的。所以前者我们用正确的比例来衡量模型的准确性，后者需要一个损失函数
+和[[感知器]]中的用于分类的离散的输出不同，线性回归的输出是**连续的**。所以前者我们用正确的比例来衡量模型的准确性，后者需要一个[[损失函数]]
 
 所有的损失函数，都是以模型的权重为自变量，以数据集为参数的函数，输出结果是一个反映准确性的标量
 
@@ -37,7 +48,14 @@ $$MSE = \frac{1}{n} \sum (\hat y - y)^2$$
 
 紧接着更新权重就变成了一个**最优化问题**，让损失函数取得最小值的权重正确率最高
 
-> 其实不完全是，因为损失函数最小值对应的权重是可以通过解析方法直接得到的，只是对于大数据量，解析方法的开销可能会很大，而优化迭代方法可行性更高。
+$$\argmax_{w,b} L(w,b)$$
+
+> 对于线性回归，损失函数MSE是凸函数，上式可以直接解出全局最优解
+> 
+> $$ w = (X^T X)^{-1} X^T y $$
+> 
+> 大数据量的情况下，解析方法的开销可能会很大，而优化迭代方法可行性更高。
+> 具体推导可见[[Hessian矩阵]]中关于最小二乘的内容。
 
 最通用的优化方法是梯度下降，计算损失函数的负梯度得到最小值的方向
 
@@ -57,17 +75,7 @@ $$w \leftarrow w - \eta \cdot \nabla_w L$$
 
 $$b \leftarrow b - \eta \cdot \nabla_b L$$
 
-## 多项式回归
-
-现实中很多关系不是直线，可以把原始输入向量 $x$ 映射到一组新特征
-
-$$\phi(x) = [1, x, x^2, ..., x^n]$$
-
-然后仍然做线性回归
-
-$$ \hat y = w^T \phi(x) + b = b + w_1 x + w_2 x^2 + \cdots + w_n x^n $$
-
-## 多特征
+### 矩阵的情况
 
 约定样本矩阵 $\mathbf{X}\in\mathbb{R}^{N\times d}$，标签 $\mathbf{y}\in\mathbb{R}^N$，权重 $\mathbf{w}\in\mathbb{R}^d$
  
@@ -85,27 +93,9 @@ $$\frac{\partial L}{\partial w_k} = 2\sum_{i=1}^N \left(\sum_j X_{ij}w_j - y_i\r
 
 $$\frac{\partial L}{\partial \mathbf{w}} = 2\mathbf{X}^\mathsf{T}(\mathbf{X}\mathbf{w} - \mathbf{y}) \in \mathbb{R}^d$$
 
-## 扩展话题
+这就是写成矩阵形式的梯度
 
-### 评估模型 R²
-
-在数据标签的量纲不同时，MSE值不能作为评估模型准确性的依据
-
-这时需要用 $R^2$ 来评估
-
-$$ R^2 = 1 - \frac{\sum (\hat y_i - y_i)^2}{\sum (y_i - \bar y)^2} $$
-
-$R^2 = 1$ 表示完美拟合，$R^2 = 0$ 表示和猜均值一样差，$R^2 < 0$ 表示比猜均值还差
-
-### 闭式解
-
-对于线性回归，损失函数MSE是凸函数，可以直接解出全局最优解
-
-$$ w = (X^T X)^{-1} X^T y $$
-
-在数据量小时（$n < 10^4$ 左右），直接使用上述公式，不需要迭代训练
-
-### 特征标准化
+## 特征标准化
 
 梯度下降要求各特征的数值范围相近，但是得到的数据，各个特征的尺度很可能不同
 
@@ -123,113 +113,87 @@ $$\nabla_w L = \frac{2}{n} \sum_{i=1}^{n} (\hat y_i - y_i) \, x_i$$
 
 $$ x' = \frac{x - \mu}{\sigma} $$
 
+## 参考资料
+
+1. [动手学深度学习 线性回归](https://zh-v2.d2l.ai/chapter_linear-networks/linear-regression.html)
+
 ## 代码实现
 
-下面以泰坦尼克号幸存者数据集为例，我用pandas手写了一个简单的线性回归，大概能到80%左右的准确率
-
-特别注意：预测生存与否是个分类问题，应该使用逻辑回归，我这里强行用线性回归，结果只能说能跑...还有很多地方都处理的很烂，仅供参考
+根据动手学深度学习的线性回归例子简单实现了一下，玩具性质的。使用PyTorch框架而不是自己动手写
 
 ```py
-import numpy as np
-import pandas as pd
-import matplotlib.pyplot as plt
+import torch
+from torch import nn, optim
 
-DEBUG = False
+N = 1000
+BATCH_SIZE = 10
+LR = 0.01
+EPOCHS = 5
 
-# PassengerId Survived Pclass Name Sex Age SibSp Parch Ticket Fare Cabin Embarked
-X_train = pd.read_csv("D:\\dataset\\titanic\\train.csv") # 891 samples
-X_test = pd.read_csv("D:\\dataset\\titanic\\test.csv") # 418 samples
-y_test = pd.read_csv("D:\\dataset\\titanic\\gender_submission.csv")
+true_w = torch.tensor([2.0, -3.4])
+true_b = 4.2
+device = torch.device("cuda")
 
-# 打算只对Pclass(int) Sex(str) Age(int)进行拟合，需要对Sex处理一下
-# female -> -1, male -> 1
-X_train["Sex"] = [ -1 if string == "female" else 1 for string in X_train["Sex"] ]
-X_test["Sex"] = [ -1 if string == "female" else 1 for string in X_test["Sex"] ]
 
-# Age有大约20%缺失项，做一下填充
-X_train["Age"] = X_train["Age"].fillna(X_train["Age"].median())
+class LinearData(torch.utils.data.Dataset):
+    def __init__(self, w, b, N):
+        super().__init__()
+        self.features, self.labels = self.data_generation(w, b, N)
+    def __getitem__(self, index):
+        return self.features[index], self.labels[index]
+    def __len__(self):
+        return self.features.shape[0]
 
-# 特征标准化（三个参数的范围差距很大，Age的范围最大，但是没有理由确定Age能主导梯度下降）
-feature_cols = ["Pclass", "Sex", "Age"]
-mean = X_train[feature_cols].mean()
-std = X_train[feature_cols].std()
-X_train[feature_cols] = (X_train[feature_cols] - mean) / std
+    @staticmethod
+    def data_generation(w, b, N):
+        """
+        return tuple (X,y)
+        X: tensor shaped (N,d), sample matrix
+        y: tensor shaped (N), label vector
+        which N is num of samples, d is num of features
+        using y = Xw + b + epsilon
+        """
+        X = torch.normal(0, 1, (N, len(w)))  # real data
+        y = X @ w + b  # real label
+        y += torch.normal(0, 0.1, y.shape)  # +noise
+        return X, y.reshape((-1, 1))  # nn.linear输出(N,1)
 
-class LinearRegression:
-    def __init__(self, learning_rate=0.01, n_epochs=100, batch_size = 20 ,delta=0.0001):
-        self.lr = learning_rate
-        self.epochs = n_epochs
-        self.batch_size = batch_size
-        self.delta = delta
-        self.w = None
-        self.b = None
-        self.epoch_record = []
-        self.acc_record = []
 
-    def predict(self, x):
-        '''x is one sample, returns raw continuous value'''
-        x_extracted = np.array([x["Pclass"], x["Sex"], x["Age"]])
-        return x_extracted @ self.w + self.b
-    
-    def loss(self, X : pd.DataFrame):
-        '''MSE loss'''
-        result = 0
-        for i in range(X["PassengerId"].size):
-            result += (self.predict(X.iloc[i]) - X.iloc[i]["Survived"]) ** 2
-        return result / X["PassengerId"].size
+class DataLoader(torch.utils.data.DataLoader):
+    def __init__(self, dataset, batch_size, shuffle=True):
+        super().__init__(dataset=dataset, batch_size=batch_size, shuffle=shuffle)
 
-    # 这里是纯粹数值计算的梯度，但是对于MSE这样简单的损失函数，可以直接写出解析式的
-    def w_grad(self, X : pd.DataFrame):
-        result = np.zeros(3) # w_Pclass w_Sex w_Age
-        for i in range(3):
-            self.w[i] += self.delta
-            changed = self.loss(X)
-            self.w[i] -= self.delta
-            result[i] = (changed - self.loss(X)) / self.delta
-        return result
-    def b_grad(self, X):
-        self.b += self.delta
-        changed = self.loss(X)
-        self.b -= self.delta
-        return (changed - self.loss(X)) / self.delta
 
-    def fit(self, X):
-        self.w = np.zeros(3) # w_Pclass w_Sex w_Age
-        self.b = 0
-        size = X["PassengerId"].size
-        for i in range(self.epochs):
-            if DEBUG: print(f"In epochs {i+1}")
-            self.epoch_record.append(i+1)
-            correct_nums = 0
-            batch = 0
-            for p in range(int(size / self.batch_size) + 1):
-                if batch + self.batch_size <= size:
-                    upper = batch + self.batch_size
-                else:
-                    upper = size
+class LinearModel(nn.Module):
+    def __init__(self):
+        super().__init__()
+        self.model = nn.Linear(2, 1)
 
-                # 统计参数更新前的正确个数
-                for j in range(batch, upper):
-                    y_pred = self.predict(X.iloc[j])
-                    if X.iloc[j]["Survived"] == np.round(y_pred):
-                        correct_nums += 1
+    def forward(self, x):
+        x = self.model(x)
+        return x
 
-                # 更新参数
-                w_grad = self.w_grad(X.loc[batch : upper])
-                b_grad = self.b_grad(X.loc[batch : upper])
-                self.w -= self.lr * w_grad
-                self.b -= self.lr * b_grad
 
-                batch += self.batch_size
+dataset = LinearData(true_w, true_b, N)
+data_loader = DataLoader(dataset, batch_size=BATCH_SIZE)
 
-            self.acc_record.append(correct_nums / size)
+model = LinearModel().to(device)
+criterion = nn.MSELoss()
+optimizer = optim.SGD(model.parameters(), LR)
 
-    def test(self, X, y):
-        pass
+for epoch in range(EPOCHS):
+    cur_loss = 0
+    for X, y in data_loader:
+        X, y = X.to(device), y.to(device)
+        optimizer.zero_grad()
+        y_pred = model(X)
+        loss = criterion(y_pred, y)
+        loss.backward()
+        optimizer.step()
 
-model = LinearRegression(n_epochs=100)
-model.fit(X_train)
-fig1 = plt.figure()
-plt.plot(model.epoch_record, model.acc_record)
-plt.show()
+        cur_loss += loss.item() * BATCH_SIZE
+    print(f"Epochs:{epoch + 1}, Loss:{(cur_loss / N):.3f}")
+
+for name, param in model.named_parameters():
+    print(f"{name}:\n{param.detach().cpu()}")
 ```

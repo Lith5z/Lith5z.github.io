@@ -112,7 +112,7 @@ class MyData(Dataset):
     def __getitem__(self, index): # 就是重载[]
         img_name = self.img_path[index]
         img_item_path = os.path.join(self.root_dir, self.label_dir, img_name) # 拼接为完整的图片路径
-        img  = Image.open(img_item_path)
+        img = Image.open(img_item_path)
         label = self.label_dir # 标签正好是文件夹名
         return img, label
     def __len__(self):
@@ -276,7 +276,7 @@ forward方法是对`()`的重载，之后可以直接写`output = model(input)`
 ```py
 class Test(nn.Module):
     def __init__(self):
-        super(Test, self).__init__()
+        super().__init__()
         self.model = nn.Sequential(
             nn.Conv2d(1, 20, 5),
             nn.ReLU(),
@@ -326,7 +326,7 @@ def reset_parameters(self) -> None:
 
 > 这可能不是标准的Kaiming初始化。如果是ReLU激活函数，这里的分布应该再乘增益 根号2，而pytorch默认没有，导致`nn.Linear`默认初始化的权重标准差只有针对ReLU的标准Kaiming初始化的40%左右。浅层网络的影响不大，对于**深层网络，需要自行设置正确的gain数值**。
 
-#### 手动初始化
+### 手动初始化
 
 不同的激活函数需要不同的初始化公式，pytorch的做法是提供一个增益因子gain
 
@@ -386,7 +386,7 @@ class EasyMLP(nn.Module):
         return x
 ```
 
-#### 其他
+其他
 
 对于**SELU激活函数**有个“自归一化”的特性，只要保证输入权重的方差等于`1 / fan_in`，网络输出自动保持均值为0、方差为1。这就要求gain为1，但是pytorch给SELU默认的gain是3/4，目的是“牺牲归一化效果，以换取矩形层中更稳定的梯度流”
 
@@ -507,218 +507,6 @@ scheduler = SequentialLR(
 
 - 数据X,y（原始数据集或者从loader中取出）
 - 实例化的model
-
-## 一个完整示例
-
-对CIFAR10数据集进行分类，网络是简单的MLP，添加了两个Dropout层防止过拟合，AdamW+余弦退火
-
-在50个Epoch之后，训练集准确率47.53%，测试集准确率48.56%
-
-```py
-"""
-一个简单的MLP
-"""
-
-import os
-
-# 解决 matplotlib 与 PyTorch 的 OpenMP 运行时冲突
-os.environ["KMP_DUPLICATE_LIB_OK"] = "TRUE"
-
-import matplotlib.pyplot as plt
-import torch
-import torch.nn as nn
-import torch.optim as optim
-from torch.utils.data import DataLoader
-from torchvision import datasets, transforms
-
-# 固定种子、设备
-torch.manual_seed(42)
-device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-
-# 超参数
-BATCH_SIZE = 128
-LEARNING_RATE = 0.001
-EPOCHS = 50
-
-# CIFAR-10 数据集的均值和标准差
-CIFAR10_MEAN = (0.4914, 0.4822, 0.4465)
-CIFAR10_STD = (0.2023, 0.1994, 0.2010)
-
-# 类别名称
-CLASSES = (
-    "airplane",
-    "automobile",
-    "bird",
-    "cat",
-    "deer",
-    "dog",
-    "frog",
-    "horse",
-    "ship",
-    "truck",
-)
-
-# 测试集和训练集的数据增强需要分开
-train_transforms = transforms.Compose(
-    [
-        transforms.RandomCrop(32, padding=4),
-        transforms.RandomHorizontalFlip(),
-        transforms.ColorJitter(brightness=0.2, contrast=0.2, saturation=0.2, hue=0.1),
-        transforms.ToTensor(),  # tensor shape (3,32,32) CHW
-        transforms.Normalize(CIFAR10_MEAN, CIFAR10_STD),
-        transforms.Lambda(lambda x: x.flatten()),
-    ]
-)
-test_transforms = transforms.Compose(
-    [
-        transforms.ToTensor(),
-        transforms.Normalize(CIFAR10_MEAN, CIFAR10_STD),  # 这个均值和标准差是全局的
-        transforms.Lambda(lambda x: x.flatten()),
-    ]
-)
-# 数据集和加载器
-trainset = datasets.CIFAR10(
-    "D:\\dataset", train=True, transform=train_transforms, download=False
-)
-testset = datasets.CIFAR10(
-    "D:\\dataset", train=False, transform=test_transforms, download=False
-)
-trainloader = DataLoader(
-    trainset, batch_size=BATCH_SIZE, shuffle=True, num_workers=0, pin_memory=True
-)
-# 测试集没必要shuffle
-testloader = DataLoader(
-    testset, batch_size=BATCH_SIZE * 2, shuffle=False, num_workers=0, pin_memory=True
-)
-
-
-# 模型
-class EasyMLP(nn.Module):
-    def __init__(self):
-        super().__init__()
-        self.model = nn.Sequential(
-            nn.Linear(3072, 512),
-            nn.ReLU(),
-            nn.Dropout(0.3),
-            nn.Linear(512, 256),
-            nn.ReLU(),
-            nn.Dropout(0.4),
-            nn.Linear(256, 10),
-            # 不加softmax，因为交叉熵损失自带
-        )
-
-    def forward(self, x):
-        x = self.model(x)
-        return x
-
-
-def train_epoch(model, trainloader, criterion, optimizer):
-    """训练一个epoch，返回avg loss和acc"""
-    current_loss = 0.0
-    correct = 0
-    total = 0
-
-    model.train()
-    for data, label in trainloader:
-        data, label = data.to(device), label.to(device)
-        optimizer.zero_grad()
-        output = model(data)  # output tensor shape (N,10)
-        loss = criterion(output, label)
-        loss.backward()
-        optimizer.step()
-
-        batch_size = label.size(0)
-        total += batch_size
-        # loss.item() 是 batch 内平均 loss，乘 batch_size 恢复总和
-        current_loss += loss.item() * batch_size
-
-        # predicted tensor shape (N)
-        # label tensor shape (N)
-        _, predicted = output.max(1)  # 按照dim=1取max，输出(value,indices)
-
-        # bool tensor -> tensor shape (1) -> int
-        correct += predicted.eq(label).sum().item()
-
-    return current_loss / total, correct / total
-
-
-def test(model, testloader, criterion):
-    """测试整个测试集，返回avg loss和acc"""
-    current_loss = 0.0
-    correct = 0
-    total = 0
-
-    model.eval()
-    with torch.no_grad():
-        for data, label in testloader:
-            data, label = data.to(device), label.to(device)
-            batch_size = label.size(0)
-            total += batch_size
-            output = model(data)
-            # loss.item() 是 batch 内平均 loss，乘 batch_size 恢复总和
-            current_loss += criterion(output, label).item() * batch_size
-            _, predicted = output.max(1)
-            correct += predicted.eq(label).sum().item()
-
-    return current_loss / total, correct / total
-
-
-def main():
-    print(f"设备：{device}")
-
-    print(f"训练集数量：{trainset.__len__()}")
-    print(f"测试集数量：{testset.__len__()}")
-
-    model = EasyMLP().to(device)
-    criterion = nn.CrossEntropyLoss()
-    optimizer = optim.AdamW(model.parameters(), lr=LEARNING_RATE, weight_decay=1e-4)
-    scheduler = optim.lr_scheduler.CosineAnnealingLR(optimizer, T_max=EPOCHS)
-    print("模型结构：")
-    print(model)
-
-    # 训练
-    train_loss, train_acc = [], []
-    for epoch in range(1, EPOCHS + 1):
-        loss, acc = train_epoch(model, trainloader, criterion, optimizer)
-        train_loss.append(loss)
-        train_acc.append(acc)
-
-        # 每个 epoch 结束后步进 scheduler
-        scheduler.step()
-
-        print(
-            f"Epoch:{epoch:3d}/{EPOCHS} | Loss:{loss:.4f} | Acc:{acc:.4f} | LR:{scheduler.get_last_lr()[0]:.6f}"
-        )
-
-    # 测试
-    test_loss, test_acc = test(model, testloader, criterion)
-    print(f"\n测试集  Loss:{test_loss:.4f}  Acc:{test_acc:.4f}")
-
-    # 绘图并保存
-    fig, (ax_loss, ax_acc) = plt.subplots(1, 2, figsize=(14, 5))
-    epochs_range = range(1, EPOCHS + 1)
-
-    # 左图：Loss
-    ax_loss.plot(epochs_range, train_loss, color="tab:red")
-    ax_loss.set_xlabel("Epoch")
-    ax_loss.set_ylabel("Loss")
-    ax_loss.set_title("Training Loss")
-    ax_loss.grid(True, alpha=0.3)
-    # 右图：Accuracy
-    ax_acc.plot(epochs_range, train_acc, color="tab:blue")
-    ax_acc.set_xlabel("Epoch")
-    ax_acc.set_ylabel("Accuracy")
-    ax_acc.set_title("Training Accuracy")
-    ax_acc.grid(True, alpha=0.3)
-
-    fig.suptitle("CIFAR-10 MLP Training")
-    fig.tight_layout()
-    plt.savefig("CIFAR10_MLP_training.png", dpi=150)
-
-
-if __name__ == "__main__":
-    main()
-```
 
 ## 保存和加载
 

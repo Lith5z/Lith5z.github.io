@@ -6,146 +6,111 @@ tags: [ML, 逻辑回归, AI]
 
 # 逻辑回归 Logistic Regression
 
-在线性回归的基础之上增加一个sigmoid函数，并换用交叉熵作为损失函数
+多分类逻辑回归又称softmax回归
 
-用于解决分类问题，下面先介绍二分类
+在[[线性回归]]的基础之上增加一个softmax函数（二分类退化为sigmoid），并换用交叉熵作为损失函数
+
+从神经网络的视角来看，逻辑回归就是一个无隐藏层的网络，输出层的神经元数量和类别数相等
+
+<figure>
+  <img src="/assets/images/machine_learning/NN_softmax_pic.webp" alt="NN_softmax_pic" />
+</figure>
 
 ## 输出
 
-$$z = w^T x + b$$
+对于其中的一个类别来说，就相当于线性回归，原始输出的范围是任意的，称为logits
 
-$$\hat y = \sigma(z)$$
+要将得到分类的概率，我们必须保证输出非负的且总和为1，这就需要把原始输出 $z$ 映射到概率的区间 $[0,1]$ 上，这一步使用softmax
 
-其中 $\sigma$ 是sigmoid，表达式为
+对于**一条样本** $x\in\mathbb{R}^{1\times d}$，多分类逻辑回归先计算所有类别的 logits
 
-$$\sigma(z) = \frac{1}{1 + e^{-z}}$$
+$$z=xW+b$$
 
-图像是
+- 权重矩阵 $W\in\mathbb{R}^{d\times K}$（理解为从特征到类别的线性变换）
+- 每个输出神经元都有自己的偏置，故**偏置是向量** $b\in\mathbb{R}^{1\times K}$
+- 因此 $z\in\mathbb{R}^{1\times K}$，第 $k$ 个元素 $z_k$ 就是第 $k$ 类的 logit
 
-<figure>
-  <img src="/assets/images/machine_learning/sigmoid_pic.webp" alt="sigmoid_pic" />
-</figure>
+经过 softmax 后，第 $k$ 类的概率为
 
-因为目的是分类，需要最后的结果是二元变量01，或者分为某类的概率
+$$\hat y_k=\frac{e^{z_k}}{\sum_{j=1}^K e^{z_j}}$$
 
-这就需要把线性回归的原始输出 $z$ 映射到集合 $\{0,1\}$ 或者区间 $[0,1]$ 上，其中前者的函数不连续，没法通过梯度下降进行训练
+如果写成矩阵形式，那么**一个 batch** 组成的样本 $X \in \mathbb{R}^{n \times d}$
 
-sigmoid作为激活函数，有下面的好处：
+$$Z = XW + b$$
 
-- 输出范围是 $(0,1)$，符合概率分布
-- $z=0$ 是分界线，分出正类和负类
-- 处处可导，而且导数比较简单
+$$\hat Y = \text{softmax}(Z)$$
+
+- 因为 $XW \in \mathbb{R}^{n \times K}$，这里会在维度0上对 $b$ 进行广播
+- $\hat Y \in \mathbb{R}^{n \times K}$，每一行是一条样本的各个类别的概率，故 softmax 是逐行进行计算的
 
 ## 损失
 
-与线性回归不同，逻辑回归的损失函数是交叉熵损失
+在线性回归中，线性输出配合MSE损失时，如果以模型参数为自变量，损失函数是凸函数，因此可以通过梯度下降找到全局最优解
 
-在线性回归里，MSE+线性输出得到的损失函数，如果以参数为自变量，是凸函数，这确保能收敛到全局最优
+逻辑回归使用交叉熵作为损失函数（可见[[似然估计]]），搭配softmax，又得到一个凸函数
 
-但是MSE+线性输出+sigmoid得到的函数是非凸的，把MSE换为交叉熵损失，又回到了凸函数
+设第 $i$ 个样本的真实标签为 one-hot 向量 $\boldsymbol{y}_i$，模型输出的概率向量为 $\hat{\boldsymbol{y}}_i$，则**单个样本**的损失为
 
-$$J(\theta) = -\frac{1}{n} \sum_{i=1}^n [y_i \log(\hat y) + (1-y_i) \log(1 - \hat y)] $$
+$$J_i=-\sum_{k=1}^K y_{ik}\log(\hat y_{ik})$$
 
-交叉熵损失的推导可见[[似然估计]]
+- $y_{ik}$ 是第 $i$ 个样本是否属于第 $k$ 类
+- $\hat y_{ik}$ 是模型预测第 $i$ 个样本属于第 $k$ 类的概率
 
-被求和的部分有两项，在二分类问题里，标签 $y_i$ 只有0/1两个取值，所以对每个样本而言，只剩下一项对数项
+因为 one-hot 标签中只有真实类别对应的元素为1，其余元素为0，所以实际上每个样本的损失只保留真实类别对应的一项。假设第 $i$ 个样本属于第 $c$ 类，那么
 
-假设 $y_i=1$，那么只剩下 $\log(\hat y)$，预测标签 $\hat y$ 越接近1，损失越接近0；如果越接近0，损失会趋于无穷大
+$$J_i=-\log(\hat y_{ic})$$
 
-## 梯度
+预测真实类别的概率 $\hat y_{ic}$ 越接近1，损失越接近0；如果这个概率越接近0，损失会趋于无穷大。因此，交叉熵会迫使模型不仅预测正确，还要对正确类别保持较高的置信度
 
-接下来推导 $\nabla_w J$
+代入softmax，得到最后的表达式
 
-sigmoid的导数性质是显然的
+$$J_i =-\log\left( \frac{e^{z_{ic}}} {\sum_{j=1}^K e^{z_{ij}}} \right) =-z_{ic}+\log\left(\sum_{j=1}^K e^{z_{ij}}\right)$$
 
-$$\sigma'(z) = \sigma(z)(1-\sigma(z)) = \hat y (1 - \hat y)$$
+可以看到，对于样本 $x_i$ 的正确类 $z_{ic}$，softmax的指数部分和交叉熵的对数部分相互抵消了，只剩下一个logits；第二项则是一个log-sum-exp形式
 
-对单个样本 $(x_i, y_i)$，用链式法则
+实际计算时会再结合softmax的平移不变性，可以避免指数运算造成数值溢出
 
-$$\frac{\partial J_i}{\partial w}
-= \frac{\partial J_i}{\partial \hat y_i} \cdot \frac{\partial \hat y_i}{\partial z_i} \cdot \frac{\partial z_i}{\partial w}$$
+这也是PyTorch中使用逻辑回归时，不需要在模型最后添加`nn.Softmax(dim=-1)`的原因：直接将 logits 传给`nn.CrossEntropyLoss()`即可，该损失函数内部会以数值稳定的方式完成log-softmax和交叉熵的计算
 
-逐项计算
+对包含 $n$ 个样本的**batch**，取平均，得到总体损失，其他部分同理
 
-$$\frac{\partial J_i}{\partial \hat y_i}
-= -\left( \frac{y_i}{\hat y_i} - \frac{1-y_i}{1-\hat y_i} \right)
-= \frac{\hat y_i - y_i}{\hat y_i (1-\hat y_i)}$$
-
-$$\frac{\partial \hat y_i}{\partial z_i} = \sigma'(z_i) = \hat y_i (1-\hat y_i)$$
-
-$$\frac{\partial z_i}{\partial w} = x_i$$
-
-三项相乘，中间的 $\hat y_i (1-\hat y_i)$ 恰好约掉：
-
-$$\frac{\partial J_i}{\partial w}
-= \frac{\hat y_i - y_i}{\cancel{\hat y_i (1-\hat y_i)}} \cdot \cancel{\hat y_i (1-\hat y_i)} \cdot x_i
-= (\hat y_i - y_i)\, x_i$$
-
-对所有样本取平均，最后的结果是
-
-$$\nabla_w J = \frac{1}{n} \sum_{i=1}^n (\hat y_i - y_i)\, x_i$$
-
-同理可得偏置的梯度：
-
-$$\nabla_b J = \frac{1}{n} \sum_{i=1}^n (\hat y_i - y_i)$$
-
-如果线性回归的MSE多乘一个1/2，那么两者的梯度在形式上就是完全一样的了
-
-## 参数更新
-
-和线性回归一样
-
-$$w \leftarrow w - \eta \cdot \nabla_w L$$
-
-$$b \leftarrow b - \eta \cdot \nabla_b L$$
+$$J = -\frac{1}{n} \sum_{i=1}^n \sum_{k=1}^K y_{ik} \log(\hat y_{ik})$$
 
 ## 多分类的梯度
 
-上面都是二分类问题，如果需要对 $K$ 个分类输出概率，需要做一些改动
+得到损失函数之后，就可以按着[[线性回归]]的梯度下降去更新参数了
 
-$z \in R^K$ 每个元素 $z_i$ 都是对应类别 $i$ 的预测logits，然后代入softmax
-
-$$P(y=k) = \hat y_k = \frac{e^{z_k}}{\sum_{j=1}^K e^{z_j}}$$
-
-交叉熵损失做相应扩展，从两项变成 K 项
-
-$$J(\theta) = -\frac{1}{n} \sum_{i=1}^n \sum_{k=1}^K y_{ik} \log(\hat y_{ik})$$
-
-其中 $y_{ik}$ 是第 $i$ 个样本的 one-hot 标签，属于类别 $k$ 时为 1，否则为 0
-
-最后每个样本的求和里其实也只剩下一项，和二分类的情况一样
+二分类的推导很简单，这里略去，下面重点求多分类的梯度
 
 ### 逐元素形式
 
-接下来推导 $\nabla_{w_k} J$
+接下来推导 $\nabla_{w_k} J$，其中 $w_k\in\mathbb{R}^{d\times 1}$ 是 $W$ 的第 $k$ 列
 
-对单个样本 $(x_i, y_i)$，用链式法则。注意损失中每个 $\hat y_j$ 都有贡献，而每个 $\hat y_j$ 又都依赖 $z_k$，所以要加上对 $j$ 的求和：
+对单个样本 $(x_i, y_i)$，用链式法则。注意损失中每个 $\hat y_{ij}$ 都有贡献，而每个 $\hat y_{ij}$ 又都依赖 $z_{ik}$，所以要加上对 $j$ 的求和：
 
-$$\frac{\partial J_i}{\partial w_k}
-= \sum_{j=1}^K \frac{\partial J_i}{\partial \hat y_j} \cdot \frac{\partial \hat y_j}{\partial z_k} \cdot \frac{\partial z_k}{\partial w_k}$$
+$$\frac{\partial J_i}{\partial w_k}=\sum_{j=1}^K \frac{\partial J_i}{\partial \hat y_{ij}} \cdot \frac{\partial \hat y_{ij}}{\partial z_{ik}} \cdot \frac{\partial z_{ik}}{\partial w_k}$$
 
 逐项计算，其中
 
-$$\frac{\partial J_i}{\partial \hat y_j} = -\frac{y_j}{\hat y_j}$$
+$$\frac{\partial J_i}{\partial \hat y_{ij}} = -\frac{y_{ij}}{\hat y_{ij}}$$
 
-第二项比较复杂，二分类里 sigmoid 的导数是标量 $\hat y(1-\hat y)$，但 softmax 的每个输出 $\hat y_j$ 都通过分母依赖**所有** $z_1,\dots,z_K$，所以导数要分 $j=k$ 和 $j \neq k$ 两种情况：
+第二项比较复杂，二分类里 sigmoid 的导数是标量 $\hat y(1-\hat y)$，但 softmax 的每个输出 $\hat y_{ij}$ 都通过分母依赖**所有** $z_{i1},\dots,z_{iK}$，所以导数要分 $j=k$ 和 $j \neq k$ 两种情况：
 
-$$\frac{\partial \hat y_j}{\partial z_k} = \begin{cases} \hat y_k (1 - \hat y_k) & j = k \\ -\hat y_j \hat y_k & j \neq k \end{cases}$$
+$$\frac{\partial \hat y_{ij}}{\partial z_{ik}} = \begin{cases} \hat y_{ik} (1 - \hat y_{ik}) & j = k \\ -\hat y_{ij} \hat y_{ik} & j \neq k \end{cases}$$
 
-$$\frac{\partial z_k}{\partial w_k} = x_i$$
+$$\frac{\partial z_{ik}}{\partial w_k} = x_i^T$$
 
 代入导数，把求和拆成 $j=k$ 的一项和 $j \neq k$ 的其余项：
 
-$$\frac{\partial J_i}{\partial w_k}
-= -\left[ \frac{y_k}{\hat y_k} \cdot \hat y_k (1-\hat y_k) + \sum_{j \neq k} \frac{y_j}{\hat y_j} \cdot (-\hat y_j \hat y_k) \right] x_i \\ = -\left[ y_k (1-\hat y_k) - \hat y_k \sum_{j \neq k} y_j \right] x_i$$
+$$\frac{\partial J_i}{\partial w_k}=-\left[ \frac{y_{ik}}{\hat y_{ik}} \cdot \hat y_{ik} (1-\hat y_{ik}) + \sum_{j \neq k} \frac{y_{ij}}{\hat y_{ij}} \cdot (-\hat y_{ij} \hat y_{ik}) \right] x_i^T=-\left[ y_{ik} (1-\hat y_{ik}) - \hat y_{ik} \sum_{j \neq k} y_{ij} \right] x_i^T$$
 
-用 one-hot 和为1的性质 $\sum_{j \neq k} y_j + y_k = 1$ 整理括号里的项：
+用 one-hot 和为1的性质 $\sum_{j \neq k} y_{ij} + y_{ik} = 1$ 整理括号里的项：
 
-$$= -\left[ y_k - \hat y_k \left( y_k + \sum_{j \neq k} y_j \right) \right] x_i = (\hat y_k - y_k)\, x_i$$
+$$= -\left[ y_{ik} - \hat y_{ik} \left( y_{ik} + \sum_{j \neq k} y_{ij} \right) \right] x_i^T = (\hat y_{ik} - y_{ik})\, x_i^T$$
 
 对所有样本取平均，最后的结果是
 
-$$\nabla_{w_k} J = \frac{1}{n} \sum_{i=1}^n (\hat y_{ik} - y_{ik})\, x_i$$
+$$\nabla_{w_k} J = \frac{1}{n} \sum_{i=1}^n (\hat y_{ik} - y_{ik})\, x_i^T$$
 
 同理可得偏置的梯度：
 
@@ -157,29 +122,32 @@ $$\nabla_{b_k} J = \frac{1}{n} \sum_{i=1}^n (\hat y_{ik} - y_{ik})$$
 
 下面的内容改编自[知乎-矩阵求导术](https://zhuanlan.zhihu.com/p/24709748)，非常值得一看；或者笔记[[矩阵微积分]]中也要大致摘要
 
-$l = -\boldsymbol{y}^T\log\text{softmax}(W\boldsymbol{x})$，求 $\frac{\partial l}{\partial W}$
+$J_i = -\boldsymbol{y}_i^T\log\text{softmax}(W^T\boldsymbol{x}_i)$，求 $\frac{\partial J_i}{\partial W}$
 
-其中 $\boldsymbol{y}$ 是除一个元素为1外其它元素为0的 $m×1$ 列向量，$W$ 是 $m\times n$ 矩阵，$\boldsymbol{x}$ 是 $n×1$ 列向量，$l$ 是标量；log表示自然对数，$\text{softmax}(\boldsymbol{a}) = \frac{\exp(\boldsymbol{a})}{\boldsymbol{1}^T\exp(\boldsymbol{a})}$，其中 $\exp(\boldsymbol{a})$ 表示逐元素求指数，$\boldsymbol{1}$ 代表全1向量
+其中，令 $\boldsymbol{x}_i=x_i^T\in\mathbb{R}^{d\times 1}$，$\boldsymbol{y}_i=y_i^T\in\mathbb{R}^{K\times 1}$，它们分别是第 $i$ 个样本和标签的列向量；$W\in\mathbb{R}^{d\times K}$，$J_i$ 是标量。这里 $\text{softmax}(\boldsymbol{a}) = \frac{\exp(\boldsymbol{a})}{\boldsymbol{1}^T\exp(\boldsymbol{a})}$，其中 $\exp(\boldsymbol{a})$ 表示逐元素求指数，$\boldsymbol{1}$ 代表全1向量
 
 代入softmax
 
-$$l = -\boldsymbol{y}^T \left(\log (\exp(W\boldsymbol{x}))-\boldsymbol{1}\log(\boldsymbol{1}^T\exp(W\boldsymbol{x}))\right) = -\boldsymbol{y}^TW\boldsymbol{x} + \log(\boldsymbol{1}^T\exp(W\boldsymbol{x}))$$
+$$J_i = -\boldsymbol{y}_i^T \left(\log (\exp(W^T\boldsymbol{x}_i))-\boldsymbol{1}\log(\boldsymbol{1}^T\exp(W^T\boldsymbol{x}_i))\right) = -\boldsymbol{y}_i^TW^T\boldsymbol{x}_i + \log(\boldsymbol{1}^T\exp(W^T\boldsymbol{x}_i))$$
 
-注意逐元素log满足等式 $\log(\boldsymbol{u}/c) = \log(\boldsymbol{u}) - \boldsymbol{1}\log(c)$，以及 $\boldsymbol{y}$ 满足 $\boldsymbol{y}^T \boldsymbol{1} = 1$
+注意逐元素log满足等式 $\log(\boldsymbol{u}/c) = \log(\boldsymbol{u}) - \boldsymbol{1}\log(c)$，以及 $\boldsymbol{y}_i$ 满足 $\boldsymbol{y}_i^T \boldsymbol{1} = 1$
 
 求微分
 
-$$dl =- \boldsymbol{y}^TdW\boldsymbol{x}+\frac{\boldsymbol{1}^T\left(\exp(W\boldsymbol{x})\odot(dW\boldsymbol{x})\right)}{\boldsymbol{1}^T\exp(W\boldsymbol{x})}$$
+$$dJ_i =- \boldsymbol{y}_i^TdW^T\boldsymbol{x}_i+\frac{\boldsymbol{1}^T\left(\exp(W^T\boldsymbol{x}_i)\odot(dW^T\boldsymbol{x}_i)\right)}{\boldsymbol{1}^T\exp(W^T\boldsymbol{x}_i)}$$
 
-再套上迹并做交换，注意可化简 $\boldsymbol{1}^T\left(\exp(W\boldsymbol{x})\odot(dW\boldsymbol{x})\right) = \exp(W\boldsymbol{x})^TdW\boldsymbol{x}$，这是根据等式 $\boldsymbol{1}^T (\boldsymbol{u}\odot \boldsymbol{v}) = \boldsymbol{u}^T \boldsymbol{v}$
+再套上迹并做交换，注意可化简 $\boldsymbol{1}^T\left(\exp(W^T\boldsymbol{x}_i)\odot(dW^T\boldsymbol{x}_i)\right) = \exp(W^T\boldsymbol{x}_i)^TdW^T\boldsymbol{x}_i$，这是根据等式 $\boldsymbol{1}^T (\boldsymbol{u}\odot \boldsymbol{v}) = \boldsymbol{u}^T \boldsymbol{v}$
 
-$$dl = \text{tr}\left(-\boldsymbol{y}^TdW\boldsymbol{x}+\frac{\exp(W\boldsymbol{x})^TdW\boldsymbol{x}}{\boldsymbol{1}^T\exp(W\boldsymbol{x})}\right) =\text{tr}(-\boldsymbol{y}^TdW\boldsymbol{x}+\text{softmax}(W\boldsymbol{x})^TdW\boldsymbol{x}) = \text{tr}(\boldsymbol{x}(\text{softmax}(W\boldsymbol{x})-\boldsymbol{y})^TdW)$$
+$$dJ_i = \text{tr}\left(-\boldsymbol{y}_i^TdW^T\boldsymbol{x}_i+\frac{\exp(W^T\boldsymbol{x}_i)^TdW^T\boldsymbol{x}_i}{\boldsymbol{1}^T\exp(W^T\boldsymbol{x}_i)}\right) =\text{tr}(-\boldsymbol{y}_i^TdW^T\boldsymbol{x}_i+\text{softmax}(W^T\boldsymbol{x}_i)^TdW^T\boldsymbol{x}_i) = \text{tr}(\boldsymbol{x}_i(\text{softmax}(W^T\boldsymbol{x}_i)-\boldsymbol{y}_i)^TdW^T)$$
 
-所以 $\frac{\partial l}{\partial W}= (\text{softmax}(W\boldsymbol{x})-\boldsymbol{y})\boldsymbol{x}^T = (\hat{\boldsymbol{y}} - \boldsymbol{y})\boldsymbol{x}^T$ 这一公式符合上面的逐元素推导
+所以 $\frac{\partial J_i}{\partial W}=\boldsymbol{x}_i(\text{softmax}(W^T\boldsymbol{x}_i)-\boldsymbol{y}_i)^T = \boldsymbol{x}_i(\hat{\boldsymbol{y}}_i - \boldsymbol{y}_i)^T$，这一公式符合上面的逐元素推导
+
+## 扩展阅读
+
+1. [动手学深度学习 softmax回归](https://zh-v2.d2l.ai/chapter_linear-networks/softmax-regression.html)
+2. 实际工程对softmax的优化：[动手学深度学习 softmax回归的简洁实现](https://zh-v2.d2l.ai/chapter_linear-networks/softmax-regression-concise.html#subsec-softmax-implementation-revisited)
 
 ## 代码实现
-
-优化了[[线性回归]]里关于泰坦尼克的代码
 
 有意思的是，最后收敛的准确率也还是80%左右，这说明在这个**线性的**3参数模型（单纯捕捉sex age Pclass）的极限基本就是如此了。无论是逻辑回归和线性回归，其实都在训练一个超平面 $w^T x + b = 0$ 把两类情况分开，所以差别不大
 
@@ -237,7 +205,7 @@ class LogisticRegression:
     def fit(self, X_df):
         # 一次性提取 numpy 矩阵，后续全部向量化运算
         X = X_df[feature_cols].values # (n,3)
-        y = X_df["Survived"].values # (n,1)
+        y = X_df["Survived"].values # (n,)
         n = X.shape[0]
 
         self.w = np.zeros(X.shape[1]) # (3,)

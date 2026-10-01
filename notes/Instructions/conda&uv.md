@@ -16,13 +16,15 @@ tags: [编程]
 
 添加
 ```powershell
-function Load-Conda {
-    if (Test-Path "你的Anaconda安装路径\Scripts\conda.exe") {
-        (& "你的Anaconda安装路径\Scripts\conda.exe" "shell.powershell" "hook") | Out-String | ?{$_} | Invoke-Expression
-    }
+$condaExe = "你的Anaconda安装路径\Scripts\conda.exe"
+
+function conda {
+    (& $condaExe "shell.powershell" "hook") |
+        Out-String |
+        Invoke-Expression
+
     conda @args
 }
-Set-Alias conda Load-Conda
 ```
 
 这样输入conda相关命令的时候会自动加载
@@ -30,7 +32,7 @@ Set-Alias conda Load-Conda
 ## 虚拟环境
 
 conda env list //列出当前所有的虚拟环境
-conda create -n <环境名> python=3.10.2 //创建虚拟环境，默认在conda的安装路径下
+conda create -n <环境名> python=3.10.2 //创建虚拟环境，在 "conda安装路径\envs\环境名" 目录
 conda remove -n <环境名> --all //删
 
 ## 环境内
@@ -49,10 +51,12 @@ pip install <库名>==<版本号> (-i <URL>)
 使用
 
 ```
-.venv\Scripts\activate
+.\.venv\Scripts\Activate.ps1
 ```
 
 来激活虚拟环境
+
+直接`deactivate`退出
 
 ## 安装后配置
 
@@ -64,6 +68,8 @@ setx UV_CACHE_DIR D:\uv-cache
 
 （否则默认在C盘，如果项目跨盘的话，uv的hardlink机制会失败，会复制一份一模一样的包在项目的`.venv`下）
 
+如果需要清理缓存，执行`uv cache prune`即可
+
 ## 虚拟环境的init&venv
 
 init会配置git和readme等文件，在当前目录创建一个my-project文件夹
@@ -74,10 +80,12 @@ venv只创建环境
 
 uv venv my-env -p 3.11      # 指定环境名字和python版本
 
+不需要的环境，直接删除已有的`.venv`文件夹，缓存的包还会在cache中
+
 ## 包管理
 
 uv add # 为项目加包
-uv pip install # 添加一些临时的包的时候，不会记录在pyproject
+uv pip install # 添加一些临时的包的时候，不会记录在pyproject（但是uv sync会移除这些包）
 
 uv sync # 如果有一个uv的项目，直接sync即可配置好环境（如果需要复现旧环境 加上 --frozen）
 
