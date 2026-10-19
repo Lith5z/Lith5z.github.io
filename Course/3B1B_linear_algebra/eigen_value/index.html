@@ -81,6 +81,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#_1" class="md-skip">
+          跳转至
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -2781,6 +2786,24 @@
       
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    特征向量与特征值
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         
   
@@ -2797,6 +2820,67 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        定义
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        和奇异值
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        求解过程的几何意义
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        相似矩阵
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -3286,6 +3370,58 @@
   
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        定义
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        和奇异值
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        求解过程的几何意义
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        相似矩阵
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -3403,12 +3539,16 @@
 
   <h1>特征向量与特征值</h1>
 
+<h2 id="_1">定义<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
 <blockquote>
 <p>对于 <span class="arithmatex">\(\vec{\alpha} \neq \vec{0}\)</span>， 如果 <span class="arithmatex">\(A \vec{\alpha} = \lambda \vec{\alpha}\)</span>，那么 <span class="arithmatex">\(\vec{\alpha}\)</span> 称为矩阵 <span class="arithmatex">\(A\)</span> 的特征向量， <span class="arithmatex">\(\lambda\)</span> 称为矩阵 <span class="arithmatex">\(A\)</span> 的特征值。</p>
 </blockquote>
 <p>把矩阵看作线性变换，这个等式的意思也就是，变换前后，向量 <span class="arithmatex">\(\vec{\alpha}\)</span> 的方向没有变换，没有离开原本张成的空间。标量 <span class="arithmatex">\(\lambda\)</span> 代表它被伸缩的倍数。
 因为线性变换不会改变原点，所以对于任意矩阵，零向量都满足这个式子，没有研究的意义。但是0特征值是值得考虑的。</p>
 <p>如果矩阵是三维的且这个变换是旋转变换（<span class="arithmatex">\(\lambda = 1\)</span>），那么找到的特征向量就是旋转轴。</p>
+<h2 id="_2">和奇异值<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<p>只有方阵才有特征值，所有矩阵都有奇异值</p>
+<h2 id="_3">求解过程的几何意义<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
 <blockquote>
 <p>对原式移项得到 <span class="arithmatex">\((A-\lambda E)\vec{\alpha} = \vec{0}\)</span> ，由于要找该齐次线性方程组的非零解，所以需要有 <span class="arithmatex">\(det(A - \lambda E) = 0\)</span> 。该式可以求得 <span class="arithmatex">\(\lambda\)</span> 。</p>
 <p>之后，带入到移项后的式子，相当于求解齐次线性方程组，解即为 <span class="arithmatex">\(\vec{\alpha}\)</span> 。</p>
@@ -3416,6 +3556,7 @@
 <p>3B1B 的解释：
 原式的两侧乘法不同，故将其统一。数乘向量的结果与左乘矩阵 <span class="arithmatex">\(\lambda E\)</span> 是一样的，之后移项，得到 <span class="arithmatex">\((A-\lambda E)\vec{\alpha} = \vec{0}\)</span> 。
 这个式子代表矩阵与非零向量相乘，结果为零向量。根据线性方程组中齐次线性方程组情况二的内容，当且仅当这个矩阵把空间压缩到低维，才能有向量被压缩到零向量。</p>
+<h2 id="_4">相似矩阵<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
 <p>如果矩阵的所有特征向量正好是它的基向量，这个矩阵就是个对角矩阵。
 我们也可以通过基变换的内容把矩阵变为一个对角矩阵，只要把原来矩阵的基变为特征向量即可。</p>
 <blockquote>
@@ -3450,7 +3591,7 @@
     <span class="md-icon" title="最后更新">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2026年7月6日 12:13:09 UTC">2026年7月6日</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2026年10月19日 13:51:53 UTC">2026年10月19日</span>
   </span>
 
     

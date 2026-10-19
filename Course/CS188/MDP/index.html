@@ -3585,7 +3585,7 @@
 <p>一个马尔可夫决策过程 markov decision processes包含：</p>
 <ul>
 <li>状态state 动作action</li>
-<li>转移函数 T(s,a,s') 实际上是一个条件概率，P(s'/s,a)，意味着动作的结果不是确定的</li>
+<li>转移函数 T(s,a,s') 实际上是一个条件概率，P(s'|s,a)，意味着动作的结果不是确定的</li>
 <li>奖励函数 R(s,a,s')或者也可能是R(s) R(s') 对<strong>每一个</strong>(s,a)给出评价 而所有的奖励总和为<strong>效用值</strong></li>
 </ul>
 <p>在确定性的搜索问题，我们要找一个plan 一个动作序列；在MDP里，需要一个策略policy <span class="arithmatex">\(\pi\)</span> S -&gt; A，描述不同状态下要完成什么action <br>
@@ -3603,7 +3603,7 @@
   <img src="/assets/images/algorithms_intro/qstate_pic.webp" alt="qstate_pic" />
 </figure>
 
-<p><strong>state节点相当于一个max节点 qstate相当于chance节点</strong>，在后续会阐明</p>
+<p><strong>state节点相当于一个max节点 qstate相当于chance节点</strong>（见<a href="../adversarial_expectimax/">5-对抗搜索 Expectimax</a>），在后续会阐明</p>
 <p>解决MDP的两种算法：</p>
 <ul>
 <li>价值迭代算法</li>
@@ -3745,7 +3745,7 @@
     <span class="md-icon" title="最后更新">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2026年7月6日 12:13:09 UTC">2026年7月6日</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2026年10月19日 13:51:53 UTC">2026年10月19日</span>
   </span>
 
     
