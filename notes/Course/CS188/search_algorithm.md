@@ -17,7 +17,7 @@ tags: [AI, GraphSearch]
 - Greedy
 - A-star
 
-这节课是CS188的第一部分，以PacMan为例子讲解搜索算法，属于Planning规划问题。下一节课讲解CSP问题，算法实现有很大不同，但也归类到搜索问题
+这节课是CS188的第一部分，以PacMan为例子讲解搜索算法，属于Planning规划问题。下一节课讲解CSP问题[2-CSP BackTracking](CSP_backTracking.md)和[3-CSP LocalSearch](CSP_localSearch.md)，算法实现有很大不同，但也归类到搜索问题
 
 规划问题的特点是
 

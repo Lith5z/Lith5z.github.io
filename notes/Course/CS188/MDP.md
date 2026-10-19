@@ -11,7 +11,7 @@ tags: [AI, MDP]
 一个马尔可夫决策过程 markov decision processes包含：
 
 - 状态state 动作action
-- 转移函数 T(s,a,s') 实际上是一个条件概率，P(s'/s,a)，意味着动作的结果不是确定的
+- 转移函数 T(s,a,s') 实际上是一个条件概率，P(s'|s,a)，意味着动作的结果不是确定的
 - 奖励函数 R(s,a,s')或者也可能是R(s) R(s') 对**每一个**(s,a)给出评价 而所有的奖励总和为**效用值**
 
 在确定性的搜索问题，我们要找一个plan 一个动作序列；在MDP里，需要一个策略policy $\pi$ S -> A，描述不同状态下要完成什么action <br>
@@ -30,7 +30,7 @@ tags: [AI, MDP]
   <img src="/assets/images/algorithms_intro/qstate_pic.webp" alt="qstate_pic" />
 </figure>
 
-**state节点相当于一个max节点 qstate相当于chance节点**，在后续会阐明
+**state节点相当于一个max节点 qstate相当于chance节点**（见[5-对抗搜索 Expectimax](adversarial_expectimax.md)），在后续会阐明
 
 解决MDP的两种算法：
 

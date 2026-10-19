@@ -63,6 +63,24 @@ $$A\vec{\beta} = \begin{pmatrix} a & c \\ b & d \\ e & f \end{pmatrix} \begin{pm
 
 也就是说，无论如何，$A$ 的列向量依旧代表变换后的基向量，而 $A$ 的行数是变换后的基向量的维数。
 
+在深度学习中，经常看到各种维度的线性变换，就比如一个MLP，每一层都是 $Ax+b$，这里的 $A \in \mathbb{R}^{m \times n}$ 往往不是个方阵
+
+通过维度变换的视角，施加这个矩阵 $A$，其实就是把 $x$ 从 $n$ 维投射到 $m$ 维去，这样下面CNN分类器的代码就很自然了：
+
+```py
+class MyCNN(nn.Module):
+    def __init__(self):
+        super().__init__()
+        self.model = nn.Sequential(
+            # 省略各种各样的操作，只保留最后几层
+            nn.MaxPool2d(2, stride=2),  # (N,96,4,4)
+
+            # 线性投射，把图片拉平之后的1536维向量，投影到10个分类上
+            nn.Flatten(),
+            nn.Linear(1536, 10) # ~matrix A,shape 1536,10
+        )
+```
+
 ### 基变换、坐标变换、矩阵变换
 > 从线性空间的一组基底 $\vec{i},\vec{j}$ 到另一组基底 $\vec{a},\vec{b}$ 的过渡矩阵/基变换矩阵为 $P$ ，已知向量 $\vec{p}$ 在 $\vec{i},\vec{j}$ 下的坐标为 $(x_1,y_1)$ ，在 $\vec{a},\vec{b}$ 下的坐标为 $(x_2,y_2)$ ，那么有$$\begin{pmatrix} \vec{a} & \vec{b} \end{pmatrix} = \begin{pmatrix} \vec{i} & \vec{j} \end{pmatrix} P$$和$$\begin{pmatrix} x_1 \\ y_1 \end{pmatrix} = P^{-1} \begin{pmatrix} x_2 \\ y_2 \end{pmatrix}$$
 

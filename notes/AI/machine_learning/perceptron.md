@@ -95,7 +95,6 @@ $$
 > 
 > 直到 1986 年，**Rumelhart、Hinton 和 Williams** 在 *"Learning representations by back-propagating errors"* 中系统阐述了 **反向传播算法（Backpropagation）**，为**多层感知器MLP**的训练提供了可行的梯度下降方案。多层感知器通过引入隐藏层和非线性激活函数（如 Sigmoid），克服了单层感知器无法解决非线性问题的缺陷，开启了神经网络的复兴之路。
 
-可见[[3B1B 多层感知器]]
 
 ## 代码实现
 

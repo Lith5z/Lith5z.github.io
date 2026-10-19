@@ -4,7 +4,7 @@ date: 2026-03-29
 tags: [AI, CSP]
 ---
 
-# 局部搜索
+# 局部搜索Local Search
 
 - 一开始就给所有变量赋值（即使违反约束）
 - 在其解空间的**领域**内寻找更好的解（迭代改进Iterative Improvement）
@@ -55,7 +55,6 @@ def local_search(initial_solution, max_iterations=1000):
 ```
 
 在领域内寻找可能陷入**局部最优**，内存小速度快
-
 
 
 对于N-Queen问题，如果使用类似的方法，随机初始状态，然后选择不满足的变量，移动到违背约束最少的地方，大约能解决n~10 000 000的N-Queen问题 <br>

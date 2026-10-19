@@ -31,7 +31,6 @@ logits再经过softmax归一化就得到输出单词的概率
 2. $\sum p_i = 1$
 3. 转换函数是可导d的
 
-结果就是这个函数
 
 $$p_i = \text{softmax}(x_i) = \frac{e^{x_i}}{\sum_{n=0}^{N-1}e^{x_n}}$$
 

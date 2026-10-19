@@ -47,7 +47,7 @@ tags: [AI, RL]
 
 基于模型的学习： <br>
 根据采样估计出某个年龄的概率 $P(a) = nums(a) / n$ <br>
-然后对各个年龄a加权求和 $(a) = \sum_a P(a) \cdot a$
+然后对各个年龄a加权求和 $E(a) = \sum_a P(a) \cdot a$
 
 无模型学习： <br>
 直接根据采样计算 $E(a) = \frac{1}{n} \sum_i a_i$
@@ -83,8 +83,6 @@ tags: [AI, RL]
 
 - 只用到了state和对应的reward，浪费了状态转移的信息
 - 需要很长的时间，但是只要样本足够，最后可以给出正确的结果
-
-
 
 **时间差分学习 Temporal Difference Learning/间接评估**
 

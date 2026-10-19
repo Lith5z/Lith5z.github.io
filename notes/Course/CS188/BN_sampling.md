@@ -120,10 +120,10 @@ def LikelihoodWeight():
 
 $$
 \begin{aligned}
-P(S|+c,+r,-w) & =\frac{P(S,+c,+r,-w)}{P(+c,+r,-w)} \\
+P(S \mid+c,+r,-w) & =\frac{P(S,+c,+r,-w)}{P(+c,+r,-w)} \\
  & =\frac{P(S,+c,+r,-w)}{\sum_{s}P(s,+c,+r,-w)} \\
- & =\frac{P(+c)P(S|+c)P(+r|+c)P(-w|S,+r)}{\sum_{s}P(+c)P(s|+c)P(+r|+c)P(-w|s,+r)} \\
- & =\frac{P(S|+c)P(-w|S,+r)}{\sum_{s}P(s|+c)P(-w|s,+r)}
+ & =\frac{P(+c)P(S \mid+c)P(+r \mid+c)P(-w \mid S,+r)}{\sum_{s}P(+c)P(s \mid+c)P(+r \mid+c)P(-w \mid s,+r)} \\
+ & =\frac{P(S \mid+c)P(-w \mid S,+r)}{\sum_{s}P(s \mid+c)P(-w \mid s,+r)}
 \end{aligned}
 $$
 

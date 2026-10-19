@@ -76,7 +76,11 @@ init会配置git和readme等文件，在当前目录创建一个my-project文件
 
 uv init my-project -p 3.12
 
-venv只创建环境
+如果不需要git和readme，添加参数 `--bare` 就行
+
+也可以用
+
+venv只创建环境，但是这样就只能手动创建pyproject了
 
 uv venv my-env -p 3.11      # 指定环境名字和python版本
 

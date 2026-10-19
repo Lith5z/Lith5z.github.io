@@ -8,7 +8,7 @@ tags: [AI, GraphSearch, Minimax]
 
 之前提到的有信息、无信息搜索都是非对抗性的，只有一个智能体agent，不会有他人干预
 
-类似local search的评估函数，游戏中有个效用函数Utility(state,player)，用于评估游戏得分
+类似local search的评估函数，游戏中有个效用函数Utility(state,player)-> value，用于评估游戏得分
 
 这节课提到的游戏暂时是
 

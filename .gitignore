@@ -23,3 +23,5 @@ Gemfile.lock
 *~
 .DS_Store
 gemfile
+# 笔记同步台账（本地状态，不入库）
+/.notes-sync/

@@ -74,7 +74,7 @@ P(-a|-b) = P(-a,-b) / P(-b)
 </figure>
 以上图为例，两种方法的形式化表达就是
 
-$$ P(L) = \sum_t \sum_r P(L|t)P(r)P(t|r) = \sum_t P(L|t) \sum_r P(r)P(t|r) $$
+$$ P(L) = \sum_t \sum_r P(L \mid t)P(r)P(t \mid r) = \sum_t P(L \mid t) \sum_r P(r)P(t \mid r) $$
 
 第一个式子是枚举推理，先进行两次合并因子，再做两次消元；第二个是变量消元法，交替进行合并和消元
 
@@ -91,8 +91,8 @@ B   E
   A
  / \
 J   M
-5个因子 P(B) P(E) P(A|B,E) P(J|A) P(M|A)
-计算P(B|+j,+m)，实际上就是计算P(B,+j,+m)然后归一化
+5个因子 P(B) P(E) P(A | B,E) P(J | A) P(M | A)
+计算P(B | +j,+m)，实际上就是计算P(B,+j,+m)然后归一化
 E和A是隐藏变量，需要合并
 ```
 首先在每个与证据有关的节点，只保留符合证据取值的部分（实例化） <br>
