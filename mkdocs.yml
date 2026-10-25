@@ -144,6 +144,12 @@ nav:
     - Python虚拟环境: Instructions/conda&uv.md
     - PS使用: Instructions/ps_use.md
   - 读书:
-    - 存在主义是一种人道主义: Reading/existentialism.md
+    - 存在主义是一种人道主义:
+      - 概述: Reading/existentialism_is_a_humanism/existentialism_humanism_main.md
+      - 存在先于本质: Reading/existentialism_is_a_humanism/existence_precede_essence.md
+      - 价值判断和普世性: Reading/existentialism_is_a_humanism/value_and_universal.md
+      - 痛苦与自欺: Reading/existentialism_is_a_humanism/anguish_and_bad_faith.md
+      - 听任: Reading/existentialism_is_a_humanism/abandonment.md
+      - 绝望: Reading/existentialism_is_a_humanism/despair.md
     - 月亮与六便士: Reading/moon_and_sixpence.md
   - 关于: about_me.md
