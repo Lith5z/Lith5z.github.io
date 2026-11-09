@@ -8,6 +8,8 @@ tags: [教程]
 
 可以先去github上创建空仓库
 
+初始化 .gitignore 文件
+
 git init
 初始化仓库
 首先确保命令行已经切换到目标路径
@@ -18,8 +20,6 @@ git branch -M main
 设置远程仓库
 git remote add <这里写想设置的仓库的名字> <这里写地址>
 例如 git remote add origin https://github.com/njuer/NJU-CPL.git
-
-初始化 .gitignore 文件
 
 # 基础命令
 本地工作区 -> 暂存区 -> 本地仓库 -> 云端仓库

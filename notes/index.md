@@ -13,7 +13,16 @@ description: 这里是我的极简个人介绍和笔记分享
 
 **如果笔记公式渲染有问题，刷新网页试试看**
 
-上次更新于 20261019
+上次更新于 20261109
+
+## 各种仓库
+
+- Contributing to [智科全家桶](https://njuis-students.github.io/)
+  - NJU智能科学与技术专业的学生自建Wiki
+- Created [easy-dsa-cpp](https://github.com/Lith5z/easy-dsa-cpp)
+  - UCB CS61B、部分国内408数据结构与算法的简单cpp实现代码库，面向初学者，用大量注释解释实现中可能遇到的问题
+
+---
 
 ## 技术性&胡思乱想博客
 
