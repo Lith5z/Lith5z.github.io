@@ -20,10 +20,9 @@ csp constraint satisfaction problem（比如地图上色、N-Queen问题）
 
 如果一个问题中存在一个约束条件同时涉及三个或更多变量（例如：“区域A、区域B和区域C的颜色必须互不相同”或者“区域A、B、C的颜色之和必须为10”），那么这就是一个多元约束
 
-参考资料：[知乎](https://zhuanlan.zhihu.com/p/1996738399038638034)
-
 ## 回溯搜索/Backtracking Search
-关于地图上色问题，一个简单的想法是基于DFS，给一个个节点涂色（赋值），完成图后再检查是否符合，不符合就撤回重来 <br>
+关于地图上色问题，一个简单的想法是基于DFS[1-搜索算法](search_algorithm.md)，给一个个节点涂色（赋值），完成图后再检查是否符合，不符合就撤回重来
+
 这样的效率是很低的，应当：
 
 - 每次赋值后，就检查是否符合，不符合回溯
@@ -44,6 +43,8 @@ def backtrack(assignment):
     return None
 ```
 
+回溯算法本质是穷举法，通过对解空间进行深度优先遍历来寻找符合条件的解。在搜索过程中，遇到满足条件的解则记录，直至找到所有解或遍历完成后结束
+
 ## 回溯搜索的优化方法
 ordering
 
@@ -52,7 +53,7 @@ ordering
 
 filter
 
-- 提前避开可能的错误（剪枝）
+- 提前避开可能的错误（剪枝pruning）
 
 structure
 
@@ -155,6 +156,7 @@ strong k-consistency同时包含了k,k-1,k-2,...,1一致性，我们可以断言
 <figure>
   <img src="/assets/images/algorithms_intro/tree_structure_pic.webp" alt="tree_structure" />
 </figure>
+（这种结构其实就是图的拓扑排序）
 
 先进行反向的弧一致性遍历，从D->F D->E B->D B->C...按着头节点逆序 <br>
 之后再正向赋值，从A B C...赋值 <br>
@@ -166,7 +168,8 @@ strong k-consistency同时包含了k,k-1,k-2,...,1一致性，我们可以断言
 
 ---
 
-完全的树状结构还是很罕见，但是我们可以通过删掉某些节点，让剩余部分变成树状结构
+完全的树状结构还是很罕见，但是我们可以通过删掉某些节点，让剩余部分变成树状结构 <br>
+（相应的，只有有向无环图才能进行拓扑排序）
 <figure>
   <img src="/assets/images/algorithms_intro/cutset_conditioning_pic.webp" alt="cutset_conditioning" />
 </figure>
@@ -174,7 +177,8 @@ strong k-consistency同时包含了k,k-1,k-2,...,1一致性，我们可以断言
 
 **割集调节**cutset conditioning的复杂度是O(d^c (n-c)d^2)，c是去除节点的数量，c小的时候，效果很好
 
-## 局部搜索
+## 预览：局部搜索
+
 这是另一种解决CSP问题的方法
 
 | 特性 | 系统性搜索 (如回溯法) | 局部搜索 (如最小冲突算法) |
@@ -185,3 +189,8 @@ strong k-consistency同时包含了k,k-1,k-2,...,1一致性，我们可以断言
 | 内存消耗 | 较高（需要保存搜索路径）。 | 极低（通常只需要保存当前状态） |
 
 但是容易陷入局部最优
+
+## 参考资料
+
+1. [知乎](https://zhuanlan.zhihu.com/p/1996738399038638034)
+2. [hello算法 回溯](https://www.hello-algo.com/chapter_backtracking/)
