@@ -25,7 +25,7 @@
       
       
       <link rel="icon" href="../../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.1">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.2">
     
     
       
@@ -2030,7 +2030,18 @@
   <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
       
-        局部搜索
+        预览：局部搜索
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        参考资料
       
     </span>
   </a>
@@ -2990,6 +3001,8 @@
       
         
       
+        
+      
     
     
     
@@ -3078,6 +3091,34 @@
     
   
     260816_为什么PyTorch的默认初始化不是Kaiming/设置参数sqrt5
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Blog/PsQs%28QAP%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    论文阅读 Ps and Qs
   
 
     
@@ -3765,7 +3806,18 @@
   <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
       
-        局部搜索
+        预览：局部搜索
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        参考资料
       
     </span>
   </a>
@@ -3894,10 +3946,9 @@
 <p>比如在地图着色问题中，基本的规则是：“相邻的两个区域不能染相同的颜色” <br>
 如果我们把每个区域看作一个变量（例如 <span class="arithmatex">\(X_1, X_2, \dots\)</span>），那么每一条规则都只涉及两个变量，即 <span class="arithmatex">\(X_i \neq X_j\)</span></p>
 <p>如果一个问题中存在一个约束条件同时涉及三个或更多变量（例如：“区域A、区域B和区域C的颜色必须互不相同”或者“区域A、B、C的颜色之和必须为10”），那么这就是一个多元约束</p>
-<p>参考资料：<a href="https://zhuanlan.zhihu.com/p/1996738399038638034">知乎</a></p>
 <h2 id="backtracking-search">回溯搜索/Backtracking Search<a class="headerlink" href="#backtracking-search" title="Permanent link">&para;</a></h2>
-<p>关于地图上色问题，一个简单的想法是基于DFS，给一个个节点涂色（赋值），完成图后再检查是否符合，不符合就撤回重来 <br>
-这样的效率是很低的，应当：</p>
+<p>关于地图上色问题，一个简单的想法是基于DFS<a href="../search_algorithm/">1-搜索算法</a>，给一个个节点涂色（赋值），完成图后再检查是否符合，不符合就撤回重来</p>
+<p>这样的效率是很低的，应当：</p>
 <ul>
 <li>每次赋值后，就检查是否符合，不符合回溯</li>
 <li>一次只赋值一个变量，变量的赋值顺序不影响结果（不关心顺序）</li>
@@ -3915,6 +3966,7 @@
 <a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>            <span class="k">del</span> <span class="n">assignment</span><span class="p">[</span><span class="n">var</span><span class="p">]</span>  <span class="c1"># 回溯</span>
 <a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>    <span class="k">return</span> <span class="kc">None</span>
 </code></pre></div></p>
+<p>回溯算法本质是穷举法，通过对解空间进行深度优先遍历来寻找符合条件的解。在搜索过程中，遇到满足条件的解则记录，直至找到所有解或遍历完成后结束</p>
 <h2 id="_1">回溯搜索的优化方法<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
 <p>ordering</p>
 <ul>
@@ -3923,7 +3975,7 @@
 </ul>
 <p>filter</p>
 <ul>
-<li>提前避开可能的错误（剪枝）</li>
+<li>提前避开可能的错误（剪枝pruning）</li>
 </ul>
 <p>structure</p>
 <ul>
@@ -4006,7 +4058,7 @@ arc consistency 也称作 2-consistency，3-consistency也称作path consistency
 <figure>
   <img src="/assets/images/algorithms_intro/tree_structure_pic.webp" alt="tree_structure" />
 </figure>
-
+<p>（这种结构其实就是图的拓扑排序）</p>
 <p>先进行反向的弧一致性遍历，从D-&gt;F D-&gt;E B-&gt;D B-&gt;C...按着头节点逆序 <br>
 之后再正向赋值，从A B C...赋值 <br>
 刚刚的弧一致性使得：对A随便赋值，B一定有正确的赋值，从而C也有...因为所有子节点只有一个父节点，过程中不需要回溯
@@ -4014,13 +4066,14 @@ arc consistency 也称作 2-consistency，3-consistency也称作path consistency
 <a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>对于C来说，就算满足A-&gt;C和B-&gt;C的一致性（2-consistency），也不能确保同时满足A和B对C的一致性（3-consistency）
 </code></pre></div></p>
 <hr />
-<p>完全的树状结构还是很罕见，但是我们可以通过删掉某些节点，让剩余部分变成树状结构</p>
+<p>完全的树状结构还是很罕见，但是我们可以通过删掉某些节点，让剩余部分变成树状结构 <br>
+（相应的，只有有向无环图才能进行拓扑排序）</p>
 <figure>
   <img src="/assets/images/algorithms_intro/cutset_conditioning_pic.webp" alt="cutset_conditioning" />
 </figure>
 <p>这个例子里，SA如果确定，剩余的部分就是一个树状结构，可以迅速解决。因为不知道SA怎么赋值，每个可能的值都要试一次，然后处理剩余的树状结构</p>
 <p><strong>割集调节</strong>cutset conditioning的复杂度是O(d^c (n-c)d^2)，c是去除节点的数量，c小的时候，效果很好</p>
-<h2 id="_2">局部搜索<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<h2 id="_2">预览：局部搜索<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
 <p>这是另一种解决CSP问题的方法</p>
 <table>
 <thead>
@@ -4054,6 +4107,11 @@ arc consistency 也称作 2-consistency，3-consistency也称作path consistency
 </tbody>
 </table>
 <p>但是容易陷入局部最优</p>
+<h2 id="_3">参考资料<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<ol>
+<li><a href="https://zhuanlan.zhihu.com/p/1996738399038638034">知乎</a></li>
+<li><a href="https://www.hello-algo.com/chapter_backtracking/">hello算法 回溯</a></li>
+</ol>
 
 
 
@@ -4076,7 +4134,7 @@ arc consistency 也称作 2-consistency，3-consistency也称作path consistency
     <span class="md-icon" title="最后更新">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2026年7月6日 12:13:09 UTC">2026年7月6日</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2026年11月21日 09:46:22 UTC">2026年11月21日</span>
   </span>
 
     
